@@ -15,6 +15,8 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,NSURLConnectionDataDele
      var rangePoint:NSRange!
      var isFirst = true
     //选择支付方式 0银联 1 微信
+    
+    
     var rid = Int64()
     @IBOutlet weak var arrow: UIImageView!                     // 箭头
     @IBOutlet weak var userIdText: UITextField!                //用户账户
