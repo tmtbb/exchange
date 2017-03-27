@@ -52,7 +52,8 @@ class UserTableViewController: BaseTableViewController {
                           5 : AppConst.NotifyDefine.jumpToMyMessage,
                           6 : AppConst.NotifyDefine.jumpToMyAttention,
                           7 : AppConst.NotifyDefine.jumpToMyWealtVC,
-                          8 : AppConst.NotifyDefine.jumpToAttentionUs]
+                          8 : AppConst.NotifyDefine.jumpToAttentionUs,
+                          9 : AppConst.NotifyDefine.jumpToUserInfo]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -307,8 +308,8 @@ class UserTableViewController: BaseTableViewController {
     }
     //个人中心
     @IBAction func myMessageDidClick(_ sender: Any) {
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToMyMessage), object: nil, userInfo: nil)
-//        sideMenuController?.toggle()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToUserInfo), object: nil, userInfo: nil)
+        sideMenuController?.toggle()
     }
     //我的积分
     @IBAction func myIntegral(_ sender: Any) {

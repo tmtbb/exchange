@@ -131,6 +131,7 @@ extension HomeVC{
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return marketArray.count
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell : ProdectCell = tableView.dequeueReusableCell(withIdentifier: ProdectCell.className()) as! ProdectCell
         if indexPath.item < marketArray.count {
@@ -173,7 +174,7 @@ extension HomeVC{
     //MARK: --通知
     func registerNotify() {
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(jumpToMyMessageController), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToMyMessage), object: nil)
+        notificationCenter.addObserver(self, selector: #selector(jumpToMyMessageController), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToUserInfo), object: nil)
         notificationCenter.addObserver(self, selector: #selector(jumpToMyAttentionController), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToMyAttention), object: nil)
         notificationCenter.addObserver(self, selector: #selector(jumpToMyPushController), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToMyPush), object: nil)
         notificationCenter.addObserver(self, selector: #selector(jumpToMyBaskController), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.jumpToMyBask), object: nil)
@@ -200,7 +201,15 @@ extension HomeVC{
     //我的消息
     func jumpToMyMessageController() {
         
-        performSegue(withIdentifier: MyMessageController.className(), sender: nil)
+        if checkLogin() {
+            
+            let stroyBoard = UIStoryboard(name: "User", bundle: nil)
+            let vc = stroyBoard.instantiateViewController(withIdentifier: "UserInfoVC")
+            _ = navigationController?.pushViewController(vc, animated: true)
+            
+        }
+//        RechargeVC
+//        performSegue(withIdentifier: MyMessageController.className(), sender: nil)
     }
     
     func sideHide() {
