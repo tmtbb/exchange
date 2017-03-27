@@ -11,6 +11,7 @@
 		67563DCFE7C11C493D5E3BE0 /* Pods_wp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DFB87B95C21847F47B3B5B8C /* Pods_wp.framework */; };
 		6E0735451E4D67B20037278A /* DealListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0735431E4D67B20037278A /* DealListCell.swift */; };
 		6E0735461E4D67B20037278A /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0735441E4D67B20037278A /* YD_CountDownHelper.swift */; };
+		6E11A2731E88A7BF00227DE7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9FAB01DF6AEAE00E2A67C /* Fabric.framework */; };
 		6E320EC81E67C92D006C656E /* personal_chongzhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC21E67C92B006C656E /* personal_chongzhi@2x.png */; };
 		6E320EC91E67C92D006C656E /* personal_chongzhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC31E67C92B006C656E /* personal_chongzhi@3x.png */; };
 		6E320ECA1E67C92D006C656E /* personal_mingxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC41E67C92B006C656E /* personal_mingxi@2x.png */; };
@@ -300,7 +301,6 @@
 		BF9CD75D1E0A57FD00194A32 /* CommenSocketApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9CD75C1E0A57FD00194A32 /* CommenSocketApi.swift */; };
 		BF9CD75F1E0A6CE300194A32 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9CD75E1E0A6CE300194A32 /* UIImage+Extension.swift */; };
 		BFA73BAA1E0B9D070079934F /* SideVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFA73BA91E0B9D070079934F /* SideVC.swift */; };
-		BFA9FAB11DF6AEAE00E2A67C /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9FAB01DF6AEAE00E2A67C /* Fabric.framework */; };
 		BFA9FAB31DF6AEBF00E2A67C /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9FAB21DF6AEBF00E2A67C /* Crashlytics.framework */; };
 		BFAC07C91E25DD57002E465F /* TitleCollectionview.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC07C81E25DD57002E465F /* TitleCollectionview.swift */; };
 		BFAC32861E123A2E008EF3D3 /* ShareTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC32851E123A2E008EF3D3 /* ShareTableView.swift */; };
@@ -712,6 +712,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E11A2731E88A7BF00227DE7 /* Fabric.framework in Frameworks */,
 				B02DB25C1DF985B70044F910 /* libsqlite3.tbd in Frameworks */,
 				A0EA2D551E481BF900DD3158 /* libz.tbd in Frameworks */,
 				A0EA2D531E481BD600DD3158 /* SystemConfiguration.framework in Frameworks */,
@@ -726,7 +727,6 @@
 				BF0629E61E04DC7E00618B1B /* YWFeedbackFMWK.framework in Frameworks */,
 				BFA9FAB31DF6AEBF00E2A67C /* Crashlytics.framework in Frameworks */,
 				BF0629E01E04DC7E00618B1B /* AmrCodecFMWK.framework in Frameworks */,
-				BFA9FAB11DF6AEAE00E2A67C /* Fabric.framework in Frameworks */,
 				BF0629E71E04DC7E00618B1B /* YWHybridWebViewFMWK.framework in Frameworks */,
 				BF0629E81E04DC7E00618B1B /* libWeChatSDK.a in Frameworks */,
 				B08673461DE5C4C0008DD8A1 /* libstdc++.tbd in Frameworks */,
@@ -1613,7 +1613,7 @@
 				TargetAttributes = {
 					B0CF59DC1DE5BEC300C40C9C = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = 953PSC8HAE;
+						DevelopmentTeam = 96YGS7NXK5;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Manual;
 						SystemCapabilities = {
@@ -1893,7 +1893,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 13b0dd85b007ad78249b02fc26fa3972dff8da79 09fbffcee88c3bfa1086819566cdaf4b4c0f451fe57b9699cd9525804778308d";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 13b0dd85b007ad78249b02fc26fa3972dff8da79 09fbffcee88c3bfa1086819566cdaf4b4c0f451fe57b9699cd9525804778308d";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -2191,6 +2191,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/GTSDK",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/HappyTravel/Other/WeChatSDK1.7.4",
+					"$(PROJECT_DIR)/Pods/Fabric",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/Pods/GTSDK",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/Pods/Realm/core",
 					"$(PROJECT_DIR)/wp/Library/WeChatSDK1.7.4",
@@ -2251,6 +2252,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Pods/GTSDK",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/HappyTravel/Other/WeChatSDK1.7.4",
+					"$(PROJECT_DIR)/Pods/Fabric",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/Pods/GTSDK",
 					"$(PROJECT_DIR)/wp/Library/master/tvlios/Pods/Realm/core",
 					"$(PROJECT_DIR)/wp/Library/WeChatSDK1.7.4",
