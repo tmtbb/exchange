@@ -26,7 +26,7 @@ class ProdectCell: UITableViewCell {
                 return
             }
             productName.text = String.init(format: "%@", kChartModel!.name)
-            nowPrice.text = String.init(format: "%.4f", kChartModel!.currentPrice)
+//            nowPrice.text = String.init(format: "%.4f", kChartModel!.currentPrice)
           
            
             

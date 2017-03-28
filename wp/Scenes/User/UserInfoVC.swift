@@ -30,7 +30,7 @@ class UserInfoVC: BaseTableViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        hideTabBarWithAnimationDuration()
+       
         
     }
     override func didRequest() {
@@ -56,6 +56,13 @@ class UserInfoVC: BaseTableViewController {
        cell.rightLb.text = "123"
 
         return cell
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let story = UIStoryboard.init(name: "Deal", bundle: nil)
+        let AddFlightVC = story.instantiateViewController(withIdentifier: "AddFlightVC")
+        
+        self.navigationController?.pushViewController(AddFlightVC, animated: true)
     }
     
 

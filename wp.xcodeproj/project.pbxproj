@@ -125,10 +125,10 @@
 		8EF59E101E571D8200BABBD0 /* HomeUnSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D7C1E571D8200BABBD0 /* HomeUnSelect@2x.png */; };
 		8EF59E111E571D8200BABBD0 /* HomeUnSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D7D1E571D8200BABBD0 /* HomeUnSelect@3x.png */; };
 		8EF59E121E571D8200BABBD0 /* nav_main@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D7E1E571D8200BABBD0 /* nav_main@2x.png */; };
-		8EF59E131E571D8200BABBD0 /* ShareSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D7F1E571D8200BABBD0 /* ShareSelect@2x.png */; };
-		8EF59E141E571D8200BABBD0 /* ShareSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D801E571D8200BABBD0 /* ShareSelect@3x.png */; };
-		8EF59E151E571D8200BABBD0 /* ShareUnSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D811E571D8200BABBD0 /* ShareUnSelect@2x.png */; };
-		8EF59E161E571D8200BABBD0 /* ShareUnSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D821E571D8200BABBD0 /* ShareUnSelect@3x.png */; };
+		8EF59E131E571D8200BABBD0 /* UserSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D7F1E571D8200BABBD0 /* UserSelect@2x.png */; };
+		8EF59E141E571D8200BABBD0 /* UserSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D801E571D8200BABBD0 /* UserSelect@3x.png */; };
+		8EF59E151E571D8200BABBD0 /* UserUnSelect@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D811E571D8200BABBD0 /* UserUnSelect@2x.png */; };
+		8EF59E161E571D8200BABBD0 /* UserUnSelect@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D821E571D8200BABBD0 /* UserUnSelect@3x.png */; };
 		8EF59E191E571D8200BABBD0 /* Account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D861E571D8200BABBD0 /* Account@2x.png */; };
 		8EF59E1A1E571D8200BABBD0 /* Account@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D871E571D8200BABBD0 /* Account@3x.png */; };
 		8EF59E1B1E571D8200BABBD0 /* addbank@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8EF59D881E571D8200BABBD0 /* addbank@2x.png */; };
@@ -182,6 +182,8 @@
 		A01F441C1E2DCAD300FD5D96 /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01F441B1E2DCAD300FD5D96 /* ChartView.xib */; };
 		A01F441E1E2E0F9900FD5D96 /* MyWealtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */; };
 		A02722AD1E49C23000801A44 /* DKColorTable.txt in Resources */ = {isa = PBXBuildFile; fileRef = A02722AC1E49C23000801A44 /* DKColorTable.txt */; };
+		A03377A51E89EEA600474E08 /* ScanVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03377A41E89EEA600474E08 /* ScanVC.swift */; };
+		A03377A91E8A0C3E00474E08 /* AddFlightVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */; };
 		A046BF781E1CDFFB0035A4FA /* WithDrawalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A046BF771E1CDFFB0035A4FA /* WithDrawalVC.swift */; };
 		A053E2611E264768001B8B99 /* BankCardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A053E2601E264768001B8B99 /* BankCardVC.swift */; };
 		A06396E81E30BED800CBD786 /* DealResetPasswordVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A06396E71E30BED800CBD786 /* DealResetPasswordVC.swift */; };
@@ -468,10 +470,10 @@
 		8EF59D7C1E571D8200BABBD0 /* HomeUnSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomeUnSelect@2x.png"; sourceTree = "<group>"; };
 		8EF59D7D1E571D8200BABBD0 /* HomeUnSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HomeUnSelect@3x.png"; sourceTree = "<group>"; };
 		8EF59D7E1E571D8200BABBD0 /* nav_main@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_main@2x.png"; sourceTree = "<group>"; };
-		8EF59D7F1E571D8200BABBD0 /* ShareSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareSelect@2x.png"; sourceTree = "<group>"; };
-		8EF59D801E571D8200BABBD0 /* ShareSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareSelect@3x.png"; sourceTree = "<group>"; };
-		8EF59D811E571D8200BABBD0 /* ShareUnSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareUnSelect@2x.png"; sourceTree = "<group>"; };
-		8EF59D821E571D8200BABBD0 /* ShareUnSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ShareUnSelect@3x.png"; sourceTree = "<group>"; };
+		8EF59D7F1E571D8200BABBD0 /* UserSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSelect@2x.png"; sourceTree = "<group>"; };
+		8EF59D801E571D8200BABBD0 /* UserSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserSelect@3x.png"; sourceTree = "<group>"; };
+		8EF59D811E571D8200BABBD0 /* UserUnSelect@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserUnSelect@2x.png"; sourceTree = "<group>"; };
+		8EF59D821E571D8200BABBD0 /* UserUnSelect@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UserUnSelect@3x.png"; sourceTree = "<group>"; };
 		8EF59D861E571D8200BABBD0 /* Account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Account@2x.png"; sourceTree = "<group>"; };
 		8EF59D871E571D8200BABBD0 /* Account@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Account@3x.png"; sourceTree = "<group>"; };
 		8EF59D881E571D8200BABBD0 /* addbank@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addbank@2x.png"; sourceTree = "<group>"; };
@@ -525,6 +527,8 @@
 		A01F441B1E2DCAD300FD5D96 /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
 		A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWealtVC.swift; sourceTree = "<group>"; };
 		A02722AC1E49C23000801A44 /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
+		A03377A41E89EEA600474E08 /* ScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
+		A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlightVC.swift; sourceTree = "<group>"; };
 		A046BF771E1CDFFB0035A4FA /* WithDrawalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawalVC.swift; sourceTree = "<group>"; };
 		A053E2601E264768001B8B99 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A06396E71E30BED800CBD786 /* DealResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -959,10 +963,10 @@
 				8EF59D7C1E571D8200BABBD0 /* HomeUnSelect@2x.png */,
 				8EF59D7D1E571D8200BABBD0 /* HomeUnSelect@3x.png */,
 				8EF59D7E1E571D8200BABBD0 /* nav_main@2x.png */,
-				8EF59D7F1E571D8200BABBD0 /* ShareSelect@2x.png */,
-				8EF59D801E571D8200BABBD0 /* ShareSelect@3x.png */,
-				8EF59D811E571D8200BABBD0 /* ShareUnSelect@2x.png */,
-				8EF59D821E571D8200BABBD0 /* ShareUnSelect@3x.png */,
+				8EF59D7F1E571D8200BABBD0 /* UserSelect@2x.png */,
+				8EF59D801E571D8200BABBD0 /* UserSelect@3x.png */,
+				8EF59D811E571D8200BABBD0 /* UserUnSelect@2x.png */,
+				8EF59D821E571D8200BABBD0 /* UserUnSelect@3x.png */,
 			);
 			path = nav;
 			sourceTree = "<group>";
@@ -1181,6 +1185,7 @@
 				BF0479361E0FBE7200C511E7 /* NickNameVC.swift */,
 				BF2CEA3B1E1CCA9A00EEA99E /* BingPhoneVC.swift */,
 				A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */,
+				A03377A41E89EEA600474E08 /* ScanVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1443,6 +1448,7 @@
 				BF0C4E1D1E24BC6600FA4B4A /* KChartModel.swift */,
 				BF52104B1E27A94D00A6365E /* DealParam.swift */,
 				BF38A0A91E2CD07A00D18A96 /* KLineModel.swift */,
+				A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */,
 			);
 			name = Deal;
 			sourceTree = "<group>";
@@ -1696,7 +1702,7 @@
 				8EF59DB11E571D8200BABBD0 /* jiaotong@2x.png in Resources */,
 				8EF59DE61E571D8200BABBD0 /* icon-13.png in Resources */,
 				8EF59DD81E571D8200BABBD0 /* addFocusOn@2x.png in Resources */,
-				8EF59E131E571D8200BABBD0 /* ShareSelect@2x.png in Resources */,
+				8EF59E131E571D8200BABBD0 /* UserSelect@2x.png in Resources */,
 				8EF59E2E1E571D8200BABBD0 /* noticeSelect@2x.png in Resources */,
 				8EF59E291E571D8200BABBD0 /* ccbc@3x.png in Resources */,
 				8EF59E1F1E571D8200BABBD0 /* bank@3x.png in Resources */,
@@ -1717,7 +1723,7 @@
 				8EF59DFC1E571D8200BABBD0 /* login_success@2x.png in Resources */,
 				BFF019EA1E23B113008631D6 /* User.storyboard in Resources */,
 				8EF59E3B1E571D8200BABBD0 /* top@2x.png in Resources */,
-				8EF59E151E571D8200BABBD0 /* ShareUnSelect@2x.png in Resources */,
+				8EF59E151E571D8200BABBD0 /* UserUnSelect@2x.png in Resources */,
 				A01F441C1E2DCAD300FD5D96 /* ChartView.xib in Resources */,
 				8EF59E0B1E571D8200BABBD0 /* DealSelect@3x.png in Resources */,
 				8EF59DDB1E571D8200BABBD0 /* detail.png in Resources */,
@@ -1739,7 +1745,7 @@
 				8EF59E0A1E571D8200BABBD0 /* DealSelect@2x.png in Resources */,
 				8EF59E221E571D8200BABBD0 /* banner@2x.png in Resources */,
 				BFF019791E23B113008631D6 /* LaunchScreen.storyboard in Resources */,
-				8EF59E141E571D8200BABBD0 /* ShareSelect@3x.png in Resources */,
+				8EF59E141E571D8200BABBD0 /* UserSelect@3x.png in Resources */,
 				8EF59DF41E571D8200BABBD0 /* eye_close@2x.png in Resources */,
 				6EADCA6D1E6FAE1B0004B06B /* Personal_huiyuan@2x.png in Resources */,
 				8EF59E351E571D8200BABBD0 /* rechargeType@3x.png in Resources */,
@@ -1750,7 +1756,7 @@
 				8EF59DBF1E571D8200BABBD0 /* buyDown@2x.png in Resources */,
 				8EF59DE31E571D8200BABBD0 /* icon-11@2x.png in Resources */,
 				6E320ECA1E67C92D006C656E /* personal_mingxi@2x.png in Resources */,
-				8EF59E161E571D8200BABBD0 /* ShareUnSelect@3x.png in Resources */,
+				8EF59E161E571D8200BABBD0 /* UserUnSelect@3x.png in Resources */,
 				8EF59DF01E571D8200BABBD0 /* person-l1@2x.png in Resources */,
 				8EF59DCB1E571D8200BABBD0 /* countDown_progress@2x.png in Resources */,
 				8EC879541E77F1B2004A42E8 /* shouye-shujujiazai@2x.png in Resources */,
@@ -1960,6 +1966,7 @@
 				BF2F643E1E038DFE00917FA1 /* RBStoryboardSegue.m in Sources */,
 				BF2F64361E038DFE00917FA1 /* EmojiFaceHelper.swift in Sources */,
 				BF065B001E271BE00079D678 /* NSObject+GCD.swift in Sources */,
+				A03377A91E8A0C3E00474E08 /* AddFlightVC.swift in Sources */,
 				BF062B4B1E04DF5200618B1B /* HomeVC.swift in Sources */,
 				BFD70D711E2F3B12001F6CD4 /* AppDataHelper.swift in Sources */,
 				BF5E24821E10BE1E00B5C07A /* KLineView.swift in Sources */,
@@ -2009,6 +2016,7 @@
 				A0BC07361E233DC7003EA7BC /* InputBankPhone.swift in Sources */,
 				BF062B4F1E04E01100618B1B /* LoginNav.swift in Sources */,
 				B058E36E1E1D40DA0046720D /* SocketHelper.swift in Sources */,
+				A03377A51E89EEA600474E08 /* ScanVC.swift in Sources */,
 				A0132AD21E557E9B001979EE /* BankLogoColor.swift in Sources */,
 				BF3AD87F1E16301F00524997 /* ChartFormatter.swift in Sources */,
 				A01F441E1E2E0F9900FD5D96 /* MyWealtVC.swift in Sources */,
