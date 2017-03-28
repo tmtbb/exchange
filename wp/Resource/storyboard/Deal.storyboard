@@ -841,10 +841,10 @@
             </objects>
             <point key="canvasLocation" x="1742" y="260"/>
         </scene>
-        <!--Add FlightVC-->
+        <!--添加航线-->
         <scene sceneID="LSr-81-iHE">
             <objects>
-                <viewController storyboardIdentifier="AddFlightVC" id="MCv-6i-JhU" customClass="AddFlightVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFlightVC" title="添加航线" id="MCv-6i-JhU" customClass="AddFlightVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6ca-8W-CSr"/>
                         <viewControllerLayoutGuide type="bottom" id="YSW-DN-lOZ"/>
@@ -963,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jFT-ex-iUP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1548" y="2573.1634182908547"/>
+            <point key="canvasLocation" x="158" y="4847"/>
         </scene>
         <!--Storyboard Link-->
         <scene sceneID="X2p-7b-1gr">
