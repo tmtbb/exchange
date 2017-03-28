@@ -216,6 +216,9 @@
 		A0EA2D511E481BC300DD3158 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA2D501E481BC300DD3158 /* CFNetwork.framework */; };
 		A0EA2D531E481BD600DD3158 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA2D521E481BD600DD3158 /* SystemConfiguration.framework */; };
 		A0EA2D551E481BF900DD3158 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA2D541E481BF900DD3158 /* libz.tbd */; };
+		A0F3BFC11E88F9C100F9212B /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3BFC01E88F9C100F9212B /* UserInfoVC.swift */; };
+		A0F3BFC71E890B0C00F9212B /* EnterpriseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */; };
+		A0F3BFC91E89199500F9212B /* bordor.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F3BFC81E89199500F9212B /* bordor.png */; };
 		B02DB25C1DF985B70044F910 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B02DB25B1DF985B70044F910 /* libsqlite3.tbd */; };
 		B058E36E1E1D40DA0046720D /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058E36D1E1D40DA0046720D /* SocketHelper.swift */; };
 		B058E3701E1D429F0046720D /* LocalSocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058E36F1E1D429F0046720D /* LocalSocketHelper.swift */; };
@@ -559,6 +562,9 @@
 		A0EA2D501E481BC300DD3158 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		A0EA2D521E481BD600DD3158 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A0EA2D541E481BF900DD3158 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		A0F3BFC01E88F9C100F9212B /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
+		A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterpriseVC.swift; sourceTree = "<group>"; };
+		A0F3BFC81E89199500F9212B /* bordor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bordor.png; sourceTree = "<group>"; };
 		B02DB25B1DF985B70044F910 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B058E36D1E1D40DA0046720D /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
 		B058E36F1E1D429F0046720D /* LocalSocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocalSocketHelper.swift; sourceTree = "<group>"; };
@@ -917,6 +923,7 @@
 		8EF59D5E1E571D8200BABBD0 /* login */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3BFC81E89199500F9212B /* bordor.png */,
 				8EF59D5F1E571D8200BABBD0 /* eye_close@2x.png */,
 				8EF59D601E571D8200BABBD0 /* eye_close@3x.png */,
 				8EF59D611E571D8200BABBD0 /* eye_open@2x.png */,
@@ -1085,6 +1092,20 @@
 			name = paysdk;
 			sourceTree = "<group>";
 		};
+		A0F3BFC21E88FB3B00F9212B /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		A0F3BFC31E88FB4B00F9212B /* UserInfoVCCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UserInfoVCCell;
+			sourceTree = "<group>";
+		};
 		B0CF59D41DE5BEC300C40C9C = {
 			isa = PBXGroup;
 			children = (
@@ -1164,6 +1185,7 @@
 				BF0479341E0FBE4600C511E7 /* PwdVC.swift */,
 				BF0479361E0FBE7200C511E7 /* NickNameVC.swift */,
 				BF2CEA3B1E1CCA9A00EEA99E /* BingPhoneVC.swift */,
+				A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1372,6 +1394,7 @@
 		BF2F64171E038DFE00917FA1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3BFC21E88FB3B00F9212B /* New Group */,
 				BF062B421E04DEC900618B1B /* Home */,
 				BF062B411E04DEC900618B1B /* Deal */,
 				BF062B441E04DEC900618B1B /* Login */,
@@ -1542,6 +1565,7 @@
 		D03831381E1344F400D54295 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				A0F3BFC31E88FB4B00F9212B /* UserInfoVCCell */,
 				D06074F21E233CF00028EB32 /* CustomView */,
 				A0A2E5C41E22666E0091D913 /* Mywealth */,
 				D03831411E1344F400D54295 /* UserTableViewController.swift */,
@@ -1557,6 +1581,7 @@
 				D060751A1E236B3B0028EB32 /* DealPasswordVC.swift */,
 				A06396E71E30BED800CBD786 /* DealResetPasswordVC.swift */,
 				D060751C1E236B5F0028EB32 /* EnterPasswordVC.swift */,
+				A0F3BFC01E88F9C100F9212B /* UserInfoVC.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1715,6 +1740,7 @@
 				8EF59E2C1E571D8200BABBD0 /* mybank@2x.png in Resources */,
 				8EF59E1B1E571D8200BABBD0 /* addbank@2x.png in Resources */,
 				8EF59E121E571D8200BABBD0 /* nav_main@2x.png in Resources */,
+				A0F3BFC91E89199500F9212B /* bordor.png in Resources */,
 				BF0629E41E04DC7E00618B1B /* yw_1222.jpg in Resources */,
 				8EF59E0A1E571D8200BABBD0 /* DealSelect@2x.png in Resources */,
 				8EF59E221E571D8200BABBD0 /* banner@2x.png in Resources */,
@@ -1975,7 +2001,9 @@
 				A0639A801E25CDEF0071F62A /* BankListModel.swift in Sources */,
 				BF0479391E0FBEC300C511E7 /* DealVC.swift in Sources */,
 				D03831421E1344F400D54295 /* AttentionUsController.swift in Sources */,
+				A0F3BFC11E88F9C100F9212B /* UserInfoVC.swift in Sources */,
 				BF2F64401E038DFE00917FA1 /* AppConst.swift in Sources */,
+				A0F3BFC71E890B0C00F9212B /* EnterpriseVC.swift in Sources */,
 				6E0735451E4D67B20037278A /* DealListCell.swift in Sources */,
 				BF9CD7561E0A575300194A32 /* LoginSocketApi.swift in Sources */,
 				A053E2611E264768001B8B99 /* BankCardVC.swift in Sources */,

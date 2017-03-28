@@ -147,6 +147,7 @@ class AppConst {
         static let SelectKind = "SelectKind"
         static let EnterBackground = "EnterBackground"
         static let RequestPrice = "RequestPrice"
+        static let jumpToUserInfo = "jumpToUserInfo"
     }
     
     

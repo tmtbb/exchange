@@ -120,6 +120,11 @@ class LoginVC: BaseTableViewController {
         UserModel.share().forgetPwd = false
         UserModel.share().forgetType = .loginPass
     }
+    
+    @IBAction func EnterpriseVC(_ sender: UIButton) {
+
+        self.performSegue(withIdentifier: "EnterpriseVC", sender: nil)
+    }
     //MARK: --新浪登录
     @IBAction func sinaBtnTapped(_ sender: UIButton) {
         

@@ -25,6 +25,7 @@ class UserModel: BaseModel  {
     var phone:String?
     var codeToken:String = ""
     var timestamp:Int = 0
+    
     var forgetPwd:Bool = false
     var forgetType:Movement?
     var token: String = UserDefaults.standard.value(forKey: SocketConst.Key.token) == nil ?  "" : UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
