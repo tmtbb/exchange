@@ -29,7 +29,7 @@ class DealListCell: UITableViewCell {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = UIColor.init(rgbHex: 0x666666)
-        label.text = "手数10"
+        label.text = "公斤数10"
         return label
         
     }()
@@ -125,7 +125,7 @@ class DealListCell: UITableViewCell {
         startTime = self.positionModel!.positionTime
         totalCount = self.positionModel!.closeTime - startTime
         titleLabel.text = self.positionModel!.name
-        countLabel.text = "手数\(self.positionModel!.amount)"
+        countLabel.text = "公斤数\(self.positionModel!.amount)"
         refreshText()
     }
     

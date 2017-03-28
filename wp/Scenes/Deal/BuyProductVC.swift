@@ -68,14 +68,11 @@ class BuyProductVC: UIViewController {
     }
     
     func initUI() {
-        view.backgroundColor = UIColor.clear
         contentView.layer.cornerRadius = 3
-        buyCountLabel.dk_textColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         countBtn.dk_setTitleColorPicker(DKColorTable.shared().picker(withKey: AppConst.Color.main), for: .normal)
         countSlider.setThumbImage(UIImage.init(named: "buyPoint"), for: .normal)
         minCountLabel.text = "\(DealModel.share().buyProduct!.minLot)"
         maxCountLabel.text = "\(DealModel.share().buyProduct!.maxLot)"
-        buyCountLabel.text = "当前选择手数\(DealModel.share().buyProduct!.minLot)"
         countBtn.setTitle("\(DealModel.share().buyProduct?.minLot)", for: .normal)
         buyBtn.setTitle(DealModel.share().dealUp ? "买入" : "卖出", for: .normal)
         
@@ -105,7 +102,6 @@ class BuyProductVC: UIViewController {
         let sliderWidth = countSlider.frame.width
         countConstraint.constant = sliderWidth * CGFloat(value) / 10.0 - 34
         countBtn.setTitle("\(Int(value))", for: .normal)
-        buyCountLabel.text = "当前选择手数 \(Int(value))"
         let dingjin = Double(Int(value))*DealModel.share().buyProduct!.price
         dingjinLabel.text = String.init(format: "%.2f", dingjin)
         moneyLabel.text = String.init(format: "%.2f", Double(dingjin*(1 - DealModel.share().buyProduct!.openChargeFee)))
