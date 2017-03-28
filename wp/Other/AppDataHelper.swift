@@ -17,8 +17,8 @@ class AppDataHelper: NSObject {
     
     private var productTimer: Timer?
     func initData() {
-        productTimer = Timer.scheduledTimer(timeInterval: 5 , target: self, selector: #selector(initProductData), userInfo: nil, repeats: true)
-        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(initAllKlineChartData), userInfo: nil, repeats: true)
+        //productTimer = Timer.scheduledTimer(timeInterval: 5 , target: self, selector: #selector(initProductData), userInfo: nil, repeats: true)
+       // Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(initAllKlineChartData), userInfo: nil, repeats: true)
         initErrorCode()
 //        checkTokenLogin()
         initProductData()
@@ -41,7 +41,6 @@ class AppDataHelper: NSObject {
                 if allProducets.count > 0{
                     DealModel.share().selectProduct = allProducets[0]
                 }
-                self?.initAllKlineChartData()
 
             }else{
             }
@@ -191,6 +190,7 @@ class AppDataHelper: NSObject {
     
     //验证token登录
     func checkTokenLogin() {
+        
         //token是否存在
         if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token){
             if let id = UserDefaults.standard.value(forKey: SocketConst.Key.uid){

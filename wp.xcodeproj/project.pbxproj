@@ -13,7 +13,6 @@
 		6E0735461E4D67B20037278A /* YD_CountDownHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0735441E4D67B20037278A /* YD_CountDownHelper.swift */; };
 		6E11A2731E88A7BF00227DE7 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFA9FAB01DF6AEAE00E2A67C /* Fabric.framework */; };
 		6E11A2B11E89136B00227DE7 /* CheckPositionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E11A2B01E89136B00227DE7 /* CheckPositionVC.swift */; };
-		6E11A2B31E89160400227DE7 /* CurrentPositionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E11A2B21E89160400227DE7 /* CurrentPositionHeader.swift */; };
 		6E320EC81E67C92D006C656E /* personal_chongzhi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC21E67C92B006C656E /* personal_chongzhi@2x.png */; };
 		6E320EC91E67C92D006C656E /* personal_chongzhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC31E67C92B006C656E /* personal_chongzhi@3x.png */; };
 		6E320ECA1E67C92D006C656E /* personal_mingxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC41E67C92B006C656E /* personal_mingxi@2x.png */; };
@@ -22,6 +21,8 @@
 		6E320ECD1E67C92D006C656E /* personal_tixian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC71E67C92B006C656E /* personal_tixian@3x.png */; };
 		6EADCA6D1E6FAE1B0004B06B /* Personal_huiyuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EADCA6B1E6FAE1B0004B06B /* Personal_huiyuan@2x.png */; };
 		6EADCA6E1E6FAE1B0004B06B /* Personal_huiyuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */; };
+		6EAEB3BB1E8A0634002B90B5 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */; };
+		6ED00FFE1E8A44D400554110 /* HandlePositionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00FFD1E8A44D400554110 /* HandlePositionVC.swift */; };
 		8E0679E51E4C7088007EF765 /* BuyProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0679E41E4C7088007EF765 /* BuyProductVC.swift */; };
 		8E0720911E52D3AE00D2E839 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0720901E52D3AE00D2E839 /* BannerView.swift */; };
 		8E0720931E52DE7600D2E839 /* NoticeICarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0720921E52DE7600D2E839 /* NoticeICarousel.swift */; };
@@ -357,7 +358,6 @@
 		6E0735431E4D67B20037278A /* DealListCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealListCell.swift; sourceTree = "<group>"; };
 		6E0735441E4D67B20037278A /* YD_CountDownHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YD_CountDownHelper.swift; sourceTree = "<group>"; };
 		6E11A2B01E89136B00227DE7 /* CheckPositionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckPositionVC.swift; sourceTree = "<group>"; };
-		6E11A2B21E89160400227DE7 /* CurrentPositionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentPositionHeader.swift; sourceTree = "<group>"; };
 		6E320EC21E67C92B006C656E /* personal_chongzhi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_chongzhi@2x.png"; sourceTree = "<group>"; };
 		6E320EC31E67C92B006C656E /* personal_chongzhi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_chongzhi@3x.png"; sourceTree = "<group>"; };
 		6E320EC41E67C92B006C656E /* personal_mingxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_mingxi@2x.png"; sourceTree = "<group>"; };
@@ -366,6 +366,8 @@
 		6E320EC71E67C92B006C656E /* personal_tixian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_tixian@3x.png"; sourceTree = "<group>"; };
 		6EADCA6B1E6FAE1B0004B06B /* Personal_huiyuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Personal_huiyuan@2x.png"; sourceTree = "<group>"; };
 		6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Personal_huiyuan@3x.png"; sourceTree = "<group>"; };
+		6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
+		6ED00FFD1E8A44D400554110 /* HandlePositionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandlePositionVC.swift; sourceTree = "<group>"; };
 		8E0679E41E4C7088007EF765 /* BuyProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyProductVC.swift; sourceTree = "<group>"; };
 		8E0720901E52D3AE00D2E839 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerView.swift; path = CustomView/BannerView.swift; sourceTree = "<group>"; };
 		8E0720921E52DE7600D2E839 /* NoticeICarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeICarousel.swift; path = CustomView/NoticeICarousel.swift; sourceTree = "<group>"; };
@@ -1160,6 +1162,7 @@
 				BF04793A1E0FBF2E00C511E7 /* BuyVC.swift */,
 				BF43EAD41E1D17F90014B0EE /* HistoryDealVC.swift */,
 				8E0679E41E4C7088007EF765 /* BuyProductVC.swift */,
+				6ED00FFD1E8A44D400554110 /* HandlePositionVC.swift */,
 			);
 			path = Deal;
 			sourceTree = "<group>";
@@ -1414,7 +1417,7 @@
 				BFAC07C81E25DD57002E465F /* TitleCollectionview.swift */,
 				BF259A4A1E26009F00276997 /* ProductTitleItem.swift */,
 				8E3008021E4C159700B32717 /* ProductsiCarousel.swift */,
-				6E11A2B21E89160400227DE7 /* CurrentPositionHeader.swift */,
+				6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1979,7 +1982,6 @@
 				BF9BE4A21E1FA10800DB5F1A /* BaseMode+Extension.swift in Sources */,
 				A009AD0E1E28A399008A5014 /* FriendTableView.swift in Sources */,
 				BFC1E5BD1E0D1820004A2AFC /* UIView+Extension.swift in Sources */,
-				6E11A2B31E89160400227DE7 /* CurrentPositionHeader.swift in Sources */,
 				BF04793B1E0FBF2E00C511E7 /* BuyVC.swift in Sources */,
 				BF2F64261E038DFE00917FA1 /* SocketConst.swift in Sources */,
 				BF9CD7521E0A573400194A32 /* DealSocketApi.swift in Sources */,
@@ -2015,6 +2017,7 @@
 				BF2F642C1E038DFE00917FA1 /* BaseCustomTableViewController.swift in Sources */,
 				8E0679E51E4C7088007EF765 /* BuyProductVC.swift in Sources */,
 				A0BC07361E233DC7003EA7BC /* InputBankPhone.swift in Sources */,
+				6EAEB3BB1E8A0634002B90B5 /* DealCell.swift in Sources */,
 				BF062B4F1E04E01100618B1B /* LoginNav.swift in Sources */,
 				B058E36E1E1D40DA0046720D /* SocketHelper.swift in Sources */,
 				A0132AD21E557E9B001979EE /* BankLogoColor.swift in Sources */,
@@ -2035,6 +2038,7 @@
 				A0C31A4F1E2F139B0034D58D /* ShareFriendVC.swift in Sources */,
 				BF2F643C1E038DFE00917FA1 /* RBStoryboardPopoverSegue.m in Sources */,
 				A046BF781E1CDFFB0035A4FA /* WithDrawalVC.swift in Sources */,
+				6ED00FFE1E8A44D400554110 /* HandlePositionVC.swift in Sources */,
 				BF2F64301E038DFE00917FA1 /* String+Extension.swift in Sources */,
 				D038314A1E1344F400D54295 /* UserTableViewController.swift in Sources */,
 				BF2F64281E038DFE00917FA1 /* SocketDataPacket.swift in Sources */,
