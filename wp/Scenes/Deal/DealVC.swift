@@ -47,6 +47,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         initData()
+        
         initUI()
         initKVOAndNotice()
     }
@@ -57,6 +58,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         refreshTitleView()
         
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -72,25 +74,27 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     //MARK: --DATA
     func initData() {
         //初始化持仓数据
-        initDealTableData()
+//        initDealTableData()
         refreshUserCash()
         //初始化下商品数据
         titleView.objects = DealModel.share().productKinds
+//        titleView.reuseIdentifier = ProductTitleItem.className()
         if let selectProduct = DealModel.share().selectProduct{
             didSelectedObject(titleView, object: selectProduct)
         }
+        initRealTimeData()
         //每隔3秒请求商品报价
-        priceTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(initRealTimeData), userInfo: nil, repeats: true)
+  //      priceTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(initRealTimeData), userInfo: nil, repeats: true)
         //k线选择器
-        klineTitleView.objects = klineTitles as [AnyObject]?
-        if let flowLayout: UICollectionViewFlowLayout = klineTitleView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.itemSize = CGSize.init(width: UIScreen.width()/CGFloat(klineTitles.count), height: 40)
-        }
-        kLineView.selectModelBlock = { (result) -> () in
-            if let _: KChartModel = result as? KChartModel{
+       // klineTitleView.objects = klineTitles as [AnyObject]?
+        //if let flowLayout: UICollectionViewFlowLayout = klineTitleView.collectionViewLayout as? UICollectionViewFlowLayout {
+  //          flowLayout.itemSize = CGSize.init(width: UIScreen.width()/CGFloat(klineTitles.count), height: 40)
+    //    }
+//        kLineView.selectModelBlock = { (result) -> () in
+      //      if let _: KChartModel = result as? KChartModel{
                 
-            }
-        }
+        //    }
+        //}
         
     }
     
@@ -142,21 +146,9 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
             if let model: ProductModel = object as? ProductModel {
                 DealModel.share().selectProduct = model
                 initRealTimeData()
-                kLineView.refreshKLine()
+                //kLineView.refreshKLine()
                 reloadProducts()
                 collectionView.reloadData()
-            }
-        }
-        
-        if collectionView ==  klineTitleView{
-            if let klineTitle = object as? String{
-                for (index, title) in klineTitles.enumerated() {
-                    if title == klineTitle {
-                        kLineView.selectIndex = index
-                        DealModel.share().selectIndex = index
-                        break
-                    }
-                }
             }
         }
     }
@@ -207,21 +199,23 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         myMoneyView.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         titleView.itemDelegate = self
         titleView.reuseIdentifier = ProductTitleItem.className()
-        
+       /*
         klineTitleView.itemDelegate = self
         klineTitleView.reuseIdentifier = KLineTitleItem.className()
+        */
     }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rowHeights[indexPath.row]
     }
     //MARK: --买涨/买跌
     @IBAction func dealBtnTapped(_ sender: UIButton) {
-        
+        /*
         if DealModel.checkIfSuspended() {
             SVProgressHUD.showWainningMessage(WainningMessage: "已停盘", ForDuration: 1.5, completion: nil)
 
             return
         }
+ */
         tableView.scrollToRow(at: IndexPath.init(row: 3, section: 0), at: .top, animated: false)
         if checkLogin(){
             if DealModel.share().buyProduct == nil {
@@ -233,6 +227,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
             
             let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: BuyProductVC.className()) as! BuyProductVC
             controller.modalPresentationStyle = .custom
+            controller.modalTransitionStyle = .crossDissolve
             controller.resultBlock = { [weak self](result) in
                 if let status: BuyProductVC.BuyResultType = result as! BuyProductVC.BuyResultType? {
                     switch status {
@@ -255,7 +250,6 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
                         break
                     }
                 }
-                self?.initDealTableData()
                 return nil
             }
             present(controller, animated: true, completion: nil)
@@ -290,7 +284,7 @@ extension DealVC{
     }
     
     func updateNewPrice(model: KChartModel) {
-        priceLabel.text = String.init(format: "%.4f", model.currentPrice)
+        /*priceLabel.text = String.init(format: "%.4f", model.currentPrice)
         highLabel.text = String.init(format: "%.4f", model.highPrice)
         lowLabel.text = String.init(format: "%.4f", model.lowPrice)
         openLabel.text = String.init(format: "%.4f", model.openingTodayPrice)
@@ -303,6 +297,7 @@ extension DealVC{
         changeLabel.dk_textColorPicker = DKColorTable.shared().picker(withKey: colorKey)
         changePerLabel.dk_textColorPicker = DKColorTable.shared().picker(withKey: colorKey)
         priceLabel.dk_textColorPicker = DKColorTable.shared().picker(withKey: colorKey)
+ */
         updatePrice(price: model.currentPrice)
     }
     

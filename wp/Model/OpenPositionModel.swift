@@ -17,7 +17,7 @@ class PositionModel: Object {
     dynamic var typeCode:String = ""    //商品类型代码
     dynamic var name:String = ""        //产品名称
     dynamic var buySell:Int = 0         //买卖方向	(1-买,2-卖)
-    dynamic var amount:Int = 0          //持仓手数
+    dynamic var amount:Int = 0          //持仓公斤数
     dynamic var openPrice:Double = 0       //建仓价格
     dynamic var positionTime:Int = 0    //建仓时间
     dynamic var openCost:Double = 0        //建仓成本

@@ -44,7 +44,7 @@ class Custom: BaseModel {
     //flowType = 3，4 建仓/平仓流水时返回
     dynamic var goodsName: String?                  //商品名称
     dynamic var buySell: Int8 = 0                   //建仓方向
-    dynamic var positionAmount: Int32 = 0           //建仓手数
+    dynamic var positionAmount: Int32 = 0           //建仓公斤数
     dynamic var openPrice: Double = 0.0             //建仓价格
     dynamic var positionTime: Int64 = 0             //建仓时间
     dynamic var openCost: Double = 0.0              //建仓成本

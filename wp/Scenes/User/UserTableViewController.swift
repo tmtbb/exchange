@@ -17,7 +17,7 @@ class UserTableViewController: BaseTableViewController {
     //总单数
     @IBOutlet weak var propertyNumber: UILabel!
     @IBOutlet weak var yuanLabel: UILabel!
-    //总手数
+    //总公斤数
     @IBOutlet weak var integralLabel: UILabel!
     @IBOutlet weak var fenLabel: UILabel!
 

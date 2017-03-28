@@ -16,7 +16,7 @@ class DealController: BasePageListTableViewController, TitleCollectionviewDelega
     @IBOutlet weak var productCollection: TitleCollectionView!
     //盈亏数
     @IBOutlet weak var moneyNumber: UILabel!
-    //总手数
+    //总公斤数
     @IBOutlet weak var sumHandNumber: UIButton!
     //总单数
     @IBOutlet weak var sumOneNumber: UIButton!
