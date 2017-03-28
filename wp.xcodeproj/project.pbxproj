@@ -23,6 +23,7 @@
 		6EADCA6E1E6FAE1B0004B06B /* Personal_huiyuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */; };
 		6EAEB3BB1E8A0634002B90B5 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */; };
 		6ED00FFE1E8A44D400554110 /* HandlePositionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00FFD1E8A44D400554110 /* HandlePositionVC.swift */; };
+		6ED010001E8A571B00554110 /* AppHttpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ED00FFF1E8A571B00554110 /* AppHttpManager.swift */; };
 		8E0679E51E4C7088007EF765 /* BuyProductVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0679E41E4C7088007EF765 /* BuyProductVC.swift */; };
 		8E0720911E52D3AE00D2E839 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0720901E52D3AE00D2E839 /* BannerView.swift */; };
 		8E0720931E52DE7600D2E839 /* NoticeICarousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0720921E52DE7600D2E839 /* NoticeICarousel.swift */; };
@@ -368,6 +369,7 @@
 		6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Personal_huiyuan@3x.png"; sourceTree = "<group>"; };
 		6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
 		6ED00FFD1E8A44D400554110 /* HandlePositionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandlePositionVC.swift; sourceTree = "<group>"; };
+		6ED00FFF1E8A571B00554110 /* AppHttpManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppHttpManager.swift; sourceTree = "<group>"; };
 		8E0679E41E4C7088007EF765 /* BuyProductVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuyProductVC.swift; sourceTree = "<group>"; };
 		8E0720901E52D3AE00D2E839 /* BannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BannerView.swift; path = CustomView/BannerView.swift; sourceTree = "<group>"; };
 		8E0720921E52DE7600D2E839 /* NoticeICarousel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NoticeICarousel.swift; path = CustomView/NoticeICarousel.swift; sourceTree = "<group>"; };
@@ -1389,6 +1391,7 @@
 				BFD70D721E2F3B2F001F6CD4 /* AppServerHelper.swift */,
 				BFD70D701E2F3B12001F6CD4 /* AppDataHelper.swift */,
 				BF2F64081E038DFE00917FA1 /* AppDelegate.swift */,
+				6ED00FFF1E8A571B00554110 /* AppHttpManager.swift */,
 				BF2F64091E038DFE00917FA1 /* Info.plist */,
 			);
 			path = Other;
@@ -2023,6 +2026,7 @@
 				A0132AD21E557E9B001979EE /* BankLogoColor.swift in Sources */,
 				BF3AD87F1E16301F00524997 /* ChartFormatter.swift in Sources */,
 				A01F441E1E2E0F9900FD5D96 /* MyWealtVC.swift in Sources */,
+				6ED010001E8A571B00554110 /* AppHttpManager.swift in Sources */,
 				BF2F64251E038DFE00917FA1 /* BaseSocketAPI.swift in Sources */,
 				BF1454811E24B3AF00A15761 /* ProductModel.swift in Sources */,
 				D03831431E1344F400D54295 /* DealController.swift in Sources */,

@@ -11,7 +11,7 @@ import SVProgressHUD
 import DKNightVersion
 import Realm
 class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
-    @IBOutlet weak var listPicker: UIPickerView!
+    @IBOutlet weak var listTable: UITableView!
     
     @IBOutlet weak var myMoneyLabel: UILabel!
     @IBOutlet weak var myMoneyView: UIView!
@@ -139,7 +139,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         DealModel.share().productKinds = products
         listDataSource.selectIndex = 0
         DealModel.share().buyProduct = products.first
-        listPicker.reloadAllComponents()
+        listTable.reloadData()
     }
 
     
@@ -150,9 +150,9 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         titleView.itemDelegate = self
         titleView.reuseIdentifier = ProductTitleItem.className()
         tableView.isScrollEnabled = false
-        listPicker.dataSource = listDataSource
-        listPicker.delegate = listDataSource
-
+        listTable.dataSource = listDataSource
+        listTable.delegate = listDataSource
+        
         }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rowHeights[indexPath.row]
@@ -240,26 +240,39 @@ extension DealVC{
     }
 }
 
-class ListDataSource:NSObject, UIPickerViewDelegate, UIPickerViewDataSource {
+class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
     
     var selectIndex = 0
-
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-        return 100
-    }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DealModel.share().productKinds.count
     }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
-        let product = DealModel.share().productKinds[component]
-        
-        return "\(product.symbol)   " + String.init(format: "%.2f元/公斤", product.price) + "  剩余仓位数：100"
-        
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == selectIndex {
+            return 100
+        }
+        return 44
     }
-    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.01
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row != selectIndex else { return }
+        selectIndex = indexPath.row
+        DealModel.share().buyProduct = DealModel.share().productKinds[selectIndex]
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealCell
+        
+        cell.setInfo(productModel: DealModel.share().productKinds[indexPath.row])
+        
+        return cell
+    }
     
 }
