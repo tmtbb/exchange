@@ -155,6 +155,15 @@ class EnterpriseVC : BaseTableViewController {
         }
         return false
     }
+    
+     @IBAction func uploadImg(_ sender: Any) {
+        let btn =  sender as! UIButton
+        
+                ShareModel.share().chooseUploadImg = btn.tag
+        
+                self.performSegue(withIdentifier: "uploadImg", sender: nil)
+    }
+
     //MARK: --UI
     func initUI() {
         title = UserModel.share().forgetPwd ? "重置密码":"注册"

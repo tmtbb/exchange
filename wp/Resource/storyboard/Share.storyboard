@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="60K-MU-KcS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="60K-MU-KcS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -492,7 +492,7 @@
                                                     <rect key="frame" x="130" y="28" width="227" height="70"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="par-qd-QwO">
-                                                            <rect key="frame" x="0.0" y="0.0" width="113.5" height="70"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="114" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总收益" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xe0-Pl-mke">
                                                                     <rect key="frame" x="34" y="5" width="46" height="18"/>
@@ -527,22 +527,22 @@
                                                             </constraints>
                                                         </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Tg-33-T50">
-                                                            <rect key="frame" x="113.5" y="0.0" width="113.5" height="70"/>
+                                                            <rect key="frame" x="114" y="0.0" width="113" height="70"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fni-1g-jze">
-                                                                    <rect key="frame" x="46.5" y="5" width="21" height="18"/>
+                                                                    <rect key="frame" x="46" y="5" width="21" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0eF-Xg-yVn">
-                                                                    <rect key="frame" x="46.5" y="28" width="21" height="18"/>
+                                                                    <rect key="frame" x="46" y="28" width="21" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0G-Fr-ByE">
-                                                                    <rect key="frame" x="46.5" y="51" width="21" height="18"/>
+                                                                    <rect key="frame" x="46" y="51" width="21" height="18"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                                     <color key="textColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
@@ -1022,7 +1022,7 @@
                                                     </constraints>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月胜率10.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYN-ZL-e4c">
-                                                    <rect key="frame" x="15" y="15" width="110.5" height="17"/>
+                                                    <rect key="frame" x="15" y="15" width="111" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="vCU-LW-Dwj"/>
                                                     </constraints>
@@ -1078,7 +1078,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本月胜率10.00%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rFq-Ms-YnD">
-                                                    <rect key="frame" x="15" y="15" width="110.5" height="17"/>
+                                                    <rect key="frame" x="15" y="15" width="111" height="17"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="rCV-3A-h7N"/>
                                                         <constraint firstAttribute="width" constant="110.5" id="x6o-PQ-6ke"/>
@@ -1911,7 +1911,7 @@
         <!--充值-->
         <scene sceneID="rxu-p5-eZD">
             <objects>
-                <tableViewController storyboardIdentifier="RechargeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QBZ-D3-G0O" customClass="RechargeVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="RechargeVC" hidesBottomBarWhenPushed="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QBZ-D3-G0O" customClass="RechargeVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="jHs-KG-zhv">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

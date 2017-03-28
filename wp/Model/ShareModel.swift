@@ -26,6 +26,8 @@ class ShareModel: BaseModel {
     // 用来判读是充值详情还是体现详情
     var comeFromRechage :  Bool = true
     
+    var chooseUploadImg :  Int = 0
+    
     //定义全局的字典 用来传值
     var shareData = Dictionary<String, String>()
     
