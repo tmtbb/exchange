@@ -1809,7 +1809,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-03-aIH">
+                                                <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-03-aIH">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="45"/>
                                                     <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="请上传营业执照扫描件"/>
@@ -1820,7 +1820,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="8Fb-8Z-1Pr" kind="push" id="yyr-BA-zfH"/>
+                                                        <action selector="uploadImg:" destination="i9Y-XR-eco" eventType="touchUpInside" id="2cF-jw-Byx"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1851,7 +1851,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebS-Y4-CS5">
+                                                <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebS-Y4-CS5">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="45"/>
                                                     <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="请上传企业法人有效身份证复印件"/>
@@ -1862,8 +1862,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="registerBtnTapped:" destination="i9Y-XR-eco" eventType="touchUpInside" id="Ele-ao-O1l"/>
-                                                        <segue destination="8Fb-8Z-1Pr" kind="push" id="NvA-TU-XPO"/>
+                                                        <action selector="uploadImg:" destination="i9Y-XR-eco" eventType="touchUpInside" id="cY5-c4-8Rh"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1932,6 +1931,7 @@
                         <outlet property="codeBtn" destination="nOC-vg-63u" id="oeG-io-ao0"/>
                         <outlet property="codeText" destination="RGj-fc-AkM" id="Nu5-Eh-iPT"/>
                         <outlet property="phoneText" destination="uay-UK-6DO" id="9bB-Em-Xeo"/>
+                        <segue destination="8Fb-8Z-1Pr" kind="push" identifier="uploadImg" id="hKj-h1-a2N"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hbe-RJ-j6i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1941,7 +1941,7 @@
         <!--企业注册-->
         <scene sceneID="IAQ-bd-iX3">
             <objects>
-                <tableViewController title="企业注册" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" sceneMemberID="viewController">
+                <tableViewController title="企业注册" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" customClass="ScanVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KCA-a5-cpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1965,6 +1965,9 @@
                                                     <state key="normal" title="企业营业执照扫描件">
                                                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="chooseImg:" destination="8Fb-8Z-1Pr" eventType="touchUpInside" id="p9P-XU-Wz2"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1987,7 +1990,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-B2-eSp">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-B2-eSp">
                                                     <rect key="frame" x="8" y="104" width="357" height="56"/>
                                                     <color key="backgroundColor" red="0.9137254901960784" green="0.34149020910263062" blue="0.24694275856018066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -1998,12 +2001,15 @@
                                                     <state key="normal" title="确定上传">
                                                         <color key="titleColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="uploadImg:" destination="8Fb-8Z-1Pr" eventType="touchUpInside" id="1eI-yc-qTt"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="i6u-B2-eSp" secondAttribute="bottom" constant="21" id="BYv-eq-ij1"/>
-                                                <constraint firstItem="i6u-B2-eSp" firstAttribute="leading" secondItem="5GL-mh-YyJ" secondAttribute="leading" id="peL-lm-8Ff"/>
-                                                <constraint firstAttribute="trailing" secondItem="i6u-B2-eSp" secondAttribute="trailing" constant="2" id="yOW-fS-HzP"/>
+                                                <constraint firstItem="i6u-B2-eSp" firstAttribute="leading" secondItem="5GL-mh-YyJ" secondAttribute="leading" constant="8" id="peL-lm-8Ff"/>
+                                                <constraint firstAttribute="trailing" secondItem="i6u-B2-eSp" secondAttribute="trailing" constant="10" id="yOW-fS-HzP"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -2017,6 +2023,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="注册" id="g5E-Pr-qT8"/>
+                    <connections>
+                        <outlet property="chooseImg" destination="Rtv-9u-HQz" id="XWp-Fq-S3u"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKn-b8-e8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2034,9 +2043,8 @@
         <image name="wechat.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kiW-Rz-POO"/>
         <segue reference="Gp8-yp-m1D"/>
-        <segue reference="yyr-BA-zfH"/>
+        <segue reference="kiW-Rz-POO"/>
         <segue reference="gCO-m9-kNz"/>
     </inferredMetricsTieBreakers>
 </document>

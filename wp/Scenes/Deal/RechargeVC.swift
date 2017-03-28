@@ -51,6 +51,7 @@ class RechargeVC: BaseTableViewController ,WXApiDelegate,NSURLConnectionDataDele
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+//        hideTabBarWithAnimationDuration()
         hideTabBarWithAnimationDuration()
 
     }
