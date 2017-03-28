@@ -175,59 +175,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="OFE-0D-YQ3">
+                                                <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KOO-tk-kD3">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="435"/>
-                                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                                    <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="dealCell" id="UvM-Lj-Y5p" customClass="DealCell" customModule="wp" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="56" width="375" height="44"/>
-                                                            <autoresizingMask key="autoresizingMask"/>
-                                                            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UvM-Lj-Y5p" id="TZq-2L-fVP">
-                                                                <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
-                                                                <autoresizingMask key="autoresizingMask"/>
-                                                                <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5xjop2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87w-kl-dYs">
-                                                                        <rect key="frame" x="20" y="13" width="47" height="18"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15.5元/公斤" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B8R-9g-Ri7">
-                                                                        <rect key="frame" x="148.5" y="13" width="79" height="18"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                                        <color key="textColor" red="0.96053503787878625" green="0.54849668560606013" blue="0.26632339015151513" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余仓位数：10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8r-Yj-2Vo">
-                                                                        <rect key="frame" x="268" y="15" width="87" height="14.5"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" red="0.9605350378787858" green="0.069791666666666155" blue="0.26632339015151513" alpha="1" colorSpace="calibratedRGB"/>
-                                                                        <nil key="highlightedColor"/>
-                                                                    </label>
-                                                                </subviews>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="trailing" secondItem="f8r-Yj-2Vo" secondAttribute="trailing" constant="20" id="5T5-aY-hee"/>
-                                                                    <constraint firstItem="f8r-Yj-2Vo" firstAttribute="centerY" secondItem="87w-kl-dYs" secondAttribute="centerY" id="9t6-0T-Egh"/>
-                                                                    <constraint firstItem="87w-kl-dYs" firstAttribute="centerY" secondItem="TZq-2L-fVP" secondAttribute="centerY" id="ACW-Me-OdV"/>
-                                                                    <constraint firstItem="B8R-9g-Ri7" firstAttribute="centerY" secondItem="87w-kl-dYs" secondAttribute="centerY" id="UX6-in-5qk"/>
-                                                                    <constraint firstItem="B8R-9g-Ri7" firstAttribute="centerX" secondItem="TZq-2L-fVP" secondAttribute="centerX" id="dTJ-cv-g76"/>
-                                                                    <constraint firstItem="87w-kl-dYs" firstAttribute="leading" secondItem="TZq-2L-fVP" secondAttribute="leading" constant="20" id="sUN-Z8-44t"/>
-                                                                </constraints>
-                                                            </tableViewCellContentView>
-                                                            <connections>
-                                                                <outlet property="flightNameLabel" destination="87w-kl-dYs" id="pqc-oR-0Yv"/>
-                                                                <outlet property="priceLabel" destination="B8R-9g-Ri7" id="AWZ-pX-FUR"/>
-                                                            </connections>
-                                                        </tableViewCell>
-                                                    </prototypes>
-                                                </tableView>
+                                                </pickerView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="OFE-0D-YQ3" secondAttribute="bottom" id="7z8-CH-xpA"/>
-                                                <constraint firstAttribute="trailing" secondItem="OFE-0D-YQ3" secondAttribute="trailing" id="Qsk-wc-jvB"/>
-                                                <constraint firstItem="OFE-0D-YQ3" firstAttribute="leading" secondItem="Ys3-sq-X8w" secondAttribute="leading" id="WeC-Ct-Ac9"/>
-                                                <constraint firstItem="OFE-0D-YQ3" firstAttribute="top" secondItem="Ys3-sq-X8w" secondAttribute="top" id="x4J-Jv-sKU"/>
+                                                <constraint firstItem="KOO-tk-kD3" firstAttribute="leading" secondItem="Ys3-sq-X8w" secondAttribute="leading" id="EGQ-JF-eX3"/>
+                                                <constraint firstAttribute="bottom" secondItem="KOO-tk-kD3" secondAttribute="bottom" id="f2Z-D9-wbV"/>
+                                                <constraint firstAttribute="trailing" secondItem="KOO-tk-kD3" secondAttribute="trailing" id="krN-uj-Oft"/>
+                                                <constraint firstItem="KOO-tk-kD3" firstAttribute="top" secondItem="Ys3-sq-X8w" secondAttribute="top" id="ula-3B-O7w"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -297,7 +254,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="listTable" destination="OFE-0D-YQ3" id="INF-mK-mmL"/>
+                        <outlet property="listPicker" destination="KOO-tk-kD3" id="zKm-yc-pRz"/>
                         <outlet property="myMoneyLabel" destination="aBV-h8-qLg" id="bdr-OP-zeB"/>
                         <outlet property="myMoneyView" destination="UOk-tr-K7a" id="Gej-wq-EVE"/>
                         <outlet property="titleView" destination="g3o-jq-yC7" id="cYg-EV-WLi"/>
