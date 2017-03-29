@@ -10,20 +10,32 @@
 import UIKit
 import SVProgressHUD
 import DKNightVersion
-class EnterpriseVC : BaseTableViewController {
+class EnterPriseVC : BaseTableViewController {
     
     @IBOutlet weak var phoneText: UITextField!
+    //验证码
     @IBOutlet weak var codeText: UITextField!
     @IBOutlet weak var codeBtn: UIButton!
-    @IBOutlet weak var voiceCodeText: UITextField!
-    @IBOutlet weak var voiceCodeBtn: UIButton!
+    //公司名称
+    @IBOutlet weak var companyNameTf: UITextField!
+    //公司组织机构代码
+    @IBOutlet weak var companyNubTf: UITextField!
+    //详细地址
+    @IBOutlet weak var detailTF: UITextField!
+    //邮件地址
+    @IBOutlet weak var emailTF: UITextField!
+    //下一步
     @IBOutlet weak var nextBtn: UIButton!
+    //密码
     @IBOutlet weak var pwdText: UITextField!
-    @IBOutlet weak var thindLoginView: UIView!
-    @IBOutlet weak var wechatBtn: UIButton!
     private var timer: Timer?
-    
+    //上传营业执照扫面件
+    @IBOutlet weak var uploadLicense: UIButton!
+    //上传营业执照扫面件
+    @IBOutlet weak var uploadCard: UIButton!
     private var codeTime = 60
+    //注册btn
+    @IBOutlet weak var registBtn: UIButton!
     private var voiceCodeTime = 60
     
     //MARK: --LIFECYCLE
@@ -88,26 +100,12 @@ class EnterpriseVC : BaseTableViewController {
             
         }
     }
-    func updateVoiceBtnTitle() {
-        if voiceCodeTime == 0 {
-            voiceCodeBtn.isEnabled = true
-            voiceCodeBtn.setTitle("重新发送", for: .normal)
-            voiceCodeTime = 60
-            timer?.invalidate()
-            voiceCodeBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
-            return
-        }
-        voiceCodeBtn.isEnabled = false
-        voiceCodeTime = voiceCodeTime - 1
-        let title: String = "\(voiceCodeTime)秒后重新发送"
-        voiceCodeBtn.setTitle(title, for: .normal)
-        voiceCodeBtn.backgroundColor = UIColor.init(rgbHex: 0xCCCCCC)
-    }
+   
     
     //注册
     @IBAction func registerBtnTapped(_ sender: Any) {
         if checkoutText(){
-            if checkTextFieldEmpty([phoneText,pwdText,codeText]){
+            if checkTextFieldEmpty([phoneText,pwdText,codeText,emailTF,companyNubTf,companyNameTf]){
                 UserModel.share().code = codeText.text
                 UserModel.share().phone = phoneText.text
                 register()
@@ -116,19 +114,7 @@ class EnterpriseVC : BaseTableViewController {
     }
     
     func register() {
-        //重置密码
-        if UserModel.share().forgetPwd {
-            SVProgressHUD.showProgressMessage(ProgressMessage: "重置中...")
-            let type = UserModel.share().forgetType == nil ? .loginPass : UserModel.share().forgetType
-            let password = ((pwdText.text! + AppConst.sha256Key).sha256()+UserModel.share().phone!).sha256()
-            AppAPIHelper.login().repwd(phone: UserModel.share().phone!, type: (type?.rawValue)!,  pwd: password, code: UserModel.share().code!, complete: { [weak self](result) -> ()? in
-                
-                SVProgressHUD.showWainningMessage(WainningMessage: "重置成功", ForDuration: 1, completion: nil)
-                _ = self?.navigationController?.popToRootViewController(animated: true)
-                return nil
-                }, error: errorBlockFunc())
-            return
-        }
+      
         
         //注册
         SVProgressHUD.showProgressMessage(ProgressMessage: "注册中...")
@@ -166,12 +152,11 @@ class EnterpriseVC : BaseTableViewController {
 
     //MARK: --UI
     func initUI() {
-        title = UserModel.share().forgetPwd ? "重置密码":"注册"
       
-        
+        registBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         codeBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
-       
-       
+        uploadCard.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
+        uploadLicense.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         
     }
     

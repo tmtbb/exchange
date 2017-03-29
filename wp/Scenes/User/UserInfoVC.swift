@@ -9,6 +9,7 @@
 import UIKit
 
 class UserInfoVCCell: UITableViewCell {
+    
     @IBOutlet weak var rightLb: UILabel!
     
     @IBOutlet weak var leftLb: UILabel!
@@ -17,8 +18,11 @@ class UserInfoVCCell: UITableViewCell {
 }
 class UserInfoVC: BaseTableViewController {
 
+    var titltArr = [String]()
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        titltArr = UserModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
         title = UserModel.share().getCurrentUser()?.userType == 0 ? "个人信息" : "企业信息"
         
 
@@ -45,23 +49,21 @@ class UserInfoVC: BaseTableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return UserModel.share().getCurrentUser()?.userType == 0 ? 4 : 5
+        return titltArr.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell : UserInfoVCCell = tableView.dequeueReusableCell(withIdentifier: "UserInfoVCCell", for: indexPath) as! UserInfoVCCell
-
+       
+       let cell : UserInfoVCCell = tableView.dequeueReusableCell(withIdentifier: "UserInfoVCCell", for: indexPath) as! UserInfoVCCell
        cell.selectionStyle = .none
-       cell.rightLb.text = "123"
-
+       cell.rightLb.text = titltArr[indexPath.row]
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let story = UIStoryboard.init(name: "User", bundle: nil)
+        let story = UIStoryboard.init(name: "Deal", bundle: nil)
         let AddFlightVC = story.instantiateViewController(withIdentifier: "AddFlightVC")
-        
         self.navigationController?.pushViewController(AddFlightVC, animated: true)
     }
     

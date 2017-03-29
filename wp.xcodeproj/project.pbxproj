@@ -222,7 +222,7 @@
 		A0EA2D531E481BD600DD3158 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA2D521E481BD600DD3158 /* SystemConfiguration.framework */; };
 		A0EA2D551E481BF900DD3158 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A0EA2D541E481BF900DD3158 /* libz.tbd */; };
 		A0F3BFC11E88F9C100F9212B /* UserInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3BFC01E88F9C100F9212B /* UserInfoVC.swift */; };
-		A0F3BFC71E890B0C00F9212B /* EnterpriseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */; };
+		A0F3BFC71E890B0C00F9212B /* EnterPriseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0F3BFC61E890B0C00F9212B /* EnterPriseVC.swift */; };
 		A0F3BFC91E89199500F9212B /* bordor.png in Resources */ = {isa = PBXBuildFile; fileRef = A0F3BFC81E89199500F9212B /* bordor.png */; };
 		B02DB25C1DF985B70044F910 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B02DB25B1DF985B70044F910 /* libsqlite3.tbd */; };
 		B058E36E1E1D40DA0046720D /* SocketHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B058E36D1E1D40DA0046720D /* SocketHelper.swift */; };
@@ -537,7 +537,7 @@
 		A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWealtVC.swift; sourceTree = "<group>"; };
 		A02722AC1E49C23000801A44 /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
 		A03377A41E89EEA600474E08 /* ScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
-		A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlightVC.swift; sourceTree = "<group>"; };
+		A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFlightVC.swift; path = ../../Model/AddFlightVC.swift; sourceTree = "<group>"; };
 		A046BF771E1CDFFB0035A4FA /* WithDrawalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawalVC.swift; sourceTree = "<group>"; };
 		A053E2601E264768001B8B99 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A06396E71E30BED800CBD786 /* DealResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -572,7 +572,7 @@
 		A0EA2D521E481BD600DD3158 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		A0EA2D541E481BF900DD3158 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		A0F3BFC01E88F9C100F9212B /* UserInfoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoVC.swift; sourceTree = "<group>"; };
-		A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterpriseVC.swift; sourceTree = "<group>"; };
+		A0F3BFC61E890B0C00F9212B /* EnterPriseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPriseVC.swift; sourceTree = "<group>"; };
 		A0F3BFC81E89199500F9212B /* bordor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bordor.png; sourceTree = "<group>"; };
 		B02DB25B1DF985B70044F910 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B058E36D1E1D40DA0046720D /* SocketHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SocketHelper.swift; sourceTree = "<group>"; };
@@ -1164,6 +1164,7 @@
 			children = (
 				BF5E247E1E10AF6B00B5C07A /* CustomView */,
 				BF0479381E0FBEC300C511E7 /* DealVC.swift */,
+				A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */,
 				6E11A2B01E89136B00227DE7 /* CheckPositionVC.swift */,
 				BF04793A1E0FBF2E00C511E7 /* BuyVC.swift */,
 				BF43EAD41E1D17F90014B0EE /* HistoryDealVC.swift */,
@@ -1194,7 +1195,7 @@
 				BF0479341E0FBE4600C511E7 /* PwdVC.swift */,
 				BF0479361E0FBE7200C511E7 /* NickNameVC.swift */,
 				BF2CEA3B1E1CCA9A00EEA99E /* BingPhoneVC.swift */,
-				A0F3BFC61E890B0C00F9212B /* EnterpriseVC.swift */,
+				A0F3BFC61E890B0C00F9212B /* EnterPriseVC.swift */,
 				A03377A41E89EEA600474E08 /* ScanVC.swift */,
 			);
 			path = Login;
@@ -1460,7 +1461,6 @@
 				BF0C4E1D1E24BC6600FA4B4A /* KChartModel.swift */,
 				BF52104B1E27A94D00A6365E /* DealParam.swift */,
 				BF38A0A91E2CD07A00D18A96 /* KLineModel.swift */,
-				A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */,
 			);
 			name = Deal;
 			sourceTree = "<group>";
@@ -2015,7 +2015,7 @@
 				D03831421E1344F400D54295 /* AttentionUsController.swift in Sources */,
 				A0F3BFC11E88F9C100F9212B /* UserInfoVC.swift in Sources */,
 				BF2F64401E038DFE00917FA1 /* AppConst.swift in Sources */,
-				A0F3BFC71E890B0C00F9212B /* EnterpriseVC.swift in Sources */,
+				A0F3BFC71E890B0C00F9212B /* EnterPriseVC.swift in Sources */,
 				6E0735451E4D67B20037278A /* DealListCell.swift in Sources */,
 				BF9CD7561E0A575300194A32 /* LoginSocketApi.swift in Sources */,
 				A053E2611E264768001B8B99 /* BankCardVC.swift in Sources */,
@@ -2258,6 +2258,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.yundian.trip;
 				PRODUCT_NAME = wp;
+				PROVISIONING_PROFILE = "ee0a5560-d839-4913-8881-316ee397c0d2";
 				PROVISIONING_PROFILE_SPECIFIER = "dev-16-09-22";
 				SWIFT_OBJC_BRIDGING_HEADER = wp/Marco/bridge.h;
 				SWIFT_VERSION = 3.0;

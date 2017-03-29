@@ -20,13 +20,21 @@ class DealCell: UITableViewCell {
         // Initialization code
     }
     
+    
     func setInfo(productModel:ProductModel) {
-        
         priceLabel.text = String.init(format: "%.2f元/公斤", productModel.price)
         flightNameLabel.text = productModel.symbol
+    }
+    func setIsSelect(isSelect:Bool) {
+        if isSelect {
+            priceLabel.font = UIFont.systemFont(ofSize: 21)
+            backgroundColor = UIColor.white
+        } else {
+            backgroundColor = UIColor(hexString: "eeeeee")
+            priceLabel.font = UIFont.systemFont(ofSize: 14)
+        }
         
     }
-    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
