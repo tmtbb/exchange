@@ -537,7 +537,7 @@
 		A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWealtVC.swift; sourceTree = "<group>"; };
 		A02722AC1E49C23000801A44 /* DKColorTable.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = DKColorTable.txt; sourceTree = "<group>"; };
 		A03377A41E89EEA600474E08 /* ScanVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanVC.swift; sourceTree = "<group>"; };
-		A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddFlightVC.swift; sourceTree = "<group>"; };
+		A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddFlightVC.swift; path = ../../Model/AddFlightVC.swift; sourceTree = "<group>"; };
 		A046BF771E1CDFFB0035A4FA /* WithDrawalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawalVC.swift; sourceTree = "<group>"; };
 		A053E2601E264768001B8B99 /* BankCardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankCardVC.swift; sourceTree = "<group>"; };
 		A06396E71E30BED800CBD786 /* DealResetPasswordVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealResetPasswordVC.swift; sourceTree = "<group>"; };
@@ -1164,6 +1164,7 @@
 			children = (
 				BF5E247E1E10AF6B00B5C07A /* CustomView */,
 				BF0479381E0FBEC300C511E7 /* DealVC.swift */,
+				A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */,
 				6E11A2B01E89136B00227DE7 /* CheckPositionVC.swift */,
 				BF04793A1E0FBF2E00C511E7 /* BuyVC.swift */,
 				BF43EAD41E1D17F90014B0EE /* HistoryDealVC.swift */,
@@ -1460,7 +1461,6 @@
 				BF0C4E1D1E24BC6600FA4B4A /* KChartModel.swift */,
 				BF52104B1E27A94D00A6365E /* DealParam.swift */,
 				BF38A0A91E2CD07A00D18A96 /* KLineModel.swift */,
-				A03377A81E8A0C3E00474E08 /* AddFlightVC.swift */,
 			);
 			name = Deal;
 			sourceTree = "<group>";

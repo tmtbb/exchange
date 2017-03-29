@@ -36,6 +36,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        automaticallyAdjustsScrollViewInsets = false
         initData()
         
         initUI()
@@ -152,7 +153,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         tableView.isScrollEnabled = false
         listTable.dataSource = listDataSource
         listTable.delegate = listDataSource
-        
+        listTable.separatorStyle = .none
         }
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return rowHeights[indexPath.row]
@@ -262,16 +263,19 @@ class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard indexPath.row != selectIndex else { return }
+        let index = selectIndex
         selectIndex = indexPath.row
         DealModel.share().buyProduct = DealModel.share().productKinds[selectIndex]
-        tableView.reloadRows(at: [indexPath], with: .none)
+        tableView.reloadRows(at: [indexPath,IndexPath(row: index, section: 0)], with: .fade)
+        
+
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealCell
         
         cell.setInfo(productModel: DealModel.share().productKinds[indexPath.row])
-        
+        cell.setIsSelect(isSelect: indexPath.row == selectIndex)
         return cell
     }
     

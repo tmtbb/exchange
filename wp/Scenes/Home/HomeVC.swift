@@ -213,10 +213,6 @@ extension HomeVC{
     }
     
     func sideHide() {
-        if (sideMenuController?.sidePanelVisible)! {
-            
-            sideMenuController?.toggle()
-        }
     }
     func jumpToRecharge() {
         
