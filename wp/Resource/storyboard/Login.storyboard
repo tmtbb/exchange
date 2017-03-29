@@ -376,7 +376,7 @@
                                                         <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="EnterpriseVC:" destination="IdH-9P-vUT" eventType="touchUpInside" id="Zf0-Py-nxX"/>
+                                                        <action selector="EnterPriseVC:" destination="IdH-9P-vUT" eventType="touchUpInside" id="Zf0-Py-nxX"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -437,7 +437,7 @@
                         <outlet property="wechatBtn" destination="7cT-Ug-njN" id="ZNT-Aa-48O"/>
                         <segue destination="GEb-xv-Ecl" kind="push" identifier="LoginToBingPhoneVC" id="mZx-ns-mMd"/>
                         <segue destination="JUo-86-sd7" kind="push" identifier="RegisterVC" id="i8q-fM-lW7"/>
-                        <segue destination="i9Y-XR-eco" kind="push" identifier="EnterpriseVC" id="Vm4-GP-71z"/>
+                        <segue destination="i9Y-XR-eco" kind="push" identifier="EnterPriseVC" id="Vm4-GP-71z"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hjg-A2-9Ci" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -632,8 +632,36 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Rv9-RY-STq">
+                                        <rect key="frame" x="0.0" y="240" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rv9-RY-STq" id="2X7-M4-lXC">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入真实姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="quv-E3-Hig">
+                                                    <rect key="frame" x="10" y="-1" width="355" height="45"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="6vx-Ve-IJM">
+                                        <rect key="frame" x="0.0" y="284" width="375" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6vx-Ve-IJM" id="GKb-bk-jRu">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="g6d-gg-vyA">
-                                        <rect key="frame" x="0.0" y="240" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="304" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g6d-gg-vyA" id="MPy-lJ-Ynw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
@@ -665,7 +693,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="220" id="k3F-i3-5C6">
-                                        <rect key="frame" x="0.0" y="285" width="375" height="220"/>
+                                        <rect key="frame" x="0.0" y="349" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" tableViewCell="k3F-i3-5C6" id="DKi-eF-xPb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
@@ -1361,7 +1389,7 @@
         <!--企业注册-->
         <scene sceneID="DlK-MK-bm2">
             <objects>
-                <tableViewController title="企业注册" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i9Y-XR-eco" customClass="EnterpriseVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="企业注册" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i9Y-XR-eco" customClass="EnterPriseVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="dv6-ZS-0xj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1535,7 +1563,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bordor.png" translatesAutoresizingMaskIntoConstraints="NO" id="qmV-gr-l0b">
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="45"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DkI-3I-Zgw">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入登录密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DkI-3I-Zgw">
                                                             <rect key="frame" x="8" y="0.0" width="341" height="45"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1589,7 +1617,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bordor.png" translatesAutoresizingMaskIntoConstraints="NO" id="jwW-6C-Blz">
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="45"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-0A-XM7">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业名称" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x1Z-0A-XM7">
                                                             <rect key="frame" x="8" y="0.0" width="341" height="45"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1645,7 +1673,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bordor.png" translatesAutoresizingMaskIntoConstraints="NO" id="yk6-Ot-g7q">
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="45"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zak-d2-Z76">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业邮箱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zak-d2-Z76">
                                                             <rect key="frame" x="8" y="0.0" width="341" height="45"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1757,7 +1785,7 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bordor.png" translatesAutoresizingMaskIntoConstraints="NO" id="qTM-wn-8j3">
                                                             <rect key="frame" x="0.0" y="0.0" width="349" height="45"/>
                                                         </imageView>
-                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业详细地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-Ul-eaS">
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入企业组织结构代码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZBM-Ul-eaS">
                                                             <rect key="frame" x="8" y="0.0" width="336" height="45"/>
                                                             <nil key="textColor"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1930,7 +1958,15 @@
                     <connections>
                         <outlet property="codeBtn" destination="nOC-vg-63u" id="oeG-io-ao0"/>
                         <outlet property="codeText" destination="RGj-fc-AkM" id="Nu5-Eh-iPT"/>
+                        <outlet property="companyNameTf" destination="x1Z-0A-XM7" id="1SX-xR-mS2"/>
+                        <outlet property="companyNubTf" destination="ZBM-Ul-eaS" id="YZV-Qn-M7X"/>
+                        <outlet property="detailTF" destination="OQ7-Df-Et1" id="Haj-lI-Ym2"/>
+                        <outlet property="emailTF" destination="zak-d2-Z76" id="vjR-V7-uW7"/>
                         <outlet property="phoneText" destination="uay-UK-6DO" id="9bB-Em-Xeo"/>
+                        <outlet property="pwdText" destination="DkI-3I-Zgw" id="qty-Oa-g0F"/>
+                        <outlet property="registBtn" destination="SEV-DD-olf" id="S0W-Yo-K9k"/>
+                        <outlet property="uploadCard" destination="ebS-Y4-CS5" id="VD1-Sw-VCp"/>
+                        <outlet property="uploadLicense" destination="BjZ-03-aIH" id="AyA-sB-o5L"/>
                         <segue destination="8Fb-8Z-1Pr" kind="push" identifier="uploadImg" id="hKj-h1-a2N"/>
                     </connections>
                 </tableViewController>
@@ -1938,10 +1974,10 @@
             </objects>
             <point key="canvasLocation" x="732" y="827.13643178410803"/>
         </scene>
-        <!--企业注册-->
+        <!--上传照片-->
         <scene sceneID="IAQ-bd-iX3">
             <objects>
-                <tableViewController title="企业注册" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" customClass="ScanVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="上传照片" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" customClass="ScanVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KCA-a5-cpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1991,16 +2027,21 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-B2-eSp">
-                                                    <rect key="frame" x="8" y="104" width="357" height="56"/>
+                                                    <rect key="frame" x="8" y="116" width="357" height="44"/>
                                                     <color key="backgroundColor" red="0.9137254901960784" green="0.34149020910263062" blue="0.24694275856018066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="56" id="M2w-AA-xB6"/>
+                                                        <constraint firstAttribute="height" constant="44" id="M2w-AA-xB6"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                                     <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="确定上传">
                                                         <color key="titleColor" red="0.92146831750000002" green="0.92162626979999995" blue="0.92145836349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <action selector="uploadImg:" destination="8Fb-8Z-1Pr" eventType="touchUpInside" id="1eI-yc-qTt"/>
                                                     </connections>
@@ -2043,8 +2084,8 @@
         <image name="wechat.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="mZx-ns-mMd"/>
         <segue reference="Gp8-yp-m1D"/>
-        <segue reference="kiW-Rz-POO"/>
-        <segue reference="gCO-m9-kNz"/>
+        <segue reference="Hlj-3v-O0g"/>
     </inferredMetricsTieBreakers>
 </document>

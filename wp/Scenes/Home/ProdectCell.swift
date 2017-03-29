@@ -35,11 +35,13 @@ class ProdectCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        viewShadow.layer.shadowColor = UIColor.black.cgColor
-        viewShadow.layer.shadowRadius = 3
-        viewShadow.layer.shadowOpacity = 0.3
-        viewShadow.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
-       nowPrice.adjustsFontSizeToFitWidth = true
+       // viewShadow.layer.shadowColor = UIColor.black.cgColor
+      //  viewShadow.layer.shadowRadius = 3
+     //   viewShadow.layer.shadowOpacity = 0.3
+     //   viewShadow.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
+     //   nowPrice.adjustsFontSizeToFitWidth = true
+        viewShadow.backgroundColor = UIColor.init(hexString: "FAFAFA")
+        nowPrice.textColor = UIColor.init(hexString: "157FB3")
        
         
     }
