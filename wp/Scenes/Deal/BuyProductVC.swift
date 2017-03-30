@@ -11,6 +11,8 @@ import DKNightVersion
 import SVProgressHUD
 class BuyProductVC: UIViewController {
     
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var residueCountLabel: UILabel!
     @IBOutlet weak var countTextField: UITextField!
     
     @IBOutlet weak var minCountLabel: UILabel!
@@ -32,6 +34,18 @@ class BuyProductVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
+        
+        let residueCountText = "当前仓位剩余数量 200"
+        residueCountLabel.setAttributeText(text: residueCountText, firstFont: 14.0, secondFont: 18.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range: NSMakeRange(9, residueCountText.length() - 9))
+        
+        
+        let priceText = "此次成交额￥20.5"
+        priceLabel.setAttributeText(text: priceText, firstFont: 16.0, secondFont: 20.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range:NSMakeRange(5, priceText.length() - 5))
+        
+        
+        
+        let text = "当前舱位航班 : FB2313"
+        cangWeiLabel.setAttributeText(text: text, firstFont: 16.0, secondFont: 16.0, firstColor: UIColor(hexString: "666666"), secondColor: UIColor(hexString: "333333"), range: NSMakeRange(9, text.length() - 9))
         requestShippingSpaceInfo()
     }
     
@@ -46,6 +60,7 @@ class BuyProductVC: UIViewController {
     }
     
     func requestShippingSpaceInfo() {
+        return
         let positionParm = PositionParam()
         positionParm.gid = DealModel.share().buyProduct!.id
         AppAPIHelper.deal().position(param: positionParm, complete: { [weak self](result) -> ()? in
@@ -60,6 +75,7 @@ class BuyProductVC: UIViewController {
     
     func initUI() {
         contentView.layer.cornerRadius = 3
+        contentView.layer.masksToBounds = true
         
     }
     

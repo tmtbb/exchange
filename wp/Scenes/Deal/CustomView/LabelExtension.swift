@@ -10,6 +10,19 @@ import Foundation
 
 class TriLabel:UILabel {
     
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        
+        setNeedsDisplay()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setNeedsDisplay()
+    }
+    
+    
     
     open override func draw(_ rect: CGRect, for formatter: UIViewPrintFormatter) {
         

@@ -144,9 +144,28 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         listTable.reloadData()
     }
 
+    func showBuy() {
+        let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: BuyProductVC.className()) as! BuyProductVC
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
+    }
     
+    func showHandle() {
+        let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: HandlePositionVC.className()) as! HandlePositionVC
+        controller.modalPresentationStyle = .custom
+        controller.modalTransitionStyle = .crossDissolve
+        present(controller, animated: true, completion: nil)
+    }
     //MARK: --UI
     func initUI() {
+        
+        let item = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(showBuy))
+        navigationItem.leftBarButtonItem = item
+        
+        let riItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(showHandle))
+        navigationItem.rightBarButtonItem = riItem
+
         
         myMoneyView.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         titleView.itemDelegate = self
@@ -247,7 +266,7 @@ class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
     var selectIndex = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return DealModel.share().productKinds.count
+        return 10
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectIndex {
@@ -266,7 +285,7 @@ class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
         guard indexPath.row != selectIndex else { return }
         let index = selectIndex
         selectIndex = indexPath.row
-        DealModel.share().buyProduct = DealModel.share().productKinds[selectIndex]
+       // DealModel.share().buyProduct = DealModel.share().productKinds[selectIndex]
         tableView.reloadRows(at: [indexPath,IndexPath(row: index, section: 0)], with: .fade)
         
 
@@ -275,7 +294,7 @@ class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealCell
         
-        cell.setInfo(productModel: DealModel.share().productKinds[indexPath.row])
+    //    cell.setInfo(productModel: DealModel.share().productKinds[indexPath.row])
         cell.setIsSelect(isSelect: indexPath.row == selectIndex)
         return cell
     }
