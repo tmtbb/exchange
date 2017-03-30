@@ -14,12 +14,19 @@ class ScanVC: BaseTableViewController {
         let picker = UIImagePickerController()
         return picker
     }()
+    
+    @IBOutlet weak var chooseImgBtn: UIButton!
+    @IBOutlet weak var selectImg: UIImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
         
         title = ShareModel.share().chooseUploadImg == 100 ? "上传营业执照扫描件" : "上传法人有效身份证件"
         
-        chooseImg.setTitle(ShareModel.share().chooseUploadImg == 100 ? "上传营业执照扫描件" : "上传法人有效身份证件", for: .normal)
+        selectImg.clipsToBounds = true
+        selectImg.layer.cornerRadius = 5
+        selectImg.layer.borderWidth = 1
+        selectImg.layer.borderColor = UIColor.groupTableViewBackground.cgColor
+        chooseImgBtn.setTitle(ShareModel.share().chooseUploadImg == 100 ? "上传营业执照扫描件" : "上传法人有效身份证件", for: .normal)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -31,7 +38,7 @@ class ScanVC: BaseTableViewController {
         
         
     }
-    @IBOutlet weak var chooseImg: UIButton!
+   
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

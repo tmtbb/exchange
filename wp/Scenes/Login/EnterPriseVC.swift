@@ -78,6 +78,12 @@ class EnterPriseVC : BaseTableViewController {
                 }, error: errorBlockFunc())
         }
     }
+    deinit {
+      
+        ShareModel.share().removeObserver(self, forKeyPath: "CompanyUrl")
+        ShareModel.share().removeObserver(self, forKeyPath: "PersonUrl")
+      
+    }
     func updatecodeBtnTitle() {
         if codeTime == 0 {
             codeBtn.isEnabled = true
@@ -157,7 +163,20 @@ class EnterPriseVC : BaseTableViewController {
         codeBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         uploadCard.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         uploadLicense.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
+        ShareModel.share().addObserver(self, forKeyPath: "CompanyUrl", options: .new, context: nil)
+        ShareModel.share().addObserver(self, forKeyPath: "PersonUrl", options: .new, context: nil)
         
+    }
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == "CompanyUrl" {
+         
+            
+        }
+        if keyPath == "PersonUrl" {
+            
+            
+        }
     }
     
     

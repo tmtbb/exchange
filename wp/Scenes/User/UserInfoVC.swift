@@ -62,9 +62,7 @@ class UserInfoVC: BaseTableViewController {
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let story = UIStoryboard.init(name: "Deal", bundle: nil)
-        let AddFlightVC = story.instantiateViewController(withIdentifier: "AddFlightVC")
-        self.navigationController?.pushViewController(AddFlightVC, animated: true)
+      
     }
     
     @IBAction func loginOut(_ sender: Any) {
