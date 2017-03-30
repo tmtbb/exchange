@@ -43,7 +43,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         sure.setTitle("确定", for: .normal)
         let sureItem : UIBarButtonItem = UIBarButtonItem.init(customView: sure)
         sure.setTitleColor(UIColor.init(hexString: "666666"), for: .normal)
-        let space : UIButton = UIButton.init(frame: CGRect.init(x: 40, y: 0, width: self.view.frame.size.width-120, height: 44))
+        let space : UIButton = UIButton.init(frame: CGRect.init(x: 40, y: 0, width: self.view.frame.size.width-140, height: 44))
         space.setTitle("", for: .normal)
         sure.addTarget(self, action: #selector(sureClick), for: .touchUpInside)
         let spaceItem : UIBarButtonItem = UIBarButtonItem.init(customView: space)

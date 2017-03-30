@@ -136,6 +136,7 @@ extension HomeVC{
         let cell : ProdectCell = tableView.dequeueReusableCell(withIdentifier: ProdectCell.className()) as! ProdectCell
         if indexPath.item < marketArray.count {
             cell.kChartModel = marketArray[indexPath.item]
+       
         }
         return cell
     }
