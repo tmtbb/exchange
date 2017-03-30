@@ -268,13 +268,20 @@ class UserTableViewController: BaseTableViewController {
             }
            
         }
+         //进入提现
         if indexPath.section == 2 {
             jumpToWithdraw()
         }
+         //进入充值
         if indexPath.section == 3 {
             jumpToRecharge()
         }
-
+        //进入充值列表
+        if indexPath.section == 4 {
+            let story = UIStoryboard.init(name: "Deal", bundle: nil)
+            let AddFlightVC = story.instantiateViewController(withIdentifier: "AddFlightVC")
+            self.navigationController?.pushViewController(AddFlightVC, animated: true)
+        }
     }
     
     deinit {
