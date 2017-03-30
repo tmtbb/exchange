@@ -31,6 +31,9 @@ class ShareModel: BaseModel {
     //定义全局的字典 用来传值
     var shareData = Dictionary<String, String>()
     
+    dynamic var CompanyUrl : String = " "
+    dynamic var PersonUrl : String = " "
+    
     
 }
 

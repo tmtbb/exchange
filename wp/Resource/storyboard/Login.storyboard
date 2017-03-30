@@ -1839,7 +1839,8 @@
                                             <subviews>
                                                 <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-03-aIH">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="45"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="请上传营业执照扫描件"/>
                                                     <state key="highlighted" backgroundImage="high_btn.png"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1881,7 +1882,7 @@
                                             <subviews>
                                                 <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ebS-Y4-CS5">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="45"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="请上传企业法人有效身份证复印件"/>
                                                     <state key="highlighted" backgroundImage="high_btn.png"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1921,9 +1922,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEV-DD-olf">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SEV-DD-olf">
                                                     <rect key="frame" x="10" y="0.0" width="355" height="45"/>
-                                                    <color key="backgroundColor" red="0.91372549020000005" green="0.3411764706" blue="0.2470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <state key="normal" title="企业注册"/>
                                                     <state key="highlighted" backgroundImage="high_btn.png"/>
                                                     <userDefinedRuntimeAttributes>
@@ -1977,7 +1978,7 @@
         <!--上传照片-->
         <scene sceneID="IAQ-bd-iX3">
             <objects>
-                <tableViewController title="上传照片" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" customClass="ScanVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ScanVC" title="上传照片" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8Fb-8Z-1Pr" customClass="ScanVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="KCA-a5-cpl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2065,7 +2066,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="注册" id="g5E-Pr-qT8"/>
                     <connections>
-                        <outlet property="chooseImg" destination="Rtv-9u-HQz" id="XWp-Fq-S3u"/>
+                        <outlet property="chooseImgBtn" destination="Rtv-9u-HQz" id="qtx-ZX-sGh"/>
+                        <outlet property="selectImg" destination="VOY-DE-Rze" id="N7k-2e-D1d"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKn-b8-e8p" userLabel="First Responder" sceneMemberID="firstResponder"/>
