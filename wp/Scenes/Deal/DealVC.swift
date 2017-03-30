@@ -31,6 +31,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     //MARK: --Test
     @IBAction func testItemTapped(_ sender: Any) {
         refreshUserCash()
+
     }
     //MARK: --LIFECYCLE
     

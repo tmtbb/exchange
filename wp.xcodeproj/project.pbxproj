@@ -19,6 +19,8 @@
 		6E320ECB1E67C92D006C656E /* personal_mingxi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC51E67C92B006C656E /* personal_mingxi@3x.png */; };
 		6E320ECC1E67C92D006C656E /* personal_tixian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC61E67C92B006C656E /* personal_tixian@2x.png */; };
 		6E320ECD1E67C92D006C656E /* personal_tixian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E320EC71E67C92B006C656E /* personal_tixian@3x.png */; };
+		6E5D00E91E8BBC6500890922 /* LabelExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5D00E81E8BBC6500890922 /* LabelExtension.swift */; };
+		6E5D01271E8C981700890922 /* hangxian_detail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E5D01261E8C981700890922 /* hangxian_detail@2x.png */; };
 		6EADCA6D1E6FAE1B0004B06B /* Personal_huiyuan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EADCA6B1E6FAE1B0004B06B /* Personal_huiyuan@2x.png */; };
 		6EADCA6E1E6FAE1B0004B06B /* Personal_huiyuan@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */; };
 		6EAEB3BB1E8A0634002B90B5 /* DealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */; };
@@ -367,6 +369,8 @@
 		6E320EC51E67C92B006C656E /* personal_mingxi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_mingxi@3x.png"; sourceTree = "<group>"; };
 		6E320EC61E67C92B006C656E /* personal_tixian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_tixian@2x.png"; sourceTree = "<group>"; };
 		6E320EC71E67C92B006C656E /* personal_tixian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "personal_tixian@3x.png"; sourceTree = "<group>"; };
+		6E5D00E81E8BBC6500890922 /* LabelExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelExtension.swift; sourceTree = "<group>"; };
+		6E5D01261E8C981700890922 /* hangxian_detail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hangxian_detail@2x.png"; sourceTree = "<group>"; };
 		6EADCA6B1E6FAE1B0004B06B /* Personal_huiyuan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Personal_huiyuan@2x.png"; sourceTree = "<group>"; };
 		6EADCA6C1E6FAE1B0004B06B /* Personal_huiyuan@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Personal_huiyuan@3x.png"; sourceTree = "<group>"; };
 		6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealCell.swift; sourceTree = "<group>"; };
@@ -844,6 +848,7 @@
 		8EF59D241E571D8200BABBD0 /* deal */ = {
 			isa = PBXGroup;
 			children = (
+				6E5D01261E8C981700890922 /* hangxian_detail@2x.png */,
 				8EF59D251E571D8200BABBD0 /* buyBg@2x.png */,
 				8EF59D261E571D8200BABBD0 /* buyBg@3x.png */,
 				8EF59D271E571D8200BABBD0 /* buyDown@2x.png */,
@@ -1427,6 +1432,7 @@
 				BF259A4A1E26009F00276997 /* ProductTitleItem.swift */,
 				8E3008021E4C159700B32717 /* ProductsiCarousel.swift */,
 				6EAEB3BA1E8A0634002B90B5 /* DealCell.swift */,
+				6E5D00E81E8BBC6500890922 /* LabelExtension.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1715,6 +1721,7 @@
 				8EF59DE61E571D8200BABBD0 /* icon-13.png in Resources */,
 				8EF59DD81E571D8200BABBD0 /* addFocusOn@2x.png in Resources */,
 				8EF59E131E571D8200BABBD0 /* UserSelect@2x.png in Resources */,
+				6E5D01271E8C981700890922 /* hangxian_detail@2x.png in Resources */,
 				8EF59E2E1E571D8200BABBD0 /* noticeSelect@2x.png in Resources */,
 				8EF59E291E571D8200BABBD0 /* ccbc@3x.png in Resources */,
 				8EF59E1F1E571D8200BABBD0 /* bank@3x.png in Resources */,
@@ -1960,6 +1967,7 @@
 				8ED4ADE91E56EF0B00E4BB7B /* WPWebViewController.swift in Sources */,
 				6E0735461E4D67B20037278A /* YD_CountDownHelper.swift in Sources */,
 				A0C2840F1E1FBD1A00A97707 /* SuccessChargeVC.swift in Sources */,
+				6E5D00E91E8BBC6500890922 /* LabelExtension.swift in Sources */,
 				8E3008031E4C159700B32717 /* ProductsiCarousel.swift in Sources */,
 				BF259A4B1E26009F00276997 /* ProductTitleItem.swift in Sources */,
 				BF2F643F1E038DFE00917FA1 /* UIViewController+RBStoryboardLink.m in Sources */,
