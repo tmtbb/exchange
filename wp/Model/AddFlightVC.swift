@@ -14,7 +14,7 @@ extension UITextField {
         layer.borderColor = UIColor(hexString: "cccccc").cgColor
     }
 }
-class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource{
+class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource, UIScrollViewDelegate{
     
     //定义pickerView
     var pickView = UIPickerView()
@@ -23,6 +23,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     // 用来判断选择的第几区 然后渲染数据
     var selectRow : Int = 0
     // 输入框
+    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var selectFlight: UITextField!
     @IBOutlet weak var flightTextField: UITextField!
     @IBOutlet weak var countTextField: UITextField!
@@ -42,7 +43,9 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         countTextField.setBorder()
         moneyTextField.setBorder()
         authCodeTextField.setBorder()
-        
+        let tapGes = UITapGestureRecognizer(target: self, action: #selector(scrollViewDidScroll(_:)))
+            
+        contentView.addGestureRecognizer(tapGes)
         pickView = UIPickerView.init()
         
         pickView.delegate = self
@@ -105,8 +108,12 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         selectRow = row
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view?.endEditing(true)
+        super.touchesBegan(touches, with: event)
+        contentView.endEditing(true)
     }
    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        contentView.endEditing(true)
+    }
 
 }
