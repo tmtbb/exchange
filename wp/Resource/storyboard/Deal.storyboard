@@ -843,7 +843,7 @@
         <!--Add FlightVC-->
         <scene sceneID="D2l-qQ-i8t">
             <objects>
-                <viewController storyboardIdentifier="AddFlightVC" id="dWM-dg-RGy" customClass="AddFlightVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddFlightVC" hidesBottomBarWhenPushed="YES" id="dWM-dg-RGy" customClass="AddFlightVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="340-ug-zn2"/>
                         <viewControllerLayoutGuide type="bottom" id="rZT-kg-Jl8"/>
@@ -895,7 +895,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OSp-z7-Vb0">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="155"/>
                                                 <subviews>
-                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="上海-法兰克福" placeholder="上海-法兰克福" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQb-9P-ooA">
+                                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="   上海-法兰克福" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DQb-9P-ooA">
                                                         <rect key="frame" x="12" y="45" width="351" height="45"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="7jV-Ei-SAx"/>
@@ -935,7 +935,7 @@
                                                                 <integer key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                                                <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="value" red="0.9955729166666667" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                                                 <integer key="value" value="1"/>
@@ -1104,6 +1104,13 @@
                             <constraint firstItem="nzK-9N-ygm" firstAttribute="top" secondItem="340-ug-zn2" secondAttribute="bottom" id="vmn-Ot-OBO"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="authCodeTextField" destination="KI2-JX-fOs" id="T7h-vb-bn8"/>
+                        <outlet property="countTextField" destination="Lh3-4K-JCt" id="Olj-aP-OyR"/>
+                        <outlet property="flightTextField" destination="xx6-2C-czr" id="eKk-eg-mHW"/>
+                        <outlet property="moneyTextField" destination="v1V-xr-D6J" id="pab-fI-PNE"/>
+                        <outlet property="selectFlight" destination="DQb-9P-ooA" id="KqU-3W-PE3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zDe-V4-nvf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

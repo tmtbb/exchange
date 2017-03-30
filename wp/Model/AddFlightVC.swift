@@ -7,7 +7,13 @@
 //
 
 import UIKit
-
+extension UITextField {
+    func setBorder() {
+        
+        layer.borderWidth = 1
+        layer.borderColor = UIColor(hexString: "cccccc").cgColor
+    }
+}
 class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource{
     
     //定义pickerView
@@ -18,6 +24,10 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     var selectRow : Int = 0
     // 输入框
     @IBOutlet weak var selectFlight: UITextField!
+    @IBOutlet weak var flightTextField: UITextField!
+    @IBOutlet weak var countTextField: UITextField!
+    @IBOutlet weak var moneyTextField: UITextField!
+    @IBOutlet weak var authCodeTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "添加航班线路"
@@ -27,6 +37,11 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
 
     
     func initUI(){
+        selectFlight.setBorder()
+        flightTextField.setBorder()
+        countTextField.setBorder()
+        moneyTextField.setBorder()
+        authCodeTextField.setBorder()
         
         pickView = UIPickerView.init()
         
