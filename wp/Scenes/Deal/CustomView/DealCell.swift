@@ -10,6 +10,8 @@ import UIKit
 
 class DealCell: UITableViewCell {
 
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var flightNameLabel: UILabel!
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -17,7 +19,8 @@ class DealCell: UITableViewCell {
     }
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        // Initialization cod
+        
     }
     
     
@@ -29,9 +32,11 @@ class DealCell: UITableViewCell {
         if isSelect {
             priceLabel.font = UIFont.systemFont(ofSize: 21)
             backgroundColor = UIColor.white
+            bottomViewHeight.constant = 1.555555
         } else {
-            backgroundColor = UIColor(hexString: "eeeeee")
+            backgroundColor = UIColor(hexString: "fafafa")
             priceLabel.font = UIFont.systemFont(ofSize: 14)
+            bottomViewHeight.constant = 1.0
         }
         
     }

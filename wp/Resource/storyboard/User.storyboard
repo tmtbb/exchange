@@ -413,26 +413,16 @@
                                                         <constraint firstAttribute="height" constant="1" id="RBa-cb-rZZ"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-ZP-HLj">
-                                                    <rect key="frame" x="0.0" y="55" width="375" height="1"/>
-                                                    <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="wm0-g2-KX0"/>
-                                                    </constraints>
-                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
-                                                <constraint firstItem="uUg-ZP-HLj" firstAttribute="leading" secondItem="BTT-tt-IBY" secondAttribute="leading" id="0vt-Nb-PX7"/>
                                                 <constraint firstItem="1Mp-K5-Hc2" firstAttribute="leading" secondItem="BTT-tt-IBY" secondAttribute="leading" constant="15" id="6Jo-fJ-nHW"/>
                                                 <constraint firstItem="JXz-C2-4Z1" firstAttribute="centerY" secondItem="BTT-tt-IBY" secondAttribute="centerY" id="6e1-uw-FWB"/>
-                                                <constraint firstAttribute="bottom" secondItem="uUg-ZP-HLj" secondAttribute="bottom" id="FdF-76-YQ5"/>
                                                 <constraint firstAttribute="trailing" secondItem="1Mp-K5-Hc2" secondAttribute="trailing" id="HYl-ML-CkZ"/>
                                                 <constraint firstItem="rxe-J9-QjT" firstAttribute="leading" secondItem="JXz-C2-4Z1" secondAttribute="trailing" constant="17" id="YHb-r5-CzA"/>
                                                 <constraint firstItem="rxe-J9-QjT" firstAttribute="centerY" secondItem="JXz-C2-4Z1" secondAttribute="centerY" id="d7M-ja-7vh"/>
                                                 <constraint firstItem="1Mp-K5-Hc2" firstAttribute="top" secondItem="BTT-tt-IBY" secondAttribute="top" id="etK-Ko-K63"/>
                                                 <constraint firstItem="JXz-C2-4Z1" firstAttribute="leading" secondItem="BTT-tt-IBY" secondAttribute="leading" constant="15" id="jVh-3w-cY0"/>
-                                                <constraint firstAttribute="trailing" secondItem="uUg-ZP-HLj" secondAttribute="trailing" id="mUQ-SB-odj"/>
                                                 <constraint firstItem="EBt-WV-Mzz" firstAttribute="centerY" secondItem="rxe-J9-QjT" secondAttribute="centerY" id="muw-JT-ghc"/>
                                                 <constraint firstAttribute="trailing" secondItem="EBt-WV-Mzz" secondAttribute="trailing" constant="17" id="rEc-cy-f0p"/>
                                             </constraints>
@@ -465,7 +455,7 @@
                                                         <constraint firstAttribute="height" constant="11" id="QJx-X7-Gnx"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_chongzhi.png" translatesAutoresizingMaskIntoConstraints="NO" id="beN-9T-z5w">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="geren-hangxian.png" translatesAutoresizingMaskIntoConstraints="NO" id="beN-9T-z5w">
                                                     <rect key="frame" x="15" y="20" width="16" height="16"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="16" id="50m-Bz-zAa"/>
@@ -622,6 +612,7 @@
     <resources>
         <image name="Personal_huiyuan.png" width="63" height="27"/>
         <image name="default-head.png" width="79" height="79"/>
+        <image name="geren-hangxian.png" width="16" height="16"/>
         <image name="next.png" width="7" height="12"/>
         <image name="personal_chongzhi.png" width="16" height="16"/>
         <image name="personal_mingxi.png" width="16" height="16"/>

@@ -190,7 +190,7 @@ class AppDataHelper: NSObject {
     
     //验证token登录
     func checkTokenLogin() {
-        
+        return
         //token是否存在
         if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token){
             if let id = UserDefaults.standard.value(forKey: SocketConst.Key.uid){
