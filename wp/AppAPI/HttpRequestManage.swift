@@ -12,7 +12,7 @@ import SVProgressHUD
 import RealmSwift
 import Realm.RLMSchema
 
-private let urlString = "http://192.168.199.218/";
+private let urlString = AppConst.Network.TttpHostUrl
 
 typealias reseponseBlock = (_ reseponseObject:AnyObject)->Void
 
@@ -52,12 +52,12 @@ private static var instance = HttpRequestManage()
     
     
     func postRequestModels(requestModel:HttpRequestModel,responseClass:AnyClass, listName:String = "data", reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.ModelToDictionary() as! Dictionary<String, Any>) { (responseData) in
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
             reseponse(self.toList(listData: responseData, responseClass: responseClass, listName: listName) as AnyObject)
         }
     }
     func postRequestModel(requestModel:HttpRequestModel,responseClass:AnyClass,reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.ModelToDictionary() as! Dictionary<String, Any>) { (responseData) in
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
             reseponse(self.toModel(jsonData: responseData, responseClass: responseClass)!)
         }
     }
@@ -99,7 +99,7 @@ private static var instance = HttpRequestManage()
     }
     
      func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock){
-        let urlPath = urlString + path;
+        let urlPath = urlString + path
         debugPrint("startGetRequest:path\(path)")
         Alamofire.request(urlPath).responseJSON { (responseData) in
             
