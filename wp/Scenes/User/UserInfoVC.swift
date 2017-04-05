@@ -26,7 +26,7 @@ class UserInfoVC: BaseTableViewController {
         
         titltArr = UserModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
         title = UserModel.share().getCurrentUser()?.userType == 0 ? "个人信息" : "企业信息"
-        initData()
+//        initData()
     }
     
      // MARK: - Init Data

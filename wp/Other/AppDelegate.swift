@@ -9,6 +9,7 @@
 import UIKit
 import SVProgressHUD
 import DKNightVersion
+private let keychainItem:OEZKeychainItemWrapper = OEZKeychainItemWrapper(identifier: "com.yundian.trip.account", accessGroup:nil)   
 @UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
-//        let string = String.init(format: "%@", (UIDevice.current.identifierForVendor?.uuidString)!)
-        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": (UIDevice.current.identifierForVendor?.uuidString)!,"deviceModel":UIDevice.current.model,"deviceResolution":"1136×640","deviceName":UIDevice.current.systemName,"osVersion":UIDevice.current.systemVersion]) { (result) in
+        
+        
+       let string = String.init(format: "%@", UUID.getUUID())
+        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": string,"deviceModel":UIDevice.current.model,"deviceResolution":"1136×640","deviceName":UIDevice.current.systemName,"osVersion":UIDevice.current.systemVersion]) { (result) in
             
         }
         appearance()
@@ -111,8 +114,18 @@ HttpRequestManage.shared().postRequestModel(requestModel: model, responseClass: 
         
         self.window?.endEditing(true)
     }
-    
-   
+//    func getUUID() -> String {
+//        
+//        if keychainItem.object(forKey: "DeviceToken") != nil{
+//            
+//            return (keychainItem.object(forKey: "DeviceToken") as? String)!
+//            
+//        }
+//        keychainItem.setObject( (UIDevice.current.identifierForVendor?.uuidString)!, forKey: "DeviceToken")
+//        
+//        return (keychainItem.object(forKey: "DeviceToken") as? String)!
+//    }
+      
 }
 
 

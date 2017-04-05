@@ -247,7 +247,7 @@ class AppDataHelper: NSObject {
         info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
         
-        
+        UserInfoVCModel.share().Model = result as? UserInfoVCModel
         }
        
     }
