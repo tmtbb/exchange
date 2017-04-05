@@ -61,6 +61,11 @@ private static var instance = HttpRequestManage()
             reseponse(self.toModel(jsonData: responseData, responseClass: responseClass)!)
         }
     }
+    func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock) {
+        postRequestJson(requestModel.requestPath, parameters: requestModel.ModelToDictionary() as! Dictionary<String, Any>) { (responseData) in
+            reseponse(responseData as! AnyClass)
+        }
+    }
 
     
     

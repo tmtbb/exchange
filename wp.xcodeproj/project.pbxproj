@@ -205,6 +205,10 @@
 		A08CB39B1E1E1A8A004BE44B /* RechargeListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08CB39A1E1E1A8A004BE44B /* RechargeListVC.swift */; };
 		A08CB3A11E1E5387004BE44B /* WithDrawaListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08CB3A01E1E5387004BE44B /* WithDrawaListVC.swift */; };
 		A096ED461E681D2000479B47 /* rechargebanner.png in Resources */ = {isa = PBXBuildFile; fileRef = A096ED451E681D2000479B47 /* rechargebanner.png */; };
+		A09DC9741E94A2DA009F9AF9 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC9731E94A2DA009F9AF9 /* LoginModel.swift */; };
+		A09DC9761E94A353009F9AF9 /* RegistModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC9751E94A353009F9AF9 /* RegistModel.swift */; };
+		A09DC9781E94B7C1009F9AF9 /* GetCodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC9771E94B7C1009F9AF9 /* GetCodeType.swift */; };
+		A09DC97A1E94B85D009F9AF9 /* GetUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A09DC9791E94B85D009F9AF9 /* GetUserInfo.swift */; };
 		A0A2E5C61E22669B0091D913 /* MyWealthTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A2E5C51E22669B0091D913 /* MyWealthTableView.swift */; };
 		A0B5D45A1E1DDCC60029C7BA /* RechargeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D4591E1DDCC60029C7BA /* RechargeModel.swift */; };
 		A0B5D45C1E1DE14B0029C7BA /* SortModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0B5D45B1E1DE14B0029C7BA /* SortModel.swift */; };
@@ -560,6 +564,10 @@
 		A08CB39A1E1E1A8A004BE44B /* RechargeListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeListVC.swift; sourceTree = "<group>"; };
 		A08CB3A01E1E5387004BE44B /* WithDrawaListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithDrawaListVC.swift; sourceTree = "<group>"; };
 		A096ED451E681D2000479B47 /* rechargebanner.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rechargebanner.png; sourceTree = "<group>"; };
+		A09DC9731E94A2DA009F9AF9 /* LoginModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
+		A09DC9751E94A353009F9AF9 /* RegistModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistModel.swift; sourceTree = "<group>"; };
+		A09DC9771E94B7C1009F9AF9 /* GetCodeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetCodeType.swift; sourceTree = "<group>"; };
+		A09DC9791E94B85D009F9AF9 /* GetUserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetUserInfo.swift; sourceTree = "<group>"; };
 		A0A2E5C51E22669B0091D913 /* MyWealthTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWealthTableView.swift; sourceTree = "<group>"; };
 		A0B5D4591E1DDCC60029C7BA /* RechargeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RechargeModel.swift; sourceTree = "<group>"; };
 		A0B5D45B1E1DE14B0029C7BA /* SortModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SortModel.swift; sourceTree = "<group>"; };
@@ -1073,6 +1081,17 @@
 			path = WithDrawalVC;
 			sourceTree = "<group>";
 		};
+		A09DC9721E94A2B9009F9AF9 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				A09DC9731E94A2DA009F9AF9 /* LoginModel.swift */,
+				A09DC9751E94A353009F9AF9 /* RegistModel.swift */,
+				A09DC9771E94B7C1009F9AF9 /* GetCodeType.swift */,
+				A09DC9791E94B85D009F9AF9 /* GetUserInfo.swift */,
+			);
+			name = RequestModel;
+			sourceTree = "<group>";
+		};
 		A0A2E5C41E22666E0091D913 /* Mywealth */ = {
 			isa = PBXGroup;
 			children = (
@@ -1396,6 +1415,7 @@
 		BF2F64051E038DFE00917FA1 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A09DC9721E94A2B9009F9AF9 /* RequestModel */,
 				8E1D6ECF1E554CCC00E47AB0 /* Commen */,
 				BF9BE4A41E20C3CD00DB5F1A /* Deal */,
 				BF9BE4A31E20C3AD00DB5F1A /* User */,
@@ -2011,6 +2031,7 @@
 				A01F44181E2DC2D700FD5D96 /* ChartView.swift in Sources */,
 				BF2F64371E038DFE00917FA1 /* TableViewHelper.swift in Sources */,
 				BF2CEA3C1E1CCA9A00EEA99E /* BingPhoneVC.swift in Sources */,
+				A09DC9761E94A353009F9AF9 /* RegistModel.swift in Sources */,
 				BF9BE4A21E1FA10800DB5F1A /* BaseMode+Extension.swift in Sources */,
 				A009AD0E1E28A399008A5014 /* FriendTableView.swift in Sources */,
 				BFC1E5BD1E0D1820004A2AFC /* UIView+Extension.swift in Sources */,
@@ -2052,6 +2073,7 @@
 				A0BC07361E233DC7003EA7BC /* InputBankPhone.swift in Sources */,
 				6EAEB3BB1E8A0634002B90B5 /* DealCell.swift in Sources */,
 				BF062B4F1E04E01100618B1B /* LoginNav.swift in Sources */,
+				A09DC9741E94A2DA009F9AF9 /* LoginModel.swift in Sources */,
 				B058E36E1E1D40DA0046720D /* SocketHelper.swift in Sources */,
 				A03377A51E89EEA600474E08 /* ScanVC.swift in Sources */,
 				A0132AD21E557E9B001979EE /* BankLogoColor.swift in Sources */,
@@ -2074,6 +2096,7 @@
 				BF2F643C1E038DFE00917FA1 /* RBStoryboardPopoverSegue.m in Sources */,
 				A046BF781E1CDFFB0035A4FA /* WithDrawalVC.swift in Sources */,
 				6ED00FFE1E8A44D400554110 /* HandlePositionVC.swift in Sources */,
+				A09DC97A1E94B85D009F9AF9 /* GetUserInfo.swift in Sources */,
 				BF2F64301E038DFE00917FA1 /* String+Extension.swift in Sources */,
 				D038314A1E1344F400D54295 /* UserTableViewController.swift in Sources */,
 				BF2F64281E038DFE00917FA1 /* SocketDataPacket.swift in Sources */,
@@ -2102,6 +2125,7 @@
 				A0A2E5C61E22669B0091D913 /* MyWealthTableView.swift in Sources */,
 				BF9CD7501E0A572300194A32 /* HomeSocketApi.swift in Sources */,
 				BF062B4D1E04DFE500618B1B /* BaseNavigationController.swift in Sources */,
+				A09DC9781E94B7C1009F9AF9 /* GetCodeType.swift in Sources */,
 				D06074F91E23576B0028EB32 /* MyPushCell.swift in Sources */,
 				BF2F642E1E038DFE00917FA1 /* SegmentedViewController.swift in Sources */,
 				D060751B1E236B3B0028EB32 /* DealPasswordVC.swift in Sources */,
