@@ -36,6 +36,7 @@ class HttpRequestModel: Object {
                 if self[prop.name] != nil{
                     signString = signString + "\(prop.name)=\(self[prop.name]!)"
                 }
+                mutabledic.setValue(self[prop.name], forKey: prop.name)
             }
         }
         mutabledic.setValue(signString.getSignString(), forKey: "sign")
