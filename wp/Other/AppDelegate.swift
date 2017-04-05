@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        //URL types
+        UIDevice.current
+        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": ,"deviceModel":"","deviceResolution":"","deviceName":"","osVersion":""]) { (result) in
+            
+        }
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
