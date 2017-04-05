@@ -51,6 +51,7 @@ private static var instance = HttpRequestManage()
     
     
     
+
     func postRequestModels(requestModel:HttpRequestModel,responseClass:AnyClass, listName:String = "data", reseponse:@escaping reseponseBlock) {
         postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
             reseponse(self.toList(listData: responseData, responseClass: responseClass, listName: listName) as AnyObject)

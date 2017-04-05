@@ -190,35 +190,20 @@ class AppDataHelper: NSObject {
     
     //验证token登录
     func checkTokenLogin() {
-        return
+        
         //token是否存在
-        if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token){
-            if let id = UserDefaults.standard.value(forKey: SocketConst.Key.uid){
-                AppAPIHelper.login().tokenLogin(uid: id as! Int , token: token as! String, complete: { [weak self]( result) -> ()? in
-                    //存储用户信息
-                    if let model = result as? UserInfoModel {
-                        if let token = model.token{
-                            //更新token
-                            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
-                        }
-                        if let user = model.userinfo {
-                            UserDefaults.standard.setValue(user.id, forKey: SocketConst.Key.id)
-                        }
-                        UserModel.share().upateUserInfo(userObject: model as AnyObject)
-                        DealModel.share().isFirstGetPrice = true
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
-                    }else{
-                       self?.clearUserInfo()
-                    }
-                    return nil
-                }, error: {[weak self] (error) ->()? in
-                    self?.clearUserInfo()
-                    return nil
-                })
-            }
-        }else{
-            clearUserInfo()
+        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
+        
+            let model = TokenModel()
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
+                if let json = responseObject as? Dictionary<String, AnyObject> {
+                    
+                    UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
+                }
+                
+            })
         }
+
     }
     //清楚用户数据
     func clearUserInfo() {

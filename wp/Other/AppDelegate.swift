@@ -21,11 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
-        let model = HttpRequestModel()
-HttpRequestManage.shared().postRequestModel(requestModel: model, responseClass: HttpRequestModel.self) { (response) in
-    
-    
-        }
         return true
     }
 

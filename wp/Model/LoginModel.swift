@@ -15,3 +15,6 @@ class LoginModel: HttpRequestModel {
     //密码
     var password : String = ""
 }
+class TokenModel: HttpRequestModel {
+    var token = UserDefaults.standard.value(forKey: SocketConst.Key.token)
+}
