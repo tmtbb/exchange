@@ -240,4 +240,17 @@ class AppDataHelper: NSObject {
             return nil
         }, error: nil)
     }
+    
+    func getUserInfo()  {
+        
+        let info = GetUserInfo()
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
+        
+        
+        }
+       
+    }
+    
+    
 }
