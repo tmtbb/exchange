@@ -67,16 +67,27 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     func initData() {
         //初始化持仓数据
 //        initDealTableData()
-        refreshUserCash()
+//        refreshUserCash()
         //初始化下商品数据
         titleView.objects = DealModel.share().productKinds
         if let selectProduct = DealModel.share().selectProduct{
             didSelectedObject(titleView, object: selectProduct)
         }
-        initRealTimeData()
-
+//        initRealTimeData()
+        
+        requestFlightInfo()
     }
-    
+
+    func requestFlightInfo() {
+        let model = RequestFlightModel()
+        model.requestPath = "route/flights.html"
+        HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: FlightModel.self) { (responseObject) in
+            
+            
+        }
+        
+        
+    }
     func initKVOAndNotice(){
         DealModel.share().addObserver(self, forKeyPath: AppConst.KVOKey.allProduct.rawValue, options: .new, context: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(refreshTitleView), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.SelectKind), object: nil)

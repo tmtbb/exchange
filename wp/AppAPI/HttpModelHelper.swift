@@ -45,3 +45,7 @@ class HttpRequestModel: Object {
     
 
 }
+
+class TokenRequestModel: HttpRequestModel {
+    var token = ""
+}

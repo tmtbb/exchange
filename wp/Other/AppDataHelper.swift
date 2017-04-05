@@ -20,7 +20,7 @@ class AppDataHelper: NSObject {
         //productTimer = Timer.scheduledTimer(timeInterval: 5 , target: self, selector: #selector(initProductData), userInfo: nil, repeats: true)
        // Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(initAllKlineChartData), userInfo: nil, repeats: true)
         initErrorCode()
-//        checkTokenLogin()
+        checkTokenLogin()
         initProductData()
     }
     //请求商品数据 
@@ -195,10 +195,12 @@ class AppDataHelper: NSObject {
         if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
         
             let model = TokenModel()
+            model.requestPath = "user/refreshToken.html"
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
                 if let json = responseObject as? Dictionary<String, AnyObject> {
                     
                     UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
+                    self.getUserInfo()
                 }
                 
             })

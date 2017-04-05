@@ -24,7 +24,7 @@ class BuyProductVC: UIViewController {
     @IBOutlet weak var cangWeiLabel: UILabel!
     @IBOutlet weak var heightConstraint: NSLayoutConstraint!
     var resultBlock: CompleteBlock?
-    
+    var flightModel:FlightModel?
     enum BuyResultType: Int {
         case success = 0
         case cancel = 1
@@ -46,7 +46,6 @@ class BuyProductVC: UIViewController {
         
         let text = "当前舱位航班 : FB2313"
         cangWeiLabel.setAttributeText(text: text, firstFont: 16.0, secondFont: 16.0, firstColor: UIColor(hexString: "666666"), secondColor: UIColor(hexString: "333333"), range: NSMakeRange(9, text.length() - 9))
-        requestShippingSpaceInfo()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,19 +58,6 @@ class BuyProductVC: UIViewController {
         SVProgressHUD.dismiss()
     }
     
-    func requestShippingSpaceInfo() {
-        return
-        let positionParm = PositionParam()
-        positionParm.gid = DealModel.share().buyProduct!.id
-        AppAPIHelper.deal().position(param: positionParm, complete: { [weak self](result) -> ()? in
-            if let model = result as? ProductPositionModel {
-             let text = "当前舱位航班 : \(model.name)"
-             self?.cangWeiLabel.setAttributeText(text: text, firstFont: 16.0, secondFont: 16.0, firstColor: UIColor(hexString: "666666"), secondColor: UIColor(hexString: "333333"), range: NSMakeRange(9, text.length() - 0))
-            }
-            return nil
-        }, error: errorBlockFunc())
-        
-    }
     
     func initUI() {
         contentView.layer.cornerRadius = 3
@@ -86,32 +72,21 @@ class BuyProductVC: UIViewController {
     
     @IBAction func buyBtnTapped(_ sender: UIButton) {
 
+        guard flightModel != nil else {return}
         view.isUserInteractionEnabled = false
-        SVProgressHUD.showProgressMessage(ProgressMessage: "交易中...")
-        let buyModel: BuildDealParam = BuildDealParam()
-        buyModel.codeId = DealModel.share().buyProduct!.id
-        buyModel.buySell = DealModel.share().dealUp ? 1 : -1
-        //buyModel.amount = Int(countSlider.value)
-        buyModel.isDeferred = DealModel.share().buyModel.isDeferred
 
-        AppAPIHelper.deal().buildDeal(model: buyModel, complete: { [weak self](result) -> ()? in
-            SVProgressHUD.dismiss()
-            self?.view.isUserInteractionEnabled = true
-            if let product: PositionModel = result as? PositionModel{
-                self?.dismissController()
-                if self?.resultBlock != nil{
-                    self?.resultBlock!(BuyResultType.success as AnyObject)
-                }
-                DealModel.cachePosition(position: product)
-                YD_CountDownHelper.shared.reStart()
-            }
-            return nil
-        }) { (error) -> ()? in
-            self.didRequestError(error)
-            self.view.isUserInteractionEnabled = true
-            return nil
-        }
         
+        let model = BuyPositionModel()
+        model.flightId = flightModel!.flightId
+        model.flightNumber = flightModel!.flightNumber
+        model.flightSpacePrice = flightModel!.flightSpacePrice
+        model.buyNum = 0
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (responseObject) in
+            self.view.isUserInteractionEnabled = true
+            self.dismissController()
+
+            
+        }
         
     }
     
