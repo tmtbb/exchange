@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
+
         return true
     }
 
