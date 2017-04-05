@@ -669,8 +669,41 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="6vx-Ve-IJM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="Ybk-Hv-mES">
                                         <rect key="frame" x="0.0" y="285" width="375" height="20"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ybk-Hv-mES" id="e5O-ws-30g">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="ldi-Zz-joV">
+                                        <rect key="frame" x="0.0" y="305" width="375" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldi-Zz-joV" id="FK1-Pc-Mq8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入身份证号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a3V-Zu-XGy">
+                                                    <rect key="frame" x="13" y="0.0" width="352" height="45"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="a3V-Zu-XGy" firstAttribute="top" secondItem="FK1-Pc-Mq8" secondAttribute="top" id="2yX-NL-RsE"/>
+                                                <constraint firstAttribute="trailing" secondItem="a3V-Zu-XGy" secondAttribute="trailing" constant="10" id="3MI-5l-cB9"/>
+                                                <constraint firstAttribute="bottom" secondItem="a3V-Zu-XGy" secondAttribute="bottom" id="TkL-Fn-A17"/>
+                                                <constraint firstItem="a3V-Zu-XGy" firstAttribute="leading" secondItem="FK1-Pc-Mq8" secondAttribute="leading" constant="13" id="z5i-OD-vqY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="20" id="6vx-Ve-IJM">
+                                        <rect key="frame" x="0.0" y="350" width="375" height="20"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6vx-Ve-IJM" id="GKb-bk-jRu">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="20"/>
@@ -679,7 +712,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="45" id="g6d-gg-vyA">
-                                        <rect key="frame" x="0.0" y="305" width="375" height="45"/>
+                                        <rect key="frame" x="0.0" y="370" width="375" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="g6d-gg-vyA" id="MPy-lJ-Ynw">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
@@ -711,7 +744,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="220" id="k3F-i3-5C6">
-                                        <rect key="frame" x="0.0" y="350" width="375" height="220"/>
+                                        <rect key="frame" x="0.0" y="415" width="375" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.0" contentMode="center" tableViewCell="k3F-i3-5C6" id="DKi-eF-xPb">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
@@ -838,6 +871,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="注册" id="ZF2-vz-fQ1"/>
                     <connections>
+                        <outlet property="cardTd" destination="a3V-Zu-XGy" id="31v-Ix-SBK"/>
                         <outlet property="codeBtn" destination="bL8-nx-CXy" id="coo-uq-75p"/>
                         <outlet property="codeText" destination="wi4-P9-ynH" id="rXa-AA-h2p"/>
                         <outlet property="nextBtn" destination="sX4-wW-A5F" id="97J-ZT-sqA"/>
@@ -845,6 +879,7 @@
                         <outlet property="phoneView" destination="aS0-Gq-Bgp" id="dm7-HT-8vt"/>
                         <outlet property="pwdText" destination="cMr-OO-elL" id="SsR-KY-IcO"/>
                         <outlet property="qqBtn" destination="cg6-nz-ebS" id="3ya-Cb-mTx"/>
+                        <outlet property="realName" destination="quv-E3-Hig" id="Phz-ri-XTp"/>
                         <outlet property="sinaBtn" destination="Rbt-6g-hdr" id="4yG-gV-sjN"/>
                         <outlet property="thindLoginView" destination="DKi-eF-xPb" id="qZ4-en-eVt"/>
                         <outlet property="wechatBtn" destination="oLa-zJ-YoG" id="uSB-Qg-qJQ"/>

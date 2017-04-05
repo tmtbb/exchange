@@ -22,10 +22,22 @@ class UserInfoVC: BaseTableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         titltArr = UserModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
         title = UserModel.share().getCurrentUser()?.userType == 0 ? "个人信息" : "企业信息"
     }
-
+    
+     // MARK: - Init Data
+    
+    func initData(){
+    
+        let info = GetUserInfo()
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
+             
+        }
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
