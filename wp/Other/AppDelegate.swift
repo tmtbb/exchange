@@ -17,14 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        UIDevice.current
-        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": ,"deviceModel":"","deviceResolution":"","deviceName":"","osVersion":""]) { (result) in
+        
+//        let string = String.init(format: "%@", (UIDevice.current.identifierForVendor?.uuidString)!)
+        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": (UIDevice.current.identifierForVendor?.uuidString)!,"deviceModel":UIDevice.current.model,"deviceResolution":"1136×640","deviceName":UIDevice.current.systemName,"osVersion":UIDevice.current.systemVersion]) { (result) in
             
         }
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
-
+        let model = HttpRequestModel()
+HttpRequestManage.shared().postRequestModel(requestModel: model, responseClass: HttpRequestModel.self) { (response) in
+    
+    
+        }
         return true
     }
 

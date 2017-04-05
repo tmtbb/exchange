@@ -26,9 +26,12 @@ class RegisterVC: BaseTableViewController {
     @IBOutlet weak var wechatBtn: UIButton!
     private var timer: Timer?
     
+    
+    @IBOutlet weak var realName: UITextField!
     private var codeTime = 60
     private var voiceCodeTime = 60
     
+    @IBOutlet weak var cardTd: UITextField!
     //MARK: --LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +52,16 @@ class RegisterVC: BaseTableViewController {
     //获取验证码
     @IBAction func changeCodePicture(_ sender: UIButton) {
         if checkoutText(){
-            let type = UserModel.share().forgetPwd ? 1:0
+//            let type = UserModel.share().forgetPwd ? 1:0
             SVProgressHUD.showProgressMessage(ProgressMessage: "请稍候...")
-            AppAPIHelper.commen().verifycode(verifyType: Int64(type), phone: phoneText.text!, complete: { [weak self](result) -> ()? in
-                SVProgressHUD.dismiss()
+            
+            let model : GetCodetype = GetCodetype()
+            model.phoneNum = phoneText.text!
+            model.codeType = 0
+           
+        
+         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  [weak self](result) in
+            SVProgressHUD.dismiss()
                 if let strongSelf = self{
                     if let resultDic: [String: AnyObject] = result as? [String : AnyObject]{
                         if let token = resultDic[SocketConst.Key.vToken]{
@@ -65,8 +74,8 @@ class RegisterVC: BaseTableViewController {
                     strongSelf.codeBtn.isEnabled = false
                     strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(strongSelf.updatecodeBtnTitle), userInfo: nil, repeats: true)
                 }
-                return nil
-            }, error: errorBlockFunc())
+//                return nil
+            }
         }
     }
     func updatecodeBtnTitle() {
@@ -135,17 +144,50 @@ class RegisterVC: BaseTableViewController {
         
         //注册
         SVProgressHUD.showProgressMessage(ProgressMessage: "注册中...")
-        let password = ((pwdText.text! + AppConst.sha256Key).sha256()+UserModel.share().phone!).sha256()
-        AppAPIHelper.login().register(phone: UserModel.share().phone!, code: UserModel.share().code!, pwd: password, complete: { [weak self](result) -> ()? in
-            SVProgressHUD.dismiss()
-            if result != nil {
-                UserModel.share().fetchUserInfo(phone: self?.phoneText.text ?? "", pwd: self?.pwdText.text ?? "")
-            }else{
-                SVProgressHUD.showErrorMessage(ErrorMessage: "注册失败，请稍后再试", ForDuration: 1, completion: nil)
+//        let password = ((pwdText.text! + AppConst.sha256Key).sha256()+UserModel.share().phone!).sha256()
+//        phoneNum
+//        password
+//        phoneCode
+//        codeToken
+//        fullName 
+//        identityCar
+         let model = RegistModel()
+        model.phoneNum = phoneText.text!
+        model.password = pwdText.text!
+        model.phoneCode = codeText.text!
+        model.codeToken = UserModel.share().codeToken
+        model.fullName = realName.text!
+        model.identityCar = cardTd.text!
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (result) in
+            
+            let datadic = result as? Dictionary<String,AnyObject>
+            
+            if let _ =  datadic?["data"]?["token"]{
+                
+                  SVProgressHUD.showSuccess(withStatus: "注册成功")
+                  UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
+                self.perform(#selector(self.registSuccess), with: self, afterDelay: 2)
+                
+//                self.perform(Selector(registSuccess), with: self, afterDelay: 2)
             }
-            return nil
-            }, error: errorBlockFunc())
+            
+            
+        }
+        
+//        AppAPIHelper.login().register(phone: UserModel.share().phone!, code: UserModel.share().code!, pwd: password, complete: { [weak self](result) -> ()? in
+//            SVProgressHUD.dismiss()
+//            if result != nil {
+//                UserModel.share().fetchUserInfo(phone: self?.phoneText.text ?? "", pwd: self?.pwdText.text ?? "")
+//            }else{
+//                SVProgressHUD.showErrorMessage(ErrorMessage: "注册失败，请稍后再试", ForDuration: 1, completion: nil)
+//            }
+//            return nil
+//            }, error: errorBlockFunc())
 
+    }
+    func registSuccess(){
+    
+        self.dismissController()
     }
 
     func checkoutText() -> Bool {
