@@ -39,12 +39,6 @@ class ScanVC: BaseTableViewController {
         
     }
    
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     @IBAction func chooseImg(_ sender: Any) {
         imagePicker.sourceType = .photoLibrary
         present((imagePicker), animated: true, completion: nil)

@@ -174,7 +174,7 @@ class UserTableViewController: BaseTableViewController {
             nameLabel.sizeToFit()
         }
         else{
-            nameLabel.text = "---"
+            nameLabel.text = ""
         }
     }
     override var prefersStatusBarHidden: Bool {
