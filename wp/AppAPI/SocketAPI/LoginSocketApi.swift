@@ -10,13 +10,20 @@ import UIKit
 
 class LoginSocketApi: BaseSocketAPI, LoginApi {
     //登录
-    func login(phone: String, pwd: String, complete: CompleteBlock?, error: ErrorBlock?){
+    func login(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?){
         
-        let param: [String: Any] = [SocketConst.Key.phone: phone,
-                                    SocketConst.Key.pwd: pwd,
-                                    SocketConst.Key.source: 1]
-        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .login, dict: param as [String : AnyObject])
-        startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
+//        let model : LoginModel = LoginModel()
+//        model.requestPath = ""
+//        model.password = password
+//        model.phoneNum = phone
+//   
+//      
+        
+//        let param: [String: Any] = [SocketConst.Key.phone: phone,
+//                                    SocketConst.Key.pwd: pwd,
+//                                    SocketConst.Key.source: 1]
+//        let packet: SocketDataPacket = SocketDataPacket.init(opcode: .login, dict: param as [String : AnyObject])
+//        startModelRequest(packet, modelClass: UserInfoModel.self, complete: complete, error: error)
     }
     //测试登录
     func testlogin(phone: String, pwd: String, complete: CompleteBlock?, error: ErrorBlock?){

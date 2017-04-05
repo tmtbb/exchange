@@ -66,20 +66,31 @@ class LoginVC: BaseTableViewController {
             let password = ((pwdText.text! + AppConst.sha256Key).sha256()+phoneText.text!).sha256()
         
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
-            AppAPIHelper.login().login(phone: phoneText.text!, pwd: password, complete: { [weak self]( result) -> ()? in
+            
+                    let model : LoginModel = LoginModel()
+                    model.requestPath = ""
+                    model.password = password
+                    model.phoneNum = phoneText.text!
+            
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (resu) in
+                
                 SVProgressHUD.dismiss()
-                DealModel.share().isFirstGetPrice = true
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
-                //存储用户信息
-                if result != nil{
-                    UserDefaults.standard.set(self?.phoneText.text!, forKey: SocketConst.Key.phone)
-                    UserModel.share().upateUserInfo(userObject: result!)
-                }else{
-                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录失败，请稍后再试", ForDuration: 1, completion: nil)
-                }
-                return nil
-                }, error: errorBlockFunc())
+            }
         }
+//            AppAPIHelper.login().login(phone: phoneText.text!, password: password, complete: { [weak self]( result) -> ()? in
+//                SVProgressHUD.dismiss()
+//                DealModel.share().isFirstGetPrice = true
+//                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
+//                //存储用户信息
+//                if result != nil{
+//                    UserDefaults.standard.set(self?.phoneText.text!, forKey: SocketConst.Key.phone)
+//                    UserModel.share().upateUserInfo(userObject: result!)
+//                }else{
+//                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录失败，请稍后再试", ForDuration: 1, completion: nil)
+//                }
+//                return nil
+//                }, error: errorBlockFunc())
+//        }
         
     }
     

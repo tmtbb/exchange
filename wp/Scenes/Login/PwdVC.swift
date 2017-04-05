@@ -60,7 +60,7 @@ class PwdVC: BaseTableViewController {
     
     
     func fetchUserInfo(phone: String, pwd: String) {
-        AppAPIHelper.login().login(phone: phone, pwd: pwd, complete: { ( result) -> ()? in
+        AppAPIHelper.login().login(phone: phone, password: pwd, complete: { ( result) -> ()? in
             SVProgressHUD.dismiss()
             //存储用户信息
             if result != nil{

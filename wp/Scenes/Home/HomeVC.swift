@@ -83,35 +83,37 @@ class HomeVC: BaseTableViewController {
                         SocketConst.Key.symbol: product.symbol] as [String : Any]
             goods.append(good as AnyObject)
         }
-        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().currentUserId,
-                                    SocketConst.Key.token: UserModel.share().token,
-                                    SocketConst.Key.symbolInfos: goods]
-        AppAPIHelper.deal().realtime(param: param, complete: { [weak self](result) -> ()? in
-            SVProgressHUD.dismiss()
-            if let models: [KChartModel] = result as! [KChartModel]?{
-                for model in models{
-                    for  product in DealModel.share().productKinds{
-                        if model.symbol == product.symbol{
-                            model.name = product.showSymbol
-                        }
-                    }
-                }
-                self?.marketArray = models
-                self?.tableView.reloadData()
-                if models.count == 0{
-                    self?.footErrorView.alpha = 1
-                    self?.errorImage.image = UIImage.init(named: "shouye-shujujiazai")
-                    self?.errorLabel.text = "正在同步市场实时数据..."
-                }else{
-                    self?.footErrorView.alpha = 0
-                }
-            }
-            return nil
-            }, error: { [weak self](error) -> () in
-                self?.errorImage.image = UIImage.init(named: "shouye-shouye-jiazaishibai")
-                self?.errorLabel.text = "加载失败"
-                self?.footErrorView.alpha = 1
-        })
+        
+        
+//        let param: [String: Any] = [SocketConst.Key.id: UserModel.share().currentUserId,
+//                                    SocketConst.Key.token: UserModel.share().token,
+//                                    SocketConst.Key.symbolInfos: goods]
+//        AppAPIHelper.deal().realtime(param: param, complete: { [weak self](result) -> ()? in
+//            SVProgressHUD.dismiss()
+//            if let models: [KChartModel] = result as! [KChartModel]?{
+//                for model in models{
+//                    for  product in DealModel.share().productKinds{
+//                        if model.symbol == product.symbol{
+//                            model.name = product.showSymbol
+//                        }
+//                    }
+//                }
+//                self?.marketArray = models
+//                self?.tableView.reloadData()
+//                if models.count == 0{
+//                    self?.footErrorView.alpha = 1
+//                    self?.errorImage.image = UIImage.init(named: "shouye-shujujiazai")
+//                    self?.errorLabel.text = "正在同步市场实时数据..."
+//                }else{
+//                    self?.footErrorView.alpha = 0
+//                }
+//            }
+//            return nil
+//            }, error: { [weak self](error) -> () in
+//                self?.errorImage.image = UIImage.init(named: "shouye-shouye-jiazaishibai")
+//                self?.errorLabel.text = "加载失败"
+//                self?.footErrorView.alpha = 1
+//        })
     }
     //MARK: --UI
     func initUI() {
