@@ -10,7 +10,7 @@ import Foundation
 
 protocol LoginApi {
     //登录
-    func login(phone: String, pwd: String, complete: CompleteBlock?, error: ErrorBlock?)
+    func login(phone: String, password: String, complete: CompleteBlock?, error: ErrorBlock?)
     //测试登录
     func testlogin(phone: String, pwd: String, complete: CompleteBlock?, error: ErrorBlock?)
     //token登录
