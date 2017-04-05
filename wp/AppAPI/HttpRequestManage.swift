@@ -62,7 +62,7 @@ private static var instance = HttpRequestManage()
         }
     }
     func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.ModelToDictionary() as! Dictionary<String, Any>) { (responseData) in
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
             reseponse(responseData as! AnyClass)
         }
     }
@@ -104,7 +104,8 @@ private static var instance = HttpRequestManage()
     }
     
      func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock){
-        let urlPath = urlString + path
+        var urlPath = urlString + path
+        urlPath = urlPath + "?sign=\(urlPath.getSignString())"
         debugPrint("startGetRequest:path\(path)")
         Alamofire.request(urlPath).responseJSON { (responseData) in
             
