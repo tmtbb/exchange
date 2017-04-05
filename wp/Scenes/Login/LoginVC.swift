@@ -72,9 +72,20 @@ class LoginVC: BaseTableViewController {
                     model.password = password
                     model.phoneNum = phoneText.text!
             
-            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (resu) in
+              HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (result) in
                 
-                SVProgressHUD.dismiss()
+//                SVProgressHUD.dismiss()
+                let datadic = result as? Dictionary<String,AnyObject>
+                
+                if let _ =  datadic?["data"]?["token"]{
+                    
+                    SVProgressHUD.showSuccess(withStatus: "注册成功")
+                    
+//                      UserModel.share().upateUserInfo(userObject: result)
+                    UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
+                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
+                }
             }
         }
 //            AppAPIHelper.login().login(phone: phoneText.text!, password: password, complete: { [weak self]( result) -> ()? in
@@ -84,7 +95,7 @@ class LoginVC: BaseTableViewController {
 //                //存储用户信息
 //                if result != nil{
 //                    UserDefaults.standard.set(self?.phoneText.text!, forKey: SocketConst.Key.phone)
-//                    UserModel.share().upateUserInfo(userObject: result!)
+        
 //                }else{
 //                    SVProgressHUD.showErrorMessage(ErrorMessage: "登录失败，请稍后再试", ForDuration: 1, completion: nil)
 //                }
