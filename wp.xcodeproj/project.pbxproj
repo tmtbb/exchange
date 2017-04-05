@@ -188,6 +188,8 @@
 		8EFD7D6D1E7155FE00C75D46 /* fly.html in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD7D6C1E7155FE00C75D46 /* fly.html */; };
 		A009AD0E1E28A399008A5014 /* FriendTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A009AD0D1E28A399008A5014 /* FriendTableView.swift */; };
 		A0132AD21E557E9B001979EE /* BankLogoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0132AD11E557E9B001979EE /* BankLogoColor.swift */; };
+		A01F1B331E8CDEAA00A10E7F /* geren-hangxian@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01F1B311E8CDEAA00A10E7F /* geren-hangxian@2x.png */; };
+		A01F1B341E8CDEAA00A10E7F /* geren-hangxian@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A01F1B321E8CDEAA00A10E7F /* geren-hangxian@3x.png */; };
 		A01F44181E2DC2D700FD5D96 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F44171E2DC2D700FD5D96 /* ChartView.swift */; };
 		A01F441C1E2DCAD300FD5D96 /* ChartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A01F441B1E2DCAD300FD5D96 /* ChartView.xib */; };
 		A01F441E1E2E0F9900FD5D96 /* MyWealtVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */; };
@@ -542,6 +544,8 @@
 		8EFD7D6C1E7155FE00C75D46 /* fly.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = fly.html; sourceTree = "<group>"; };
 		A009AD0D1E28A399008A5014 /* FriendTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableView.swift; sourceTree = "<group>"; };
 		A0132AD11E557E9B001979EE /* BankLogoColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankLogoColor.swift; sourceTree = "<group>"; };
+		A01F1B311E8CDEAA00A10E7F /* geren-hangxian@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geren-hangxian@2x.png"; sourceTree = "<group>"; };
+		A01F1B321E8CDEAA00A10E7F /* geren-hangxian@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geren-hangxian@3x.png"; sourceTree = "<group>"; };
 		A01F44171E2DC2D700FD5D96 /* ChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		A01F441B1E2DCAD300FD5D96 /* ChartView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChartView.xib; sourceTree = "<group>"; };
 		A01F441D1E2E0F9900FD5D96 /* MyWealtVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyWealtVC.swift; sourceTree = "<group>"; };
@@ -854,6 +858,8 @@
 		8EF59D241E571D8200BABBD0 /* deal */ = {
 			isa = PBXGroup;
 			children = (
+				A01F1B311E8CDEAA00A10E7F /* geren-hangxian@2x.png */,
+				A01F1B321E8CDEAA00A10E7F /* geren-hangxian@3x.png */,
 				6E5D01261E8C981700890922 /* hangxian_detail@2x.png */,
 				8EF59D251E571D8200BABBD0 /* buyBg@2x.png */,
 				8EF59D261E571D8200BABBD0 /* buyBg@3x.png */,
@@ -1792,6 +1798,7 @@
 				8EF59E3A1E571D8200BABBD0 /* top.png in Resources */,
 				8EF59DE91E571D8200BABBD0 /* icon-14@2x.png in Resources */,
 				8EF59E391E571D8200BABBD0 /* three@2x.png in Resources */,
+				A01F1B331E8CDEAA00A10E7F /* geren-hangxian@2x.png in Resources */,
 				6E320ECB1E67C92D006C656E /* personal_mingxi@3x.png in Resources */,
 				8EF59E421E571D8200BABBD0 /* userID@2x.png in Resources */,
 				8EF59DF71E571D8200BABBD0 /* eye_open@3x.png in Resources */,
@@ -1811,6 +1818,7 @@
 				8EF59E011E571D8200BABBD0 /* qq@3x.png in Resources */,
 				8EF59E381E571D8200BABBD0 /* three.png in Resources */,
 				A0E9F5771E6FA2BB0077E669 /* weixinpay@3x.png in Resources */,
+				A01F1B341E8CDEAA00A10E7F /* geren-hangxian@3x.png in Resources */,
 				8EF59DFE1E571D8200BABBD0 /* pwd@2x.png in Resources */,
 				8EF59DE41E571D8200BABBD0 /* icon-12.png in Resources */,
 				8EF59E511E57256500BABBD0 /* Default-568h@2x.png in Resources */,
