@@ -227,16 +227,30 @@ class AppDataHelper: NSObject {
             return nil
         }, error: nil)
     }
-    
+    //获取个人信息
     func getUserInfo()  {
         
         let info = GetUserInfo()
         info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
         
-        
+        UserInfoVCModel.share().Model = result as? UserInfoVCModel
         }
        
+    }
+    //获取验证码
+    func getVailCode(phone : String, type : Int  ,reseponse:@escaping reseponseBlock)  {
+        let model : GetCodetype = GetCodetype()
+        model.phoneNum = phone
+        model.codeType = type
+        
+        
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  [weak self](result) in
+            
+          reseponse(result as! AnyClass)
+
+            //                return nil
+        }
     }
     
     
