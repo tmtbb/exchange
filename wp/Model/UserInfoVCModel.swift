@@ -12,6 +12,8 @@ import UIKit
 class UserInfoVCModel: NSObject {
     
     
+    var Model : UserInfoVCModel?
+    
     private static var model: UserInfoVCModel = UserInfoVCModel()
     class func share() -> UserInfoVCModel{
         return model

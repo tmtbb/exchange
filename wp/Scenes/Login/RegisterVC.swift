@@ -60,22 +60,10 @@ class RegisterVC: BaseTableViewController {
             model.codeType = 0
            
         
-         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  [weak self](result) in
-            SVProgressHUD.dismiss()
-                if let strongSelf = self{
-                    if let resultDic: [String: AnyObject] = result as? [String : AnyObject]{
-                        if let token = resultDic[SocketConst.Key.vToken]{
-                            UserModel.share().codeToken = token as! String
-                        }
-                        if let timestamp = resultDic[SocketConst.Key.timestamp]{
-                            UserModel.share().timestamp = timestamp as! Int 
-                        }
-                    }
-                    strongSelf.codeBtn.isEnabled = false
-                    strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(strongSelf.updatecodeBtnTitle), userInfo: nil, repeats: true)
-                }
-//                return nil
-            }
+            AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { (result) in
+                
+            })
+            
         }
     }
     func updatecodeBtnTitle() {
