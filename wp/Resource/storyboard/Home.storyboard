@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -135,28 +134,8 @@
                                                     <color key="textColor" red="0.22352941176470587" green="0.24313725490196078" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="起飞时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okT-ao-hUT">
-                                                    <rect key="frame" x="44" y="44" width="78" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="C6I-uQ-lu3"/>
-                                                        <constraint firstAttribute="width" constant="78" id="wzG-lP-Jwl"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="12:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIM-FB-MqF">
-                                                    <rect key="frame" x="44" y="61.5" width="78" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="78" id="YJ0-R4-i6M"/>
-                                                        <constraint firstAttribute="height" constant="24" id="qG0-kh-Enu"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="航班号1222" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAd-5m-VeY">
-                                                    <rect key="frame" x="132" y="44" width="190" height="36"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="航班号1222" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAd-5m-VeY">
+                                                    <rect key="frame" x="14" y="44" width="325" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="36" id="aat-jP-SEC"/>
                                                     </constraints>
@@ -168,18 +147,14 @@
                                             <color key="backgroundColor" red="0.97647058823529409" green="0.97254901960784312" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="iYg-e5-ffv" firstAttribute="top" secondItem="bcw-La-lWF" secondAttribute="top" constant="9" id="4Xi-2d-ozN"/>
-                                                <constraint firstItem="okT-ao-hUT" firstAttribute="top" secondItem="VTs-Vi-D5N" secondAttribute="bottom" constant="10" id="4tT-Jj-Igq"/>
-                                                <constraint firstItem="okT-ao-hUT" firstAttribute="leading" secondItem="bcw-La-lWF" secondAttribute="leading" constant="44" id="9AW-21-Tan"/>
-                                                <constraint firstItem="EAd-5m-VeY" firstAttribute="leading" secondItem="yIM-FB-MqF" secondAttribute="trailing" constant="10" id="AnG-8F-TPm"/>
                                                 <constraint firstItem="iYg-e5-ffv" firstAttribute="leading" secondItem="bcw-La-lWF" secondAttribute="leading" constant="14" id="AoB-k4-hbo"/>
                                                 <constraint firstItem="EAd-5m-VeY" firstAttribute="top" secondItem="VTs-Vi-D5N" secondAttribute="bottom" constant="10" id="DH0-Cm-609"/>
                                                 <constraint firstItem="VTs-Vi-D5N" firstAttribute="top" secondItem="iYg-e5-ffv" secondAttribute="bottom" constant="10" id="ED0-tI-j2B"/>
-                                                <constraint firstItem="yIM-FB-MqF" firstAttribute="leading" secondItem="bcw-La-lWF" secondAttribute="leading" constant="44" id="FyR-2I-7VX"/>
                                                 <constraint firstAttribute="trailing" secondItem="VTs-Vi-D5N" secondAttribute="trailing" constant="12" id="Goy-nr-UcT"/>
                                                 <constraint firstAttribute="trailing" secondItem="iYg-e5-ffv" secondAttribute="trailing" constant="12" id="kgQ-qV-6nQ"/>
-                                                <constraint firstItem="yIM-FB-MqF" firstAttribute="top" secondItem="okT-ao-hUT" secondAttribute="bottom" multiplier="0.9" id="mSk-hv-8ff"/>
                                                 <constraint firstItem="VTs-Vi-D5N" firstAttribute="leading" secondItem="bcw-La-lWF" secondAttribute="leading" constant="12" id="nva-A2-nta"/>
-                                                <constraint firstAttribute="trailing" secondItem="EAd-5m-VeY" secondAttribute="trailing" constant="29" id="pnI-Lj-NZ0"/>
+                                                <constraint firstAttribute="trailing" secondItem="EAd-5m-VeY" secondAttribute="trailing" constant="12" id="pnI-Lj-NZ0"/>
+                                                <constraint firstItem="EAd-5m-VeY" firstAttribute="leading" secondItem="bcw-La-lWF" secondAttribute="leading" constant="14" id="sxt-xL-of5"/>
                                             </constraints>
                                         </view>
                                     </subviews>
@@ -220,7 +195,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eTt-kp-IPh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1118" y="-256"/>
+            <point key="canvasLocation" x="-1119.2" y="-256.82158920539734"/>
         </scene>
         <!--我的推单-->
         <scene sceneID="NzB-IG-GsY">

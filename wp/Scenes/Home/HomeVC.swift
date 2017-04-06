@@ -18,7 +18,7 @@ class HomeVC: BaseTableViewController {
     //交易明细数据
     lazy var flowListArray: [FlowOrdersList] =  [FlowOrdersList]()
     
-     lazy var FlightModelArry: [FlightModel] =  [FlightModel]()
+    lazy var flightModelArry: [FlightModel] =  [FlightModel]()
     //行情数据
     lazy var marketArray: [KChartModel] = []
     @IBOutlet weak var bannerView: BannerView!
@@ -41,7 +41,7 @@ class HomeVC: BaseTableViewController {
         super.viewDidLoad()
         tableView.showsVerticalScrollIndicator = false
         registerNotify()
-//        initData()
+        initData()
         initUI()
     }
     deinit {
@@ -56,24 +56,62 @@ class HomeVC: BaseTableViewController {
         let bannerStr = "http://upload-images.jianshu.io/upload_images/961368-77eb018b3fb23d07.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"
         bannerView.bannerData = ["http://upload-images.jianshu.io/upload_images/961368-e215d5256123aea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" as AnyObject,bannerStr as AnyObject]
         noticeView.isHidden = true
-        
-        
-        let info = GetUserInfo()
-        info.requestPath = "/api/route/infos.json"
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-       
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: info, reseponse: { (result) in
-        
-            let dic = result as! Array<Dictionary<String, Any>>
-            
-            for datadic in dic{
-            
-            
-            }
-        
-        }) { (error ) in
-            
+        if self.flightModelArry.count == 0{
+            self.footErrorView.alpha = 1
+            self.errorImage.image = UIImage.init(named: "shouye-shujujiazai")
+            self.errorLabel.text = "正在同步市场实时数据..."
+        }else{
+            self.footErrorView.alpha = 0
+            self.footErrorView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
         }
+        if checkLogin(){
+            
+            let info = GetUserInfo()
+            info.requestPath = "/api/route/infos.json"
+            info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+            
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: info, reseponse: { [weak self](result) in
+                
+                let dic = result as! Array<Dictionary<String, AnyObject>>
+                
+                for datadic in dic{
+                    
+                    let arr  = datadic["flights"] as! Array<Dictionary<String, AnyObject>>
+                    for detail in arr{
+                        
+                        let flightModel =  FlightModel()
+                        flightModel.flightSpacePrice = detail["flightSpacePrice"] as! Double
+                        flightModel.flightNumber = detail["flightNumber"] as! String
+                        flightModel.flightSpacePrice = detail["flightSpacePrice"] as! Double
+                        flightModel.flightId  = detail["flightId"] as! Int
+                        flightModel.routeId   =  datadic["routeId"] as! Int
+                        
+                        flightModel.flightNumber = detail["flightNumber"] as! String
+                        flightModel.routeName = datadic["routeName"] as! String
+                        self?.flightModelArry.append(flightModel)
+                        
+                    }
+                    
+                    
+                    
+                    
+                }
+                
+                if self?.flightModelArry.count == 0{
+                    self?.footErrorView.alpha = 1
+                    self?.errorImage.image = UIImage.init(named: "shouye-shujujiazai")
+                    self?.errorLabel.text = "正在同步市场实时数据..."
+                }else{
+                    self?.footErrorView.alpha = 0
+                    self?.footErrorView.frame = CGRect.init(x: 0, y: 0, width: 0, height: 0)
+                }
+                self?.tableView.reloadData()
+                
+            }) { (error ) in
+                
+            }
+        }
+      
         
 //        //每隔3秒请求商品报价
 //        priceTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(initRealTimeData), userInfo: nil, repeats: true)
@@ -135,15 +173,24 @@ class HomeVC: BaseTableViewController {
 //                self?.footErrorView.alpha = 1
 //        })
     }
+    
     //MARK: --UI
     func initUI() {
         bannerView.bannerDelegate = self
         title = "航空运费定盘"
+        
         navigationController?.addSideMenuButton()
         tableView.tableHeaderView?.layer.shadowColor = UIColor.black.cgColor
         tableView.tableHeaderView?.layer.shadowOpacity = 0.1
         tableView.tableHeaderView?.layer.shadowOffset = CGSize(width: 0.5, height: 0.5)
         tableView.backgroundColor = UIColor(rgbHex: 0xffffff)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+    }
+    
+    func updateUI() {
+    
+        initData()
     }
     
 }
@@ -151,15 +198,18 @@ class HomeVC: BaseTableViewController {
 extension HomeVC{
     //MARK: --table's delegate and datasource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return marketArray.count
+        return flightModelArry.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell : ProdectCell = tableView.dequeueReusableCell(withIdentifier: ProdectCell.className()) as! ProdectCell
-        if indexPath.item < marketArray.count {
-            cell.kChartModel = marketArray[indexPath.item]
-       
-        }
+//        if indexPath.item < marketArray.count {
+//            cell.kChartModel = marketArray[indexPath.item]
+//       
+//        }
+    let model = flightModelArry[indexPath.row]
+        cell.nowPrice.text = model.flightNumber
+        cell.productName.text = model.routeName
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

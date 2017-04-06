@@ -14,6 +14,7 @@ class UserInfoVCCell: UITableViewCell {
     
     @IBOutlet weak var leftLb: UILabel!
     
+    @IBOutlet weak var line: UILabel!
     
 }
 class UserInfoVC: BaseTableViewController {
@@ -26,7 +27,7 @@ class UserInfoVC: BaseTableViewController {
         
         
         
-        titltArr = UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
+        titltArr = UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","企业信息"]
         title = UserInfoVCModel.share().getCurrentUser()?.userType == 0  ? "个人信息" : "企业信息"
         initData()
     }
@@ -72,21 +73,45 @@ class UserInfoVC: BaseTableViewController {
        cell.leftLb.text = titltArr[indexPath.row]
         if indexPath.row == 0 {
 //            cell.rightLb.text = mode_t
-            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.name
+            cell.line.isHidden = true
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? model.name :  model.name
 
             
         }
         if indexPath.row == 1 {
-            
-            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? model.identityCard :  model.identityCard
+            cell.line.isHidden = true
+
+            if model.identityCard != ""{
+                
+                let str = "\(model.identityCard)"
+                let index = str.index(str.startIndex,  offsetBy: 4)
+                let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-5)
+                
+                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index)
+            }
+           
             
         }
         
         if indexPath.row == 2 {
-            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? model.phoneNum :  model.phoneNum
+            cell.line.isHidden = titltArr.count == 3 ? false : true
+            if model.phoneNum != ""{
+                
+                let str = "\(model.phoneNum)"
+                let index = str.index(str.startIndex,  offsetBy: 3)
+                let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-4)
+                
+                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "****" +  str.substring(from: index1) :  str.substring(to: index)
+            }
+
+            
         }
 
         if indexPath.row == 3 {
+            
+            
+            cell.line.isHidden = false
+
             cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.phoneNum
             
         }

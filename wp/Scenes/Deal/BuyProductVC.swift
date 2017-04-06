@@ -9,7 +9,7 @@
 import UIKit
 import DKNightVersion
 import SVProgressHUD
-class BuyProductVC: UIViewController {
+class BuyProductVC: UIViewController , UITextFieldDelegate{
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var residueCountLabel: UILabel!
@@ -44,8 +44,27 @@ class BuyProductVC: UIViewController {
         
         let text = "当前舱位航班 : \(flightModel!.flightNumber)"
         cangWeiLabel.setAttributeText(text: text, firstFont: 16.0, secondFont: 16.0, firstColor: UIColor(hexString: "666666"), secondColor: UIColor(hexString: "333333"), range: NSMakeRange(9, text.length() - 9))
+        NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange(_:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+
+
     }
+    func textFieldDidChange(_ sender: UITextField) {
+
     
+        guard countTextField.text != nil else {
+            return
+        }
+        let count = Double(countTextField.text!)
+        guard Int(count!) <= flightModel!.flightSpaceNumber else {
+            
+            SVProgressHUD.showWainningMessage(WainningMessage: "购买数量不能超过剩余舱位数量", ForDuration: 1.5, completion: nil)
+            countTextField.text = countTextField.text?.substring(to: (countTextField.text?.index(before: (countTextField.text?.endIndex)!))!)
+            return
+        }
+    
+        let priceText = "此次成交额￥\(count! * flightModel!.flightSpacePrice)"
+        priceLabel.setAttributeText(text: priceText, firstFont: 16.0, secondFont: 20.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range:NSMakeRange(5, priceText.length() - 5))
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -67,13 +86,18 @@ class BuyProductVC: UIViewController {
     @IBAction func cancelBtnTapped(_ sender: UIButton) {
         dismissController()
     }
-    
+
+
     @IBAction func buyBtnTapped(_ sender: UIButton) {
 
         guard flightModel != nil else {return}
+        guard countTextField.text != nil else {
+            return
+        }
         view.isUserInteractionEnabled = false
         let model = BuyPositionModel()
         model.requestPath = "/api/trade/flight/buy.json"
+        model.token = UserDefaults.standard.string(forKey: SocketConst.Key.token)!
         model.flightId = flightModel!.flightId
         model.flightNumber = flightModel!.flightNumber
         model.flightSpacePrice = flightModel!.flightSpacePrice
@@ -92,4 +116,7 @@ class BuyProductVC: UIViewController {
         
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
