@@ -40,6 +40,7 @@ class HttpRequestModel: Object {
             }
         }
         mutabledic.setValue(signString.getSignString(), forKey: "sign")
+        mutabledic.removeObject(forKey: "requestPath")
         return mutabledic
     }
     
