@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.deviceModel = UIDevice.current.model
         model.deviceName = UIDevice.current.systemName
         model.osVersion = UIDevice.current.systemVersion
+        model.requestPath = "/api/device/register.json"
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
             

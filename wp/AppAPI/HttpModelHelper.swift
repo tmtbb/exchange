@@ -39,10 +39,13 @@ class HttpRequestModel: Object {
                 mutabledic.setValue(self[prop.name], forKey: prop.name)
             }
         }
+          mutabledic.removeObject(forKey: "requestPath")
         mutabledic.setValue(signString.getSignString(), forKey: "sign")
         mutabledic.removeObject(forKey: "requestPath")
         return mutabledic
     }
+    
+  
     
 
 }
