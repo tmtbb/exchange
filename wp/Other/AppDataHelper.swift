@@ -246,10 +246,10 @@ class AppDataHelper: NSObject {
         let model : GetCodetype = GetCodetype()
         model.phoneNum = phone
         model.codeType = type
-        
+        model.requestPath = "/api/sms/code.json"
 
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
-            reseponse(result as! AnyClass)
+            reseponse(result)
         }) { (error) in
             
         }
