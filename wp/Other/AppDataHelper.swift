@@ -247,6 +247,7 @@ class AppDataHelper: NSObject {
         model.phoneNum = phone
         model.codeType = type
         
+
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
             reseponse(result as! AnyClass)
         }) { (error) in
