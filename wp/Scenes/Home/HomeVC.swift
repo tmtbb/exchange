@@ -17,6 +17,8 @@ class HomeVC: BaseTableViewController {
     
     //交易明细数据
     lazy var flowListArray: [FlowOrdersList] =  [FlowOrdersList]()
+    
+     lazy var FlightModelArry: [FlightModel] =  [FlightModel]()
     //行情数据
     lazy var marketArray: [KChartModel] = []
     @IBOutlet weak var bannerView: BannerView!
@@ -55,9 +57,27 @@ class HomeVC: BaseTableViewController {
         bannerView.bannerData = ["http://upload-images.jianshu.io/upload_images/961368-e215d5256123aea3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" as AnyObject,bannerStr as AnyObject]
         noticeView.isHidden = true
         
-        //每隔3秒请求商品报价
-        priceTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(initRealTimeData), userInfo: nil, repeats: true)
-        DealModel.share().addObserver(self, forKeyPath: AppConst.KVOKey.allProduct.rawValue, options: .new, context: nil)
+        
+        let info = GetUserInfo()
+        info.requestPath = "/api/route/infos.json"
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+       
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: info, reseponse: { (result) in
+        
+            let dic = result as! Array<Dictionary<String, Any>>
+            
+            for datadic in dic{
+            
+            
+            }
+        
+        }) { (error ) in
+            
+        }
+        
+//        //每隔3秒请求商品报价
+//        priceTimer = Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(initRealTimeData), userInfo: nil, repeats: true)
+//        DealModel.share().addObserver(self, forKeyPath: AppConst.KVOKey.allProduct.rawValue, options: .new, context: nil)
         
         
     }

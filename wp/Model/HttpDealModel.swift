@@ -14,7 +14,10 @@ class FlightModel: Object {
     var flightId = 0
     var flightNumber = ""
     var flightSpacePrice = 0.0
-    var flightSpaceNumber = 0
+   var routeId = 0
+     var routeName = ""
+     var flightSpaceNumber = 0
+
 }
 class RequestFlightModel: TokenRequestModel {
     var routeId = 0

@@ -196,6 +196,7 @@ class AppDataHelper: NSObject {
         
             let model = TokenModel()
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+
             model.requestPath = "/api/user/refreshToken.json"
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
                 if let json = responseObject as? Dictionary<String, AnyObject> {

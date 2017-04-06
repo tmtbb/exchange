@@ -46,7 +46,7 @@ class PwdVC: BaseTableViewController {
                     SVProgressHUD.showWainningMessage(WainningMessage: "设定成功", ForDuration: 1, completion: {
                         //                            self?.navigationController?.popToRootViewController(animated: true)
                         self?.performSegue(withIdentifier: NickNameVC.className(), sender: nil)
-                        self?.fetchUserInfo(phone: UserModel.share().phone!, pwd: password)
+//                        self?.fetchUserInfo(phone: UserModel.share().phone!, pwd: password)
                     })
                     return nil
                 }, error: errorBlockFunc())
@@ -64,7 +64,7 @@ class PwdVC: BaseTableViewController {
             SVProgressHUD.dismiss()
             //存储用户信息
             if result != nil{
-                UserModel.share().upateUserInfo(userObject: result!)
+//                UserModel.share().upateUserInfo(userObject: result!)
             }else{
                 SVProgressHUD.showErrorMessage(ErrorMessage: "更新用户信息失败", ForDuration: 1, completion: nil)
             }
