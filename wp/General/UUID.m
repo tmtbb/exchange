@@ -9,8 +9,8 @@
 #import "UUID.h"
 #import "KeyChainStore.h"
 #define  KEY_USERNAME_PASSWORD @"com.company.app.usernamepassword"
-#define  KEY_USERNAME @"com.company.app.username"
-#define  KEY_PASSWORD @"com.company.app.password"
+#define  KEY_USERNAME @"deviceKeyId"
+#define  KEY_PASSWORD @"deviceKey"
 
 @implementation UUID
 
@@ -32,24 +32,30 @@
     }
     return strUUID;
 }
-
-+(NSString *)saveUUID :(NSString *)uuid
-{
-    NSString * strUUID = (NSString *)[KeyChainStore load:@"com.company.app.usernamepassword"];
++(NSString *)getData:(NSString *)withKey{
     
-    //首次执行该方法时，uuid为空
-    if ([strUUID isEqualToString:@""] || !strUUID)
-    {
-        //生成一个uuid的方法
-        CFUUIDRef uuidRef = CFUUIDCreate(kCFAllocatorDefault);
-        
-        strUUID = (NSString *)CFBridgingRelease(CFUUIDCreateString (kCFAllocatorDefault,uuidRef));
-        
-        //将该uuid保存到keychain
-        [KeyChainStore save:KEY_USERNAME_PASSWORD data:strUUID];
-        
+    NSString * str = (NSString *)[KeyChainStore load:withKey];
+    return str;
+
+}
++(void)saveUUID :(NSString *)deviceID withKey:(NSString *)withKey
+{
+     [KeyChainStore save:withKey data:deviceID];
+}
++(void)saveDataWith:(NSString *)data{
+
+}
+//判断本地是否有deciceid
++(BOOL)cheDevivce:(NSString *)key{
+
+    NSString * strUUID = (NSString *)[KeyChainStore load:key];
+    if ([strUUID isEqualToString:@""] || !strUUID){
+    
+        return  NO;
     }
-    return strUUID;
+
+    return YES;
+
 }
 
 

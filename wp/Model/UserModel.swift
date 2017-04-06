@@ -8,7 +8,7 @@
 
 import UIKit
 import RealmSwift
-
+private let keychainItem:OEZKeychainItemWrapper = OEZKeychainItemWrapper(identifier: "com.yundian.viossvc.account", accessGroup:nil)
 class UserModel: BaseModel  {
     private static var model: UserModel = UserModel()
     class func share() -> UserModel {
@@ -139,6 +139,14 @@ class UserModel: BaseModel  {
         try! realm.write {
             info!(nil)
         }
+    }
+    
+    func nodifyPassword(password:String) {
+        keychainItem.setObject(password, forKey: kSecValueData)
+    }
+    
+    func lastLoginAccount()->(phone:String?,password:String?){
+        return (keychainItem.object(forKey: kSecAttrAccount) as? String,keychainItem.object(forKey: kSecValueData) as? String)
     }
     
 
