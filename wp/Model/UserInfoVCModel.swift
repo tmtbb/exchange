@@ -8,12 +8,17 @@
 //
 
 import UIKit
-
-class UserInfoVCModel: NSObject {
+import RealmSwift
+class UserInfoVCModel: Object {
     
     
     var Model : UserInfoVCModel?
-    
+    var status : Int = 0
+    var userType : Int = 0
+    var phoneNum : String = ""
+    var name : String = ""
+    var balance : Double = 0
+    var userId : Int64 = 0
     private static var model: UserInfoVCModel = UserInfoVCModel()
     class func share() -> UserInfoVCModel{
         return model

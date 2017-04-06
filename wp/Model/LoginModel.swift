@@ -27,6 +27,6 @@ class GetDeviceKey: HttpRequestModel {
 
 class TokenModel: HttpRequestModel {
     
-    var token = UserDefaults.standard.value(forKey: SocketConst.Key.token)
+    var token = "\(UserDefaults.standard.value(forKey: SocketConst.Key.token))"
 
 }
