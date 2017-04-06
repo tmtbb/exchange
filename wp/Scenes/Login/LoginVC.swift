@@ -69,6 +69,7 @@ class LoginVC: BaseTableViewController {
             
                     let model : LoginModel = LoginModel()
                     model.phoneNum = phoneText.text!
+                    model.password = pwdText.text!
                     model.requestPath = "/api/user/login.json"
             
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in

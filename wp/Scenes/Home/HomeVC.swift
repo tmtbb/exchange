@@ -215,14 +215,14 @@ extension HomeVC{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 0 {
-            let price = marketArray[indexPath.item]
-            for (index,model) in DealModel.share().productKinds.enumerated(){
-                if price.symbol ==  model.symbol{
-                    DealModel.share().selectProductIndex = index
-                    DealModel.share().selectProduct = model
-                    break
-                }
-            }
+//            let price = marketArray[indexPath.item]
+//            for (index,model) in DealModel.share().productKinds.enumerated(){
+//                if price.symbol ==  model.symbol{
+//                    DealModel.share().selectProductIndex = index
+//                    DealModel.share().selectProduct = model
+//                    break
+//                }
+//            }
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.SelectKind), object: nil, userInfo: nil)
             tabBarController?.selectedIndex = 1
         }

@@ -68,28 +68,15 @@ class UserTableViewController: BaseTableViewController {
 //        logoutButton.layer.borderColor = UIColor(hexString: "#cccccc").cgColor
         registerNotify()
         //更新token
-        AppDataHelper.instance().checkTokenLogin()
+//        AppDataHelper.instance().checkTokenLogin()
 
         requstTotalHistroy()
         initReceiveBalanceBlock()
         if checkLogin() {
-            loginSuccessIs(bool: true)
-            memberImageView.isHidden = UserModel.share().getCurrentUser()?.type == 0
-            if UserModel.share().getCurrentUser() == nil {
-                memberImageView.isHidden = true
-            }
-            guard UserModel.share().currentUser != nil else {return}
-            nameLabel.text = formatMoneyString(balance: UserModel.share().currentUser!.balance)
-            if UserModel.share().getCurrentUser()!.balance > 999999.0 {
-                nameLabel.adjustsFontSizeToFitWidth = true
-            }
-            
-
-        }  else{
-            loginSuccessIs(bool: false)
-            tableView.isScrollEnabled = false
+            let model = UserInfoVCModel()
+             UserInfoVCModel.share().upateUserInfo(userObject: model)
+            self.nameLabel.text = String.init(format: "%.2f", (UserInfoVCModel.share().getCurrentUser()?.balance)!)
         }
-        
       
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -139,13 +126,6 @@ class UserTableViewController: BaseTableViewController {
     
     func requstTotalHistroy() {
         
-        AppAPIHelper.user().getTotalHistoryData(complete: { [weak self](result) -> ()? in
-            if let model = result as? TotalHistoryModel {
-                self?.propertyNumber.text = "\(model.amount)"
-                self?.integralLabel.text = "\(model.count)"
-            }
-            return nil
-        }, error: errorBlockFunc())
     }
     //MARK: -- 添加通知
     func registerNotify() {
@@ -187,6 +167,10 @@ class UserTableViewController: BaseTableViewController {
         memberImageView.isHidden = UserModel.share().getCurrentUser()?.type == 0
         //用户余额数据请求
         UserModel.share().currentUser?.addObserver(self, forKeyPath: AppConst.KVOKey.balance.rawValue, options: .new, context: nil)
+        let model = UserInfoVCModel()
+        UserInfoVCModel.share().upateUserInfo(userObject: model)
+        self.nameLabel.text = String.init(format: "%.2f", (UserInfoVCModel.share().getCurrentUser()?.balance)!)
+        
 //        AppAPIHelper.user().accinfo(complete: {[weak self](result) -> ()? in
 //
 //            if let object = result as? Dictionary<String,Any> {
