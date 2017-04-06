@@ -60,6 +60,7 @@ class RegisterVC: BaseTableViewController {
             model.codeType = 0
            
         
+            
             AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { (result) in
                 
             })
@@ -146,21 +147,22 @@ class RegisterVC: BaseTableViewController {
         model.codeToken = UserModel.share().codeToken
         model.fullName = realName.text!
         model.identityCar = cardTd.text!
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (result) in
-            
+        
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
             let datadic = result as? Dictionary<String,AnyObject>
             
             if let _ =  datadic?["data"]?["token"]{
                 
-                  SVProgressHUD.showSuccess(withStatus: "注册成功")
-                  UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
+                SVProgressHUD.showSuccess(withStatus: "注册成功")
+                UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
                 self.perform(#selector(self.registSuccess), with: self, afterDelay: 2)
                 
-//                self.perform(Selector(registSuccess), with: self, afterDelay: 2)
+                //                self.perform(Selector(registSuccess), with: self, afterDelay: 2)
             }
-            
+        }) { (error) in
             
         }
+
         
 //        AppAPIHelper.login().register(phone: UserModel.share().phone!, code: UserModel.share().code!, pwd: password, complete: { [weak self](result) -> ()? in
 //            SVProgressHUD.dismiss()

@@ -35,9 +35,12 @@ class UserInfoVC: BaseTableViewController {
     
         let info = GetUserInfo()
         info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
-             
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+            
+        }) { (error) in
+            
         }
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

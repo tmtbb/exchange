@@ -202,8 +202,10 @@ class AppDataHelper: NSObject {
                     UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
                     self.getUserInfo()
                 }
+            }, failure: { (error) in
                 
             })
+      
         }
 
     }
@@ -232,11 +234,12 @@ class AppDataHelper: NSObject {
         
         let info = GetUserInfo()
         info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
-        
-        UserInfoVCModel.share().Model = result as? UserInfoVCModel
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+            
+        }) { (error) in
+            
         }
-       
+
     }
     //获取验证码
     func getVailCode(phone : String, type : Int  ,reseponse:@escaping reseponseBlock)  {
@@ -244,14 +247,13 @@ class AppDataHelper: NSObject {
         model.phoneNum = phone
         model.codeType = type
         
-        
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  [weak self](result) in
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+            reseponse(result as! AnyClass)
+        }) { (error) in
             
-          reseponse(result as! AnyClass)
-
-            //                return nil
         }
     }
+
     
     
 }

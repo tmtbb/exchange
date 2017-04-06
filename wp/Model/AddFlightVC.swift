@@ -119,8 +119,9 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     
     func addFlight() {
         let model = AddFlightModel()
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (resonseObject) in
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
             
+        }) { (errpr) in
             
         }
         

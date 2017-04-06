@@ -81,12 +81,17 @@ class BuyProductVC: UIViewController {
         model.flightNumber = flightModel!.flightNumber
         model.flightSpacePrice = flightModel!.flightSpacePrice
         model.buyNum = 0
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (responseObject) in
+        
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
             self.view.isUserInteractionEnabled = true
             self.dismissController()
 
-            
+        }) { (error) in
+            self.view.isUserInteractionEnabled = true
+            self.dismissController()
+
         }
+
         
     }
     

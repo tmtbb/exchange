@@ -65,15 +65,10 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     //MARK: --DATA
     func initData() {
-        //初始化持仓数据
-//        initDealTableData()
-//        refreshUserCash()
-        //初始化下商品数据
         titleView.objects = DealModel.share().productKinds
         if let selectProduct = DealModel.share().selectProduct{
             didSelectedObject(titleView, object: selectProduct)
         }
-//        initRealTimeData()
         
         requestFlightInfo()
     }
@@ -81,11 +76,11 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     func requestFlightInfo() {
         let model = RequestFlightModel()
         model.requestPath = "route/flights.html"
-        HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: FlightModel.self) { (responseObject) in
+        HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: FlightModel.self, reseponse: { (responseObject) in
             
+        }) { (error) in
             
         }
-        
         
     }
     func initKVOAndNotice(){
