@@ -20,19 +20,16 @@ class HttpRequestModel: Object {
     
     
     func toDictionary() -> NSDictionary{
+        if UserDefaults.standard.object(forKey: "deviceKeyId")  == nil{
+            self.keyId = 34474661562457
+        }else{
+            self.keyId =  UserDefaults.standard.object(forKey: "deviceKeyId") as! Int
+        }
         let properties = objectSchema.properties.map { $0.name }
         let dictionary = dictionaryWithValues(forKeys: properties)
         let mutabledic = NSMutableDictionary()
         mutabledic.setValuesForKeys(dictionary)
-        
-        if UserDefaults.standard.object(forKey: "deviceKeyId")  == nil{
-        
-            self.keyId = 34474661562457
-        }else{
-           self.keyId =  UserDefaults.standard.object(forKey: "deviceKeyId") as! Int
-        }
         var signString = AppConst.Network.TttpHostUrl + requestPath
-        
         for prop in objectSchema.properties as [Property]! {
             if prop.name == "requestPath" {
                 continue

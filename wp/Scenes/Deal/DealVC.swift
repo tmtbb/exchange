@@ -49,7 +49,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         super.viewWillAppear(true)
         showTabBarWithAnimationDuration()
         requestRouteList()
-
+        self.myMoneyLabel.text = "\(UserInfoVCModel.share().getCurrentUser()!.balance)"
         refreshTitleView()
         
     }
@@ -74,7 +74,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     func requestRouteList() {
     
-        if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String  {            
+        if let _ = UserDefaults.standard.value(forKey: SocketConst.Key.token)   {
             let model = TokenRequestModel()
             model.requestPath = "/api/route/index.json"
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
@@ -190,12 +190,13 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     @IBAction func dealBtnTapped(_ sender: UIButton) {
         tableView.scrollToRow(at: IndexPath.init(row: 3, section: 0), at: .top, animated: false)
         if checkLogin(){
-            if DealModel.share().buyProduct == nil {
-                SVProgressHUD.showWainningMessage(WainningMessage: "暂无商品信息", ForDuration: 1.5, completion: nil)
+            if titleView.objects?.count == 0 {
+                SVProgressHUD.showWainningMessage(WainningMessage: "暂无航班信息", ForDuration: 1.5, completion: nil)
                 return
             }
             
             let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: BuyProductVC.className()) as! BuyProductVC
+            controller.flightModel = listDataSource.dataArray?[listDataSource.selectIndex]
             controller.modalPresentationStyle = .custom
             controller.modalTransitionStyle = .crossDissolve
             controller.resultBlock = { [weak self](result) in

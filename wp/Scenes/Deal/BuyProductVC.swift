@@ -17,8 +17,6 @@ class BuyProductVC: UIViewController {
     
     @IBOutlet weak var minCountLabel: UILabel!
     @IBOutlet weak var maxCountLabel: UILabel!
-    @IBOutlet weak var moneyLabel: UILabel!
-    @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var buyBtn: UIButton!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var cangWeiLabel: UILabel!
@@ -35,16 +33,16 @@ class BuyProductVC: UIViewController {
         super.viewDidLoad()
         initUI()
         
-        let residueCountText = "当前仓位剩余数量 200"
+        let residueCountText = "当前仓位剩余数量 \(flightModel!.flightSpaceNumber)"
         residueCountLabel.setAttributeText(text: residueCountText, firstFont: 14.0, secondFont: 18.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range: NSMakeRange(9, residueCountText.length() - 9))
         
         
-        let priceText = "此次成交额￥20.5"
+        let priceText = "此次成交额￥0.0"
         priceLabel.setAttributeText(text: priceText, firstFont: 16.0, secondFont: 20.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range:NSMakeRange(5, priceText.length() - 5))
         
         
         
-        let text = "当前舱位航班 : FB2313"
+        let text = "当前舱位航班 : \(flightModel!.flightNumber)"
         cangWeiLabel.setAttributeText(text: text, firstFont: 16.0, secondFont: 16.0, firstColor: UIColor(hexString: "666666"), secondColor: UIColor(hexString: "333333"), range: NSMakeRange(9, text.length() - 9))
     }
     
@@ -74,13 +72,12 @@ class BuyProductVC: UIViewController {
 
         guard flightModel != nil else {return}
         view.isUserInteractionEnabled = false
-
-        
         let model = BuyPositionModel()
+        model.requestPath = "/api/trade/flight/buy.json"
         model.flightId = flightModel!.flightId
         model.flightNumber = flightModel!.flightNumber
         model.flightSpacePrice = flightModel!.flightSpacePrice
-        model.buyNum = 0
+        model.buyNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
             self.view.isUserInteractionEnabled = true

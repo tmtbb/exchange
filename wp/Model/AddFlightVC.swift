@@ -166,7 +166,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
                 SVProgressHUD.showSuccess(withStatus: "添加成功")
                 _ = self.navigationController?.popViewController(animated: true)
-            }) { (errpr) in
+            }) { (error) in
                 
             }
         }
@@ -174,21 +174,47 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
 
     }
     func addFlight() {
-        let model = AddFlightModel()
-        model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
-        model.requestPath = "/api/route/flight/add.json"
-        model.routeId = 10001
-        model.flightNumber = "ABCDE"
-        model.flightSpacePrice = 11.11
-        model.flightSpaceNumber = 22
-        model.phoneNum = "13958104695"
-        model.phoneCode = "111111"
-        model.codeToken = "4B8044D1BD1D4F3EB389E632B98B1278"
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
-            
-        }) { (errpr) in
-            
+        
+        guard flightTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入航班号", ForDuration: 1.5, completion: nil)
+            return
         }
         
+        guard moneyTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入舱位价格", ForDuration: 1.5, completion: nil)
+            return
+        }
+        
+        guard countTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入舱位数量", ForDuration: 1.5, completion: nil)
+            return
+        }
+        guard autoCode?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请获取验证码", ForDuration: 1.5, completion: nil)
+            return
+        }
+        guard authCodeTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入验证码", ForDuration: 1.5, completion: nil)
+            return
+        }
+
+        
+        if let selectModel = dataSource?[selectRow] {
+            let model = AddFlightModel()
+            model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+            model.requestPath = "/api/route/flight/add.json"
+            model.routeId = selectModel.routeId
+            model.flightNumber = flightTextField.text!
+            model.flightSpacePrice = Double(moneyTextField.text!)!
+            model.flightSpaceNumber = Int(countTextField.text!)!
+            model.phoneNum = (UserInfoVCModel.share().getCurrentUser()!.phoneNum)
+            model.phoneCode = "111111"
+            model.codeToken = autoCode!
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
+                _  = self.navigationController?.popViewController(animated: true)
+            }) { (errpr) in
+                
+            }
+        }
     }
 }
