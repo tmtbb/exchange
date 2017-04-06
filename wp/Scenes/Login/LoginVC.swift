@@ -78,11 +78,11 @@ class LoginVC: BaseTableViewController {
                 let datadic = result as? Dictionary<String,AnyObject>
                 
                 if let _ =  datadic?["token"]{
-                    
+                     UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
                     SVProgressHUD.showSuccess(withStatus: "登录成功")
                     
-                    //                      UserModel.share().upateUserInfo(userObject: result)
-                    UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
+                    UserInfoVCModel.share().upateUserInfo(userObject: result)
+                   
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
                 }

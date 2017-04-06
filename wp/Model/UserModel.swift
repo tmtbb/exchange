@@ -93,28 +93,44 @@ class UserModel: BaseModel  {
     
     // 更新用户信息
     func upateUserInfo(userObject: AnyObject){
-        if let model = userObject as? UserInfoModel {
-            token = model.token!
-            //存储token
-            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
-            if let user = model.userinfo {
-                currentUserId = user.id
-                UserDefaults.standard.setValue(currentUserId, forKey: SocketConst.Key.uid)
+        
+        
+        let info = GetUserInfo()
+        info.requestPath = "/api/user/info.json"
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+            
+//          UserInfoVCModel.share().Model = result as? UserInfoVCModel
+          NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
 
-                updateRealm()
-                //存储uid
-                if let phone = user.phone{
-                    UserDefaults.standard.setValue(phone, forKey: SocketConst.Key.phone)
-                }
-                let realm = try! Realm()
-                try! realm.write {  
-                    currentUser  =  user
-                    realm.add(user, update: true)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-                    
-                }
-            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+            
+        }) { (error) in
+            
         }
+        
+//        if let model = userObject as? UserInfoModel {
+//            token = model.token!
+//            //存储token
+//            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
+//            if let user = model.userinfo {
+//                currentUserId = user.id
+//                UserDefaults.standard.setValue(currentUserId, forKey: SocketConst.Key.uid)
+//
+//                updateRealm()
+//                //存储uid
+//                if let phone = user.phone{
+//                    UserDefaults.standard.setValue(phone, forKey: SocketConst.Key.phone)
+//                }
+//                let realm = try! Realm()
+//                try! realm.write {  
+//                    currentUser  =  user
+//                    realm.add(user, update: true)
+//                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//                    
+//                }
+//            }
+//        }
     }
 
     // 更新用户某个字段
