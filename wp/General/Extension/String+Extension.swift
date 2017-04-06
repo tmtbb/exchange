@@ -43,7 +43,9 @@ extension String {
     }
     func getSignString() -> String {
         
-        return (self + "device_key=\(11)").md5_string()
+        
+        let str  = String.init(format: "%@", "24BFA1509B794899834AA9E24B447322")
+        return (self + "device_key=\(str)").md5_string()
     }
     
     func md5_string() -> String {
