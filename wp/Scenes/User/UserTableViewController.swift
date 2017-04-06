@@ -74,8 +74,8 @@ class UserTableViewController: BaseTableViewController {
         initReceiveBalanceBlock()
         if checkLogin() {
             let model = UserInfoVCModel()
-             UserInfoVCModel.share().upateUserInfo(userObject: model)
-            self.nameLabel.text = String.init(format: "%.2f", UserInfoVCModel.share().getCurrentUser()?.balance)
+//             UserInfoVCModel.share().upateUserInfo(userObject: model)
+//            self.nameLabel.text = String.init(format: "%.2f", (UserInfoVCModel.share().getCurrentUser()?.balance)!)
         }
       
     }
