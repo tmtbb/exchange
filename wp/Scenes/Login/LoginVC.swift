@@ -67,10 +67,11 @@ class LoginVC: BaseTableViewController {
         
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
             
-            let model : LoginModel = LoginModel()
-            model.phoneNum = phoneText.text!
-            model.password = pwdText.text!
-            model.requestPath = "/api/user/login.json"
+
+                    let model : LoginModel = LoginModel()
+                    model.phoneNum = phoneText.text!
+                    model.password = pwdText.text!
+                    model.requestPath = "/api/user/login.json"
             
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
                 SVProgressHUD.dismiss()

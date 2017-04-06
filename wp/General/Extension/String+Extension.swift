@@ -44,8 +44,8 @@ extension String {
     func getSignString() -> String {
         
         var str : String = ""
-        if UserDefaults.standard.object(forKey: "deviceKey") != nil {
-           str = UserDefaults.standard.object(forKey: "deviceKey") as! String
+        if UUID.cheDevivce("deviceKey") != false {
+           str = UUID.getData("deviceKey")
         }else{
         str = "24BFA1509B794899834AA9E24B447322"
         }
