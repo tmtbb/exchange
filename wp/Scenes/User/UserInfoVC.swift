@@ -19,13 +19,15 @@ class UserInfoVCCell: UITableViewCell {
 class UserInfoVC: BaseTableViewController {
 
     var titltArr = [String]()
+    
+    var model = UserInfoVCModel()
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
         
-        titltArr = UserModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
-        title = UserModel.share().getCurrentUser()?.userType == 0 ? "个人信息" : "企业信息"
+        titltArr = UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","qiyeyoux"]
+        title = UserInfoVCModel.share().getCurrentUser()?.userType == 0  ? "个人信息" : "企业信息"
         initData()
     }
     
@@ -34,12 +36,15 @@ class UserInfoVC: BaseTableViewController {
     func initData(){
     
         let info = GetUserInfo()
-//        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-//        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
-//            
-//        }) { (error) in
-//            
-//        }
+        info.requestPath = "/api/user/info.json"
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { [weak self](result) in
+            
+        self?.model = result as! UserInfoVCModel
+            self?.tableView.reloadData()
+        }) { (error) in
+            
+        }
 
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +69,28 @@ class UserInfoVC: BaseTableViewController {
        
        let cell : UserInfoVCCell = tableView.dequeueReusableCell(withIdentifier: "UserInfoVCCell", for: indexPath) as! UserInfoVCCell
        cell.selectionStyle = .none
-       cell.rightLb.text = titltArr[indexPath.row]
+       cell.leftLb.text = titltArr[indexPath.row]
+        if indexPath.row == 0 {
+//            cell.rightLb.text = mode_t
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.name
+
+            
+        }
+        if indexPath.row == 1 {
+            
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? model.identityCard :  model.identityCard
+            
+        }
+        
+        if indexPath.row == 2 {
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? model.phoneNum :  model.phoneNum
+        }
+
+        if indexPath.row == 3 {
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.phoneNum
+            
+        }
+
        return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

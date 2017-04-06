@@ -151,15 +151,15 @@ class RegisterVC: BaseTableViewController {
         model.phoneCode = codeText.text!
         model.codeToken = UserModel.share().codeToken
         model.fullName = realName.text!
-        model.identityCar = cardTd.text!
+        model.identityCard = cardTd.text!
         model.requestPath = "/api/user/register.json"
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
             let datadic = result as? Dictionary<String,AnyObject>
             
-            if let _ =  datadic?["data"]?["token"]{
+            if let _ =  datadic?["token"]{
                 
                 SVProgressHUD.showSuccess(withStatus: "注册成功")
-                UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
+                UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
                 self.perform(#selector(self.registSuccess), with: self, afterDelay: 2)
                 
                 //                self.perform(Selector(registSuccess), with: self, afterDelay: 2)

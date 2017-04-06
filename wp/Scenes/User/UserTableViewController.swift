@@ -187,18 +187,18 @@ class UserTableViewController: BaseTableViewController {
         memberImageView.isHidden = UserModel.share().getCurrentUser()?.type == 0
         //用户余额数据请求
         UserModel.share().currentUser?.addObserver(self, forKeyPath: AppConst.KVOKey.balance.rawValue, options: .new, context: nil)
-        AppAPIHelper.user().accinfo(complete: {[weak self](result) -> ()? in
-
-            if let object = result as? Dictionary<String,Any> {
-                if let  money =  object["balance"] as? Double {
-                self?.setBalanceText(balance: money)
-                } else {
-                    self?.nameLabel.text =  "0.00"
-                }
-            }
-
-            return nil
-            }, error: errorBlockFunc())
+//        AppAPIHelper.user().accinfo(complete: {[weak self](result) -> ()? in
+//
+//            if let object = result as? Dictionary<String,Any> {
+//                if let  money =  object["balance"] as? Double {
+//                self?.setBalanceText(balance: money)
+//                } else {
+//                    self?.nameLabel.text =  "0.00"
+//                }
+//            }
+//
+//            return nil
+//            }, error: errorBlockFunc())
 
     }
     

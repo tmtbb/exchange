@@ -31,5 +31,4 @@ class ProductModel: BaseModel {
      var unit: String = ""
      var price: Double = 0
     
-
 }
