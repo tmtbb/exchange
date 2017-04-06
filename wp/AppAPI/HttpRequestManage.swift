@@ -37,6 +37,7 @@ private static var instance = HttpRequestManage()
                 let obj = cls.init(value: dict, schema: RLMSchema.partialShared())
                 list.append(obj)
             }
+            return list
         }
         
         return []
@@ -66,8 +67,8 @@ private static var instance = HttpRequestManage()
         
     }
     func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
-
         postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>, reseponse: { (responseData) in
+
             reseponse(responseData)
 
         }, failure: failure)
@@ -95,6 +96,7 @@ private static var instance = HttpRequestManage()
      func postRequestJson(_ path:String, parameters:Dictionary<String, Any>,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         let urlPath = urlString + path
         debugPrint("startPostRequest:path\(path)")
+
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
             debugPrint("receivedPostRequest:path\(path)")
             if responseData.result.error == nil {
@@ -117,10 +119,8 @@ private static var instance = HttpRequestManage()
         var urlPath = urlString + path
         urlPath = urlPath + "?sign=\(urlPath.getSignString())"
         debugPrint("startGetRequest:path\(path)")
-        Alamofire.request(urlPath).responseJSON { (responseData) in
-            
+        Alamofire.request(urlPath).responseJSON { (responseData) in            
             debugPrint("receivedGetResponse:path\(path)")
-
             if responseData.result.error == nil {
                 let jsonDict = responseData.result.value as? Dictionary<String,AnyObject>
                 if let resData = jsonDict?["data"]  {

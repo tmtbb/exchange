@@ -68,8 +68,6 @@ class LoginVC: BaseTableViewController {
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
             
                     let model : LoginModel = LoginModel()
-                    model.requestPath = ""
-                    model.password = pwdText.text!
                     model.phoneNum = phoneText.text!
                     model.requestPath = "/api/user/login.json"
             
@@ -80,9 +78,9 @@ class LoginVC: BaseTableViewController {
                 if let _ =  datadic?["token"]{
                      UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
                     SVProgressHUD.showSuccess(withStatus: "登录成功")
-                    
                     UserInfoVCModel.share().upateUserInfo(userObject: result)
                    
+
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
                 }
