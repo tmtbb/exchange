@@ -16,13 +16,13 @@ class UserInfoVCModel: Object {
         return model
     }
  
-        var status : Int = 0
-        var userType : Int = 0
-        var phoneNum : String = ""
-        var name : String = ""
-        var balance : Double = 0
-        var userId : Int64 = 0
-        var identityCard : String = ""
+    dynamic var status : Int = 0
+    dynamic var userType : Int = 0
+    dynamic var phoneNum : String = ""
+    dynamic  var name : String = ""
+    dynamic var balance : Double = 0
+    dynamic var userId : Int64 = 0
+    dynamic var identityCard : String = ""
 //        var currentUser: UserInfoVCModel?
     // UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
        var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
