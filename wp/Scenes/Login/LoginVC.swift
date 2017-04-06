@@ -67,6 +67,7 @@ class LoginVC: BaseTableViewController {
         
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
             
+
                     let model : LoginModel = LoginModel()
                     model.phoneNum = phoneText.text!
                     model.password = pwdText.text!
@@ -85,7 +86,8 @@ class LoginVC: BaseTableViewController {
                     self.loginSuccess()
                 }
             }, failure: { (error) in
-                
+                SVProgressHUD.dismiss()
+
             })
 
         }

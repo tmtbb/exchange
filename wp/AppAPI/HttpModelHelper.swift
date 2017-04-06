@@ -20,6 +20,7 @@ class HttpRequestModel: Object {
     
     
     func toDictionary() -> NSDictionary{
+
         let properties = objectSchema.properties.map { $0.name }
         let dictionary = dictionaryWithValues(forKeys: properties)
         let mutabledic = NSMutableDictionary()
@@ -31,8 +32,8 @@ class HttpRequestModel: Object {
         }else{
            self.keyId =  Int64.init(UUID.getData("deviceKeyId"))!
         }
+
         var signString = AppConst.Network.TttpHostUrl + requestPath
-        
         for prop in objectSchema.properties as [Property]! {
             if prop.name == "requestPath" {
                 continue
