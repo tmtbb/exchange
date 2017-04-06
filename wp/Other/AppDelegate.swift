@@ -22,17 +22,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
        let string = String.init(format: "%@", UUID.getUUID())
-        HttpRequestManage.shared().postRequestJson("", parameters: ["deviceId": string,"deviceModel":UIDevice.current.model,"deviceResolution":"1136×640","deviceName":UIDevice.current.systemName,"osVersion":UIDevice.current.systemVersion]) { (result) in
+        
+        let model = GetDeviceKey()
+        model.deviceId = string
+        model.deviceResolution = "1136×640"
+        model.deviceModel = UIDevice.current.model
+        model.deviceName = UIDevice.current.systemName
+        model.osVersion = UIDevice.current.systemVersion
+        
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (result) in
             
         }
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
-        let model = HttpRequestModel()
-HttpRequestManage.shared().postRequestModel(requestModel: model, responseClass: HttpRequestModel.self) { (response) in
-    
-    
-        }
+       
         return true
     }
 

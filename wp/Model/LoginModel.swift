@@ -15,3 +15,14 @@ class LoginModel: HttpRequestModel {
     //密码
     var password : String = ""
 }
+class GetDeviceKey: HttpRequestModel {
+    
+      var deviceId : String = ""
+      var deviceModel : String = ""
+      var deviceResolution : String = ""
+      var deviceName : String = ""
+      var osVersion : String = ""
+    
+    
+    
+}

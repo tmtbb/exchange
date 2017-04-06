@@ -258,7 +258,7 @@ class AppDataHelper: NSObject {
         model.codeType = type
         
         
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  [weak self](result) in
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  (result) in
             
           reseponse(result as! AnyClass)
 

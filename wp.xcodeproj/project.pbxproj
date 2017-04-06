@@ -1162,13 +1162,6 @@
 			name = paysdk;
 			sourceTree = "<group>";
 		};
-		A0F3BFC21E88FB3B00F9212B /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
-			sourceTree = "<group>";
-		};
 		A0F3BFC31E88FB4B00F9212B /* UserInfoVCCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1474,7 +1467,6 @@
 		BF2F64171E038DFE00917FA1 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A0F3BFC21E88FB3B00F9212B /* New Group */,
 				BF062B421E04DEC900618B1B /* Home */,
 				BF062B411E04DEC900618B1B /* Deal */,
 				BF062B441E04DEC900618B1B /* Login */,
