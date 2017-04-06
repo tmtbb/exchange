@@ -43,8 +43,12 @@ extension String {
     }
     func getSignString() -> String {
         
-        
-        let str  = String.init(format: "%@", "24BFA1509B794899834AA9E24B447322")
+        var str : String = ""
+        if UserDefaults.standard.object(forKey: "deviceKey") != nil {
+           str = UserDefaults.standard.object(forKey: "deviceKey") as! String
+        }else{
+        str = "24BFA1509B794899834AA9E24B447322"
+        }
         return (self + "device_key=\(str)").md5_string()
     }
     

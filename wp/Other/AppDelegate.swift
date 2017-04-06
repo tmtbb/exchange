@@ -26,17 +26,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let model = GetDeviceKey()
         model.deviceId = string
+        
+        
         model.deviceResolution = "1136×640"
         model.deviceModel = UIDevice.current.model
         model.deviceName = UIDevice.current.systemName
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
         
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
-            
-        }) { (error) in
-            
+        if UserDefaults.standard.object(forKey: "deviceKeyId") == nil{
+        
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+                
+                let dic = result as! NSDictionary
+                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
+                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
+            }) { (error) in
+                
+            }
         }
+       
 
         appearance()
         AppDataHelper.instance().initData()

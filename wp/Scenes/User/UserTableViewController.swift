@@ -256,10 +256,12 @@ class UserTableViewController: BaseTableViewController {
     @IBAction func myIntegral(_ sender: Any) {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 5
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
+            
+            jumpToMyMessageController()
             return
         }
         if indexPath.section == 1 {
@@ -291,6 +293,7 @@ class UserTableViewController: BaseTableViewController {
     
     func jumpToMyMessageController() {
         
+    
         if checkLogin() {
             
             let stroyBoard = UIStoryboard(name: "User", bundle: nil)

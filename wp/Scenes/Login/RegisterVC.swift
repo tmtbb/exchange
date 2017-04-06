@@ -55,14 +55,19 @@ class RegisterVC: BaseTableViewController {
 //            let type = UserModel.share().forgetPwd ? 1:0
             SVProgressHUD.showProgressMessage(ProgressMessage: "请稍候...")
             
-            let model : GetCodetype = GetCodetype()
-            model.phoneNum = phoneText.text!
-            model.codeType = 0
            
         
             
-            AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { (result) in
-                
+            AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { [weak self](result) in
+                if let strongSelf = self{
+                    SVProgressHUD.dismiss()
+                    let dic  = result as! Dictionary<String, Any>
+                    UserModel.share().codeToken = dic["codeToken"] as! String
+                    strongSelf.codeBtn.isEnabled = false
+                    strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(strongSelf.updatecodeBtnTitle), userInfo: nil, repeats: true)
+                }
+               
+            
             })
             
         }
@@ -147,7 +152,7 @@ class RegisterVC: BaseTableViewController {
         model.codeToken = UserModel.share().codeToken
         model.fullName = realName.text!
         model.identityCar = cardTd.text!
-        
+        model.requestPath = "/api/user/register.json"
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
             let datadic = result as? Dictionary<String,AnyObject>
             
