@@ -21,6 +21,6 @@ class RegistModel: HttpRequestModel {
     //真实姓名
     var fullName : String = ""
     //身份证号
-    var identityCar : String = ""
+    var identityCard : String = ""
     
 }

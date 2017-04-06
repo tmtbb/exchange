@@ -63,25 +63,26 @@ class LoginVC: BaseTableViewController {
                 return
             }
             //登录
-            let password = ((pwdText.text! + AppConst.sha256Key).sha256()+phoneText.text!).sha256()
+//            let password = ((pwdText.text! + AppConst.sha256Key).sha256()+phoneText.text!).sha256()
         
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
             
                     let model : LoginModel = LoginModel()
                     model.requestPath = ""
-                    model.password = password
+                    model.password = pwdText.text!
                     model.phoneNum = phoneText.text!
+                    model.requestPath = "/api/user/login.json"
             
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
                 //                SVProgressHUD.dismiss()
                 let datadic = result as? Dictionary<String,AnyObject>
                 
-                if let _ =  datadic?["data"]?["token"]{
+                if let _ =  datadic?["token"]{
                     
-                    SVProgressHUD.showSuccess(withStatus: "注册成功")
+                    SVProgressHUD.showSuccess(withStatus: "登录成功")
                     
                     //                      UserModel.share().upateUserInfo(userObject: result)
-                    UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)
+                    UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
                 }
