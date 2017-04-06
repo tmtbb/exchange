@@ -15,7 +15,7 @@ class HttpRequestModel: Object {
     var appVersion = "appVersion"
     var osType = 0
     var sign = "sign"
-    var keyId = 34474661562457
+    var keyId : Int64 = 34474661562457
     var timestamp = 0
     
     
@@ -25,11 +25,11 @@ class HttpRequestModel: Object {
         let mutabledic = NSMutableDictionary()
         mutabledic.setValuesForKeys(dictionary)
          
-        if UserDefaults.standard.object(forKey: "deviceKeyId")  == nil{
+        if UUID.cheDevivce("deviceKeyId") == false {
         
             self.keyId = 34474661562457
         }else{
-           self.keyId =  UserDefaults.standard.object(forKey: "deviceKeyId") as! Int
+           self.keyId =  Int64.init(UUID.getData("deviceKeyId"))!
         }
         var signString = AppConst.Network.TttpHostUrl + requestPath
         

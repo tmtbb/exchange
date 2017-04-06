@@ -34,17 +34,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.deviceName = UIDevice.current.systemName
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
+
         
-        if UserDefaults.standard.object(forKey: "deviceKey") == nil {
+        if UUID.cheDevivce("deviceKey") == false {
         
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
                 
             
                 let dic = result as! NSDictionary
-//                UUID.save(String.init(format: "%d", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
-//                 UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
-                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
+                 UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
+                 UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
+//                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
+//                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
             }) { (error) in
                 
             }
