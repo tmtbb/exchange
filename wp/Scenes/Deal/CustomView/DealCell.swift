@@ -10,6 +10,7 @@ import UIKit
 
 class DealCell: UITableViewCell {
 
+    @IBOutlet weak var countLabel: UILabel!
     @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -24,9 +25,10 @@ class DealCell: UITableViewCell {
     }
     
     
-    func setInfo(productModel:ProductModel) {
-        priceLabel.text = String.init(format: "%.2f元/公斤", productModel.price)
-        flightNameLabel.text = productModel.symbol
+    func setInfo(flightModel:FlightModel) {
+        priceLabel.text = String.init(format: "%.2f元/公斤", flightModel.flightSpacePrice)
+        flightNameLabel.text = flightModel.flightNumber
+        countLabel.text = "\(flightModel.flightSpaceNumber)"
     }
     func setIsSelect(isSelect:Bool) {
         if isSelect {
