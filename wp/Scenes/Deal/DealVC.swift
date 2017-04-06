@@ -18,8 +18,9 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     @IBOutlet weak var titleView: TitleCollectionView!
 
     private var rowHeights: [CGFloat] = [40,50,UIScreen.main.bounds.size.height - 60.0 - 108.0 - 90.0,60,200,41,70,35,200]
-    private var klineBtn: UIButton?
     private var priceTimer: Timer?
+    
+    var selectAirLine:AirLineModel?
     
     lazy var listDataSource:ListDataSource = {
     
@@ -47,12 +48,15 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         showTabBarWithAnimationDuration()
+        requestRouteList()
+
         refreshTitleView()
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -65,19 +69,36 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     //MARK: --DATA
     func initData() {
-        titleView.objects = DealModel.share().productKinds
-        if let selectProduct = DealModel.share().selectProduct{
-            didSelectedObject(titleView, object: selectProduct)
+
+        requestRouteList()
+    }
+    func requestRouteList() {
+    
+        if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String  {            
+            let model = TokenRequestModel()
+            model.requestPath = "/api/route/index.json"
+            model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+            HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: AirLineModel.self, reseponse: { (responseObject) in
+                if let array = responseObject as? [AirLineModel] {
+                    self.titleView.objects = array
+                }
+            }) { (error) in
+                
+            }
         }
-        
-        requestFlightInfo()
     }
 
     func requestFlightInfo() {
         let model = RequestFlightModel()
-        model.requestPath = "route/flights.html"
+        model.routeId = selectAirLine == nil ? 10001 : selectAirLine!.routeId
+        model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+        model.requestPath = "/api/route/flights.json"
         HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: FlightModel.self, reseponse: { (responseObject) in
-            
+            if let dataArray = responseObject as? [FlightModel] {
+                self.listDataSource.dataArray = dataArray
+                self.listDataSource.selectIndex = 0
+                self.listTable.reloadData()
+            }
         }) { (error) in
             
         }
@@ -97,18 +118,6 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     //用户余额数据请求
     func refreshUserCash() {
-        
-        AppAPIHelper.user().accinfo(complete: {[weak self] (result) -> ()? in
-            if let resultDic = result as? [String: AnyObject] {
-                if let money = resultDic["balance"] as? Double{
-                    self?.myMoneyLabel.text = String.init(format: "%.2f", money)
-                    UserModel.updateUser(info: { (resultDic) -> ()? in
-                        UserModel.share().currentUser?.balance = money
-                    })
-                }
-            }
-            return nil
-        }, error: errorBlockFunc())
 
     }
     //我的资产
@@ -126,15 +135,8 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     
     internal func didSelectedObject(_ collectionView: UICollectionView, object: AnyObject?) {
-       
-        if collectionView == titleView {
-            if let model: ProductModel = object as? ProductModel {
-                DealModel.share().selectProduct = model
-                initRealTimeData()
-                reloadProducts()
-                collectionView.reloadData()
-            }
-        }
+        selectAirLine = object as? AirLineModel
+       requestFlightInfo()
     }
     //刷新商品数据
     func reloadProducts() {
@@ -269,10 +271,11 @@ extension DealVC{
 
 class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
     
+    var dataArray:[FlightModel]?
     var selectIndex = 0
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return dataArray == nil ? 0 : dataArray!.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == selectIndex {
@@ -300,7 +303,7 @@ class ListDataSource:NSObject, UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "dealCell", for: indexPath) as! DealCell
         
-    //    cell.setInfo(productModel: DealModel.share().productKinds[indexPath.row])
+        cell.setInfo(flightModel: dataArray![indexPath.row])
         cell.setIsSelect(isSelect: indexPath.row == selectIndex)
         return cell
     }
