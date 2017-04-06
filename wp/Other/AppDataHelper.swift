@@ -20,7 +20,7 @@ class AppDataHelper: NSObject {
         //productTimer = Timer.scheduledTimer(timeInterval: 5 , target: self, selector: #selector(initProductData), userInfo: nil, repeats: true)
        // Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(initAllKlineChartData), userInfo: nil, repeats: true)
         initErrorCode()
-//        checkTokenLogin()
+        checkTokenLogin()
         initProductData()
     }
     //请求商品数据 
@@ -190,35 +190,24 @@ class AppDataHelper: NSObject {
     
     //验证token登录
     func checkTokenLogin() {
-        return
+        
         //token是否存在
-        if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token){
-            if let id = UserDefaults.standard.value(forKey: SocketConst.Key.uid){
-                AppAPIHelper.login().tokenLogin(uid: id as! Int , token: token as! String, complete: { [weak self]( result) -> ()? in
-                    //存储用户信息
-                    if let model = result as? UserInfoModel {
-                        if let token = model.token{
-                            //更新token
-                            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
-                        }
-                        if let user = model.userinfo {
-                            UserDefaults.standard.setValue(user.id, forKey: SocketConst.Key.id)
-                        }
-                        UserModel.share().upateUserInfo(userObject: model as AnyObject)
-                        DealModel.share().isFirstGetPrice = true
-                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.RequestPrice), object: nil)
-                    }else{
-                       self?.clearUserInfo()
-                    }
-                    return nil
-                }, error: {[weak self] (error) ->()? in
-                    self?.clearUserInfo()
-                    return nil
-                })
-            }
-        }else{
-            clearUserInfo()
+        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
+        
+            let model = TokenModel()
+            model.requestPath = "user/refreshToken.html"
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
+                if let json = responseObject as? Dictionary<String, AnyObject> {
+                    
+                    UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
+                    self.getUserInfo()
+                }
+            }, failure: { (error) in
+                
+            })
+      
         }
+
     }
     //清楚用户数据
     func clearUserInfo() {
@@ -245,11 +234,12 @@ class AppDataHelper: NSObject {
         
         let info = GetUserInfo()
         info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self) { (result) in
-        
-        UserInfoVCModel.share().Model = result as? UserInfoVCModel
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+            
+        }) { (error) in
+            
         }
-       
+
     }
     //获取验证码
     func getVailCode(phone : String, type : Int  ,reseponse:@escaping reseponseBlock)  {
@@ -257,14 +247,14 @@ class AppDataHelper: NSObject {
         model.phoneNum = phone
         model.codeType = type
         
-        
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) {  (result) in
-            
-          reseponse(result as! AnyClass)
 
-            //                return nil
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+            reseponse(result as! AnyClass)
+        }) { (error) in
+            
         }
     }
+
     
     
 }

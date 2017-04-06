@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
        let string = String.init(format: "%@", UUID.getUUID())
+
         
         let model = GetDeviceKey()
         model.deviceId = string
@@ -30,13 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.deviceName = UIDevice.current.systemName
         model.osVersion = UIDevice.current.systemVersion
         
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model) { (result) in
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+            
+        }) { (error) in
             
         }
+
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()
-       
+
         return true
     }
 

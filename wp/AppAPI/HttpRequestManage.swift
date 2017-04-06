@@ -15,6 +15,7 @@ import Realm.RLMSchema
 private let urlString = AppConst.Network.TttpHostUrl
 
 typealias reseponseBlock = (_ reseponseObject:AnyObject)->Void
+typealias errorBlock = (_ error:AnyObject)->Void
 
 
 
@@ -51,40 +52,47 @@ private static var instance = HttpRequestManage()
     
     
     
-    func postRequestModels(requestModel:HttpRequestModel,responseClass:AnyClass, listName:String = "data", reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
+
+    func postRequestModels(requestModel:HttpRequestModel,responseClass:AnyClass, listName:String = "data", reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>, reseponse: { (responseData) in
             reseponse(self.toList(listData: responseData, responseClass: responseClass, listName: listName) as AnyObject)
-        }
+        }, failure: failure)
     }
-    func postRequestModel(requestModel:HttpRequestModel,responseClass:AnyClass,reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
+    func postRequestModel(requestModel:HttpRequestModel,responseClass:AnyClass,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>, reseponse: { (responseData) in
             reseponse(self.toModel(jsonData: responseData, responseClass: responseClass)!)
-        }
+
+        }, failure: failure)
+        
     }
-    func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock) {
-        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>) { (responseData) in
+    func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
+
+        postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>, reseponse: { (responseData) in
             reseponse(responseData as! AnyClass)
-        }
+
+        }, failure: failure)
     }
 
     
     
-    func getRequestModels(path:String,responseClass:AnyClass, reseponse:@escaping reseponseBlock) {
-        getRequestJson(path) { (responseData) in
+    func getRequestModels(path:String,responseClass:AnyClass, reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
+        getRequestJson(path, reseponse: { (responseData) in
             reseponse(self.toModel(jsonData: responseData, responseClass: responseClass)!)
-        }
+        }, failure: failure)
     }
     
     
-    func getRequestModel(path:String,responseClass:AnyClass, listName:String = "data",reseponse:@escaping reseponseBlock) {
-        getRequestJson(path) { (responseData) in
+    func getRequestModel(path:String,responseClass:AnyClass, listName:String = "data",reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
+        
+        getRequestJson(path, reseponse: { (responseData) in
             reseponse(self.toList(listData: responseData, responseClass: responseClass, listName: listName) as AnyObject)
-        }
+        }, failure: failure)
+
     }
     
     
     
-     func postRequestJson(_ path:String, parameters:Dictionary<String, Any>,reseponse:@escaping reseponseBlock){
+     func postRequestJson(_ path:String, parameters:Dictionary<String, Any>,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         let urlPath = urlString + path
         debugPrint("startPostRequest:path\(path)")
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
@@ -94,16 +102,18 @@ private static var instance = HttpRequestManage()
                 if let resData = jsonDict?["data"]  {
                     reseponse(resData as AnyObject)
                 } else {
+                    failure(responseData.result.value as AnyObject)
                     SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: nil)
                 }
             } else {
+                failure(responseData.result.error as AnyObject)
                 SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
         }
         
     }
     
-     func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock){
+    func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         var urlPath = urlString + path
         urlPath = urlPath + "?sign=\(urlPath.getSignString())"
         debugPrint("startGetRequest:path\(path)")
@@ -116,9 +126,11 @@ private static var instance = HttpRequestManage()
                 if let resData = jsonDict?["data"]  {
                     reseponse(resData as AnyObject)
                 } else {
+                    failure(responseData.result.value as AnyObject)
                     SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: nil)
                 }
             } else {
+                failure(responseData.result.error as AnyObject)
                 SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
             

@@ -15,6 +15,7 @@ class LoginModel: HttpRequestModel {
     //密码
     var password : String = ""
 }
+
 class GetDeviceKey: HttpRequestModel {
     
       var deviceId : String = ""
@@ -22,7 +23,10 @@ class GetDeviceKey: HttpRequestModel {
       var deviceResolution : String = ""
       var deviceName : String = ""
       var osVersion : String = ""
+}
+
+class TokenModel: HttpRequestModel {
     
-    
-    
+    var token = UserDefaults.standard.value(forKey: SocketConst.Key.token)
+
 }
