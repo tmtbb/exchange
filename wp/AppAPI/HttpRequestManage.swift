@@ -68,7 +68,9 @@ private static var instance = HttpRequestManage()
     }
     func postRequestModelWithJson(requestModel:HttpRequestModel,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock) {
         postRequestJson(requestModel.requestPath, parameters: requestModel.toDictionary() as! Dictionary<String, Any>, reseponse: { (responseData) in
-            reseponse(responseData as! AnyClass)
+
+            reseponse(responseData)
+
         }, failure: failure)
     }
 

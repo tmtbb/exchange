@@ -68,8 +68,8 @@ class LoginVC: BaseTableViewController {
             SVProgressHUD.showProgressMessage(ProgressMessage: "登录中...")
             
                     let model : LoginModel = LoginModel()
-                    model.requestPath = ""
-                    model.password = password
+                    model.requestPath = "/api/user/login.json"
+                    model.password = "180180"
                     model.phoneNum = phoneText.text!
             
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
@@ -78,7 +78,6 @@ class LoginVC: BaseTableViewController {
                 
                 if let _ =  datadic?["data"]?["token"]{
                     
-                    SVProgressHUD.showSuccess(withStatus: "注册成功")
                     
                     //                      UserModel.share().upateUserInfo(userObject: result)
                     UserDefaults.standard.setValue(datadic?["data"]?["token"] as! String, forKey: SocketConst.Key.token)

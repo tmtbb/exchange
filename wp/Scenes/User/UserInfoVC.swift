@@ -34,12 +34,12 @@ class UserInfoVC: BaseTableViewController {
     func initData(){
     
         let info = GetUserInfo()
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
-            
-        }) { (error) in
-            
-        }
+//        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+//        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+//            
+//        }) { (error) in
+//            
+//        }
 
     }
     override func viewWillAppear(_ animated: Bool) {
