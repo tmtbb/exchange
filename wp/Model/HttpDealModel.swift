@@ -23,6 +23,10 @@ class RequestFlightModel: TokenRequestModel {
     var routeId = 0
 }
 
+
+class RequestAirLineListModel: TokenRequestModel {
+    
+}
 class BuyPositionModel: TokenRequestModel {
     var flightId = 0
     var flightNumber = ""
@@ -38,5 +42,11 @@ class AddFlightModel: TokenRequestModel {
     var phoneNum = ""
     var phoneCode = ""
     var codeToken = ""
+    
+}
+
+class AirLineModel: Object {
+    var routeId = 10001
+    var routeName = "上海-东京"
     
 }

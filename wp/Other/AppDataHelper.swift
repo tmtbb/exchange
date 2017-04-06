@@ -195,15 +195,19 @@ class AppDataHelper: NSObject {
         if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
         
             let model = TokenModel()
+            model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+
             model.requestPath = "/api/user/refreshToken.json"
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
                 if let json = responseObject as? Dictionary<String, AnyObject> {
                     
                     UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
+                    _ = UserDefaults.standard.synchronize()
                     self.getUserInfo()
                 }
             }, failure: { (error) in
-                
+                UserDefaults.standard.set(nil, forKey: SocketConst.Key.token)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NoticeKey.logoutNotice.rawValue), object: nil)
             })
       
         }

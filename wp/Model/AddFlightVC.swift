@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 extension UITextField {
     func setBorder() {
         
@@ -15,7 +16,8 @@ extension UITextField {
     }
 }
 class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource, UIScrollViewDelegate{
-    
+    var dataSource:[AirLineModel]?
+    var autoCode:String?
     //定义pickerView
     var pickView = UIPickerView()
     //定义显示下面的tabbar
@@ -74,13 +76,29 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         myToolBar.setItems([sureItem,spaceItem,cancelItem], animated: true)
         
         
+        requestRouteList()
         
+    }
+    
+    func requestRouteList() {
         
+        let model = TokenRequestModel()
+        model.requestPath = "/api/route/index.json"
+        model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: AirLineModel.self, reseponse: { (responseObject) in
+            if let array = responseObject as? [AirLineModel] {
+                self.dataSource = array
+                self.pickView.reloadAllComponents()
+            }
+        }) { (error) in
+            
+        }
     }
     func sureClick(){
     
-         let arr =  ["上海 - 法兰克福","上海 - 东京","上海 - 纽约"]
-         selectFlight.text = arr[selectRow]
+        let model = dataSource?[selectRow]
+
+        selectFlight.text = model?.routeName
         UIView.animate(withDuration: 0.23) { 
             self.selectFlight.resignFirstResponder()
         }
@@ -97,12 +115,12 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        return dataSource == nil ? 0 : dataSource!.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
        
-        let arr =  ["上海 - 法兰克福","上海 - 东京","上海 - 纽约"]
-        return arr[row]
+        let model = dataSource?[row]
+        return model?.routeName
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selectRow = row
@@ -116,9 +134,56 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         contentView.endEditing(true)
     }
 
+    @IBAction func getAuthCode(_ sender: Any) {
+        
+        AppDataHelper.instance().getVailCode(phone: "13958104695", type: 1) { (response) in
+            if let dict = response as? Dictionary<String,AnyObject> {
+                self.autoCode = dict["codeToken"] as? String
+                SVProgressHUD.showInfo(withStatus: "验证码已发送")
+            }
+            
+        }
+    }
     
+    @IBAction func addFlightVC(_ sender: Any) {
+        guard autoCode != nil else {
+            
+            return
+        }
+        
+        if let selectModel = dataSource?[selectRow] {
+            let model = AddFlightModel()
+            model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+            model.requestPath = "/api/route/flight/add.json"
+            model.routeId = selectModel.routeId
+            model.flightNumber = flightTextField.text!
+            model.flightSpacePrice = Double(moneyTextField.text!)!
+            model.flightSpaceNumber = Int(countTextField.text!)!
+            model.phoneNum = "13958104695"
+            model.phoneCode = "111111"
+            model.codeToken = autoCode!
+            
+            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
+                SVProgressHUD.showSuccess(withStatus: "添加成功")
+                _ = self.navigationController?.popViewController(animated: true)
+            }) { (errpr) in
+                
+            }
+        }
+        
+
+    }
     func addFlight() {
         let model = AddFlightModel()
+        model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+        model.requestPath = "/api/route/flight/add.json"
+        model.routeId = 10001
+        model.flightNumber = "ABCDE"
+        model.flightSpacePrice = 11.11
+        model.flightSpaceNumber = 22
+        model.phoneNum = "13958104695"
+        model.phoneCode = "111111"
+        model.codeToken = "4B8044D1BD1D4F3EB389E632B98B1278"
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
             
         }) { (errpr) in

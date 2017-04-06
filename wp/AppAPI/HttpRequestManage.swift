@@ -96,13 +96,21 @@ private static var instance = HttpRequestManage()
      func postRequestJson(_ path:String, parameters:Dictionary<String, Any>,reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         let urlPath = urlString + path
         debugPrint("startPostRequest:path\(path)")
-
+        
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
             debugPrint("receivedPostRequest:path\(path)")
             if responseData.result.error == nil {
                 let jsonDict = responseData.result.value as? Dictionary<String,AnyObject>
-                if let resData = jsonDict?["data"]  {
-                    reseponse(resData as AnyObject)
+                if let status = jsonDict?["status"] as? Int {
+                    if status == 0 {
+                        if let resData = jsonDict?["data"] {
+                            reseponse(resData as AnyObject)
+                        } else {
+                            reseponse(jsonDict as AnyObject)
+                        }
+                    } else {
+                        failure(responseData.result.value as AnyObject)
+                    }
                 } else {
                     failure(responseData.result.value as AnyObject)
                     SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: nil)
