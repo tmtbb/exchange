@@ -43,7 +43,7 @@ class HistoryDealCell: OEZTableViewCell{
 //            if timeCount < 5 * 24 * 3600 {
 //             statuslb.text = "不可交易"
 //            } else {
-//                
+            //            statuslb.text =  model.tradeStatus  > 3 ?  "已交易" :   "未交易"
 //            }
             statuslb.text =  model.tradeStatus  > 3 ?  "已交易" :   "未交易"
             
