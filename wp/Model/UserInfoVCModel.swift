@@ -15,16 +15,17 @@ class UserInfoVCModel: Object {
     class func share() -> UserInfoVCModel{
         return model
     }
-    
-    dynamic   var status : Int = 0
-    dynamic   var userType : Int = 0
-    dynamic   var phoneNum : String = ""
-    dynamic   var name : String = ""
-    dynamic   var balance : Double = 0
-    dynamic   var userId : Int64 = 0
-    dynamic   var identityCard : String = ""
-    dynamic   var email : String = "123"
-    //        var currentUser: UserInfoVCModel?
+
+ 
+    dynamic var status : Int = 0
+    dynamic var userType : Int = 0
+    dynamic var phoneNum : String = ""
+    dynamic  var name : String = ""
+    dynamic var balance : Double = 0
+    dynamic var userId : Int64 = 0
+    dynamic var identityCard : String = ""
+    dynamic var email : String = ""
+
     // UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
     dynamic  var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
     
@@ -57,10 +58,15 @@ class UserInfoVCModel: Object {
     // 更新用户信息
     func upateUserInfo(userObject: AnyObject){
         
+//        var token = ""
+//        if (UserDefaults.standard.object(forKey: SocketConst.Key.token) != nil){
+//           token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+//        }
         
+        let model = userObject as! Dictionary<String, Any>
         let info = GetUserInfo()
         info.requestPath = "/api/user/info.json"
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) == nil ? model["token"] as! String : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
             
