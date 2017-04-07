@@ -38,7 +38,15 @@ class HistoryDealCell: OEZTableViewCell{
 
             statuslb.backgroundColor = model.tradeStatus == 3  ? UIColor.init(hexString: "999999") : UIColor.init(hexString: "0EAF56")
               handleLabel.backgroundColor = model.tradeStatus == 3  ? UIColor.init(hexString: "999999") : UIColor.init(hexString: "E9573F")
-            statuslb.text =  model.tradeStatus  > 3 ?  "已交易" :   "未交易"
+            
+            let timeCount = Int64(NSDate().timeIntervalSince1970) - (model.tradeTime / 1000)
+            if timeCount < 5 * 24 * 3600 {
+             statuslb.text = "不可交易"
+            } else {
+                
+                statuslb.text =  model.tradeStatus  > 3 ?  "已交易" :   "未交易"
+            }
+            
 //            titleLabel.text = model.buySell == 1 ? "买入" : "卖出"
             let handleText = [" 买入 "," 退舱 "," 货运 "," 转卖 "]
 //
@@ -96,6 +104,18 @@ class HistoryDealVC: BasePageListTableViewController {
    
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        let model = dataSource![indexPath.row] as! PoHistoryModel
+        
+        if model.tradeStatus != 3 {
+            return
+        }
+        let timeCount = Int64(NSDate().timeIntervalSince1970) - (model.tradeTime / 1000)
+        if timeCount < 5 * 24 * 3600 {
+            return
+        }
         let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: HandlePositionVC.className()) as! HandlePositionVC
         controller.modalPresentationStyle = .custom
         controller.modalTransitionStyle = .crossDissolve

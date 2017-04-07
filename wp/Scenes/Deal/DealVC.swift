@@ -184,7 +184,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
             controller.modalPresentationStyle = .custom
             controller.modalTransitionStyle = .crossDissolve
             controller.resultBlock = { [weak self](result) in
-                self?.requestRouteList()
+                self?.requestFlightInfo()
                 self?.upDataUserInfo()
                 return nil
             }
