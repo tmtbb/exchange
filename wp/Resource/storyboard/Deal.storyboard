@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wui-kV-Unx">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wui-kV-Unx">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -264,7 +264,7 @@
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9l-Qa-X3e">
                                                     <rect key="frame" x="194" y="13" width="171" height="44"/>
                                                     <color key="backgroundColor" red="0.082352941176470587" green="0.49803921568627452" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <state key="normal" title="查看持仓"/>
+                                                    <state key="normal" title="查看持舱"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                             <integer key="value" value="6"/>
@@ -330,7 +330,7 @@
             </objects>
             <point key="canvasLocation" x="336.80000000000001" y="260.41979010494754"/>
         </scene>
-        <!--未处理交易-->
+        <!--持舱列表-->
         <scene sceneID="aeR-o6-Wl4">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="qq6-GU-JHg" customClass="HistoryDealVC" customModule="wp" customModuleProvider="target" sceneMemberID="viewController">
@@ -426,7 +426,7 @@
                             <outlet property="delegate" destination="qq6-GU-JHg" id="jbG-jh-7Ly"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="未处理交易" id="zqG-WA-zmM"/>
+                    <navigationItem key="navigationItem" title="持舱列表" id="zqG-WA-zmM"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JxB-UT-TZe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
