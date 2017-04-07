@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import DKNightVersion
 class ScanVC: BaseTableViewController {
     
     lazy var imagePicker: UIImagePickerController = {
         let picker = UIImagePickerController()
         return picker
     }()
+    @IBOutlet weak var sureUpload: UIButton!
     
     @IBOutlet weak var identityCardBackbtn: UIButton!
     @IBOutlet weak var identityCardback: UIImageView!
@@ -27,6 +29,7 @@ class ScanVC: BaseTableViewController {
         
         title = ShareModel.share().chooseUploadImg == 100 ? "上传营业执照扫描件" : "上传法人有效身份证件"
         
+        sureUpload.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         selectImg.clipsToBounds = true
         
         identityCardback.layer.cornerRadius = 5

@@ -2112,15 +2112,15 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="181" id="PeY-QL-F4D">
-                                        <rect key="frame" x="0.0" y="362" width="375" height="181"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="130" id="PeY-QL-F4D">
+                                        <rect key="frame" x="0.0" y="362" width="375" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PeY-QL-F4D" id="5GL-mh-YyJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-B2-eSp">
-                                                    <rect key="frame" x="8" y="116" width="357" height="44"/>
+                                                    <rect key="frame" x="8" y="65" width="357" height="44"/>
                                                     <color key="backgroundColor" red="0.9137254901960784" green="0.34149020910263062" blue="0.24694275856018066" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="44" id="M2w-AA-xB6"/>
@@ -2162,6 +2162,7 @@
                         <outlet property="identityCardBackbtn" destination="RQ1-TD-ZHN" id="ZWA-VU-IdW"/>
                         <outlet property="identityCardback" destination="lwR-3f-ir0" id="XaS-8P-ylW"/>
                         <outlet property="selectImg" destination="VOY-DE-Rze" id="N7k-2e-D1d"/>
+                        <outlet property="sureUpload" destination="i6u-B2-eSp" id="v8S-tf-peI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BKn-b8-e8p" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -171,9 +171,11 @@ class EnterPriseVC : BaseTableViewController {
             if let _ =  datadic?["token"]{
                 
                 UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
-                SVProgressHUD.showSuccess(withStatus: "登录成功")
+                SVProgressHUD.showSuccess(withStatus: "注册成功")
                 UserInfoVCModel.share().upateUserInfo(userObject: result)
-                
+                model.businessLicense = ""
+                model.identityCardBack = ""
+                model.identityCardJust = ""
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 
             }
