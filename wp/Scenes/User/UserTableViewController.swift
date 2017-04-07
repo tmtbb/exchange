@@ -255,7 +255,9 @@ class UserTableViewController: BaseTableViewController {
     @IBAction func myIntegral(_ sender: Any) {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        
+       return UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? 2 : 1
+       
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {

@@ -158,9 +158,11 @@ class RegisterVC: BaseTableViewController {
             
             if let _ =  datadic?["token"]{
                 
-                SVProgressHUD.showSuccess(withStatus: "注册成功")
                 UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
-                self.perform(#selector(self.registSuccess), with: self, afterDelay: 2)
+                SVProgressHUD.showSuccess(withStatus: "注册成功")
+                UserInfoVCModel.share().upateUserInfo(userObject: result)
+                
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 
                 //                self.perform(Selector(registSuccess), with: self, afterDelay: 2)
             }

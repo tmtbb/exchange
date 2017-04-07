@@ -36,7 +36,7 @@
                         <color key="separatorColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="jnb-VX-2Qh">
-                            <rect key="frame" x="0.0" y="312" width="375" height="122"/>
+                            <rect key="frame" x="0.0" y="256" width="375" height="122"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="calibratedRGB"/>
                         </view>
@@ -262,66 +262,10 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="kj9-Lj-gwR">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="Ntu-qX-vQO">
-                                        <rect key="frame" x="0.0" y="200" width="375" height="56"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ntu-qX-vQO" id="dV0-V1-ILR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="交易明细" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAL-nN-Mlh">
-                                                    <rect key="frame" x="48" y="20.5" width="66" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="WpZ-WF-oYD"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="next.png" translatesAutoresizingMaskIntoConstraints="NO" id="dOd-oQ-N1S">
-                                                    <rect key="frame" x="351" y="22.5" width="7" height="11"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="7" id="gfg-jc-zWB"/>
-                                                        <constraint firstAttribute="height" constant="11" id="yQ1-xu-ueM"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_mingxi.png" translatesAutoresizingMaskIntoConstraints="NO" id="veK-Dq-zae">
-                                                    <rect key="frame" x="15" y="20" width="16" height="16"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="16" id="mCd-cn-mDN"/>
-                                                        <constraint firstAttribute="height" constant="16" id="ySt-9X-stL"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTD-aI-M0l">
-                                                    <rect key="frame" x="17" y="0.0" width="358" height="1"/>
-                                                    <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="qAz-gj-qAr"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="LTD-aI-M0l" secondAttribute="trailing" id="JQt-Op-dvY"/>
-                                                <constraint firstItem="veK-Dq-zae" firstAttribute="centerY" secondItem="dV0-V1-ILR" secondAttribute="centerY" id="KCq-t8-hXn"/>
-                                                <constraint firstItem="iAL-nN-Mlh" firstAttribute="centerY" secondItem="dV0-V1-ILR" secondAttribute="centerY" id="OsK-rB-Drf"/>
-                                                <constraint firstItem="iAL-nN-Mlh" firstAttribute="leading" secondItem="veK-Dq-zae" secondAttribute="trailing" constant="17" id="ULf-Vy-inr"/>
-                                                <constraint firstItem="LTD-aI-M0l" firstAttribute="leading" secondItem="dV0-V1-ILR" secondAttribute="leading" constant="17" id="cwV-gb-3U1"/>
-                                                <constraint firstItem="dOd-oQ-N1S" firstAttribute="centerY" secondItem="dV0-V1-ILR" secondAttribute="centerY" id="jfU-Tc-ifJ"/>
-                                                <constraint firstItem="veK-Dq-zae" firstAttribute="leading" secondItem="dV0-V1-ILR" secondAttribute="leading" constant="15" id="oUZ-lC-8gF"/>
-                                                <constraint firstAttribute="trailing" secondItem="dOd-oQ-N1S" secondAttribute="trailing" constant="17" id="p5V-gv-5DC"/>
-                                                <constraint firstItem="LTD-aI-M0l" firstAttribute="top" secondItem="dV0-V1-ILR" secondAttribute="top" id="wfa-uf-fYR"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                             <tableViewSection id="wYo-zk-Wj8">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="56" id="u2d-xm-SKJ">
-                                        <rect key="frame" x="0.0" y="256" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="200" width="375" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="u2d-xm-SKJ" id="FjE-lr-0sm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
@@ -518,6 +462,5 @@
         <image name="default-head.png" width="79" height="79"/>
         <image name="geren-hangxian.png" width="16" height="16"/>
         <image name="next.png" width="7" height="12"/>
-        <image name="personal_mingxi.png" width="16" height="16"/>
     </resources>
 </document>
