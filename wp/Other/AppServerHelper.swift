@@ -57,11 +57,9 @@ class AppServerHelper: NSObject , WXApiDelegate{
             #if true
                 GeTuiSdk.start(withAppId: "d2YVUlrbRU6yF0PFQJfPkA", appKey: "yEIPB4YFxw64Ag9yJpaXT9", appSecret: "TMQWRB2KrG7QAipcBKGEyA", delegate: nil)
             #endif
-            
             let notifySettings = UIUserNotificationSettings.init(types: [.alert, .badge, .sound], categories: nil)
             UIApplication.shared.registerUserNotificationSettings(notifySettings)
             UIApplication.shared.registerForRemoteNotifications()
-            
         })
     }
     
