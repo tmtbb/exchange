@@ -107,6 +107,7 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         model.tradeNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
+            self.resultBlock!(nil)
             self.view.isUserInteractionEnabled = true
             self.dismissController()
 

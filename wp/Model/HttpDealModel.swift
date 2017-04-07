@@ -58,7 +58,7 @@ class RequestHistroyModel: TokenModel {
 class PoHistoryModel: Object {
     var tradeId = 0
     var tradeNo = ""
-    var tradeGoodsId = ""
+    var tradeGoodsId = 0
     var tradeGoodsName = ""
     var tradeGoodsNo = ""
     var tradeNum = 0
@@ -66,4 +66,9 @@ class PoHistoryModel: Object {
     var tradeTotalPrice = 0.0
     var tradeStatus = 0
     var tradeTime:Int64 = 0
+}
+
+class HandlePositionModel: TokenModel {
+    var tradeId = 0
+    var handleType = 4
 }

@@ -650,7 +650,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qvJ-Vj-Bii">
-                                <rect key="frame" x="43" y="213.5" width="289" height="240"/>
+                                <rect key="frame" x="43" y="214" width="289" height="240"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Upd-ne-EKd">
                                         <rect key="frame" x="0.0" y="190" width="96.5" height="50"/>
@@ -659,7 +659,7 @@
                                             <constraint firstAttribute="height" constant="50" id="hrI-C0-rrI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="运货">
+                                        <state key="normal" title="货运">
                                             <color key="titleColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -687,7 +687,7 @@
                                             <constraint firstAttribute="height" constant="50" id="gAz-U5-Ff0"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="退仓">
+                                        <state key="normal" title="退舱">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -698,7 +698,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="289" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此次成交额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ubF-go-4wb">
-                                                <rect key="frame" x="103.5" y="23" width="82" height="18"/>
+                                                <rect key="frame" x="104" y="23" width="82" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="18" id="t8g-Xb-8ae"/>
                                                 </constraints>
@@ -718,7 +718,7 @@
                                         <rect key="frame" x="0.0" y="61" width="289" height="69"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="当前仓位航班：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbN-8v-BPK">
-                                                <rect key="frame" x="87.5" y="26" width="115" height="16"/>
+                                                <rect key="frame" x="87" y="26" width="115" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="16" id="Rho-5G-jpI"/>
                                                 </constraints>
@@ -734,7 +734,7 @@
                                             <constraint firstItem="SbN-8v-BPK" firstAttribute="centerX" secondItem="Nko-1Y-Ohs" secondAttribute="centerX" id="ciT-Cf-lG9"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退仓收取部分违约金" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijO-iP-1Vx">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退舱收取部分违约金" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ijO-iP-1Vx">
                                         <rect key="frame" x="104" y="155" width="120" height="20"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>

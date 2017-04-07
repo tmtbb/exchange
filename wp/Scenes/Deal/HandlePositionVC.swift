@@ -10,11 +10,14 @@ import UIKit
 
 class HandlePositionVC: UIViewController {
 
+    var positionModel:PoHistoryModel?
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var infoBackImage: UIImageView!
     @IBOutlet weak var infoLabel: UILabel!
     @IBOutlet weak var flightLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
+    var resultBlock: CompleteBlock?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,15 +42,32 @@ class HandlePositionVC: UIViewController {
         dismissController()
     }
     @IBAction func freightAction(_ sender: Any) {
-        dismissController()
+
+        handlePositionWithIndex(index: 5)
+        
 
     }
     @IBAction func feeRefundAction(_ sender: Any) {
-        dismissController()
+        handlePositionWithIndex(index: 4)
 
     }
     @IBAction func resellAction(_ sender: Any) {
-        dismissController()
+        handlePositionWithIndex(index: 6)
+    }
+    
+    func handlePositionWithIndex(index:Int) {
+        
+        let model = HandlePositionModel()
+        model.requestPath = "/api/trade/user/flightspace/handle.json"
+        model.tradeId = positionModel!.tradeId
+        model.handleType = index
+        model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (response) in
+            self.resultBlock!(nil)
+            self.dismissController()
+        }) { (error) in
+            
+        }
     }
     /*
     // MARK: - Navigation
