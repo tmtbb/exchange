@@ -15,26 +15,27 @@ class UserInfoVCModel: Object {
     class func share() -> UserInfoVCModel{
         return model
     }
- 
-        var status : Int = 0
-        var userType : Int = 0
-        var phoneNum : String = ""
-        var name : String = ""
-        var balance : Double = 0
-        var userId : Int64 = 0
-        var identityCard : String = ""
-//        var currentUser: UserInfoVCModel?
-    // UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
-       var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
     
-
+    dynamic   var status : Int = 0
+    dynamic   var userType : Int = 0
+    dynamic   var phoneNum : String = ""
+    dynamic   var name : String = ""
+    dynamic   var balance : Double = 0
+    dynamic   var userId : Int64 = 0
+    dynamic   var identityCard : String = ""
+    dynamic   var email : String = "123"
+    //        var currentUser: UserInfoVCModel?
+    // UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
+    dynamic  var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
+    
+    
     override static func primaryKey() -> String?{
         return "userId"
     }
     class func userInfo(userId: Int) -> UserInfoVCModel? {
-//        if userId == 0 {
-//            return nil
-//        }
+        //        if userId == 0 {
+        //            return nil
+        //        }
         
         let realm = try! Realm()
         let filterStr = "userId = \(userId)"
@@ -64,28 +65,28 @@ class UserInfoVCModel: Object {
             
             
             if let model = result as? UserInfoVCModel {
-//                            token = model.token!
-                            //存储token
-//                            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
+                //                            token = model.token!
+                //存储token
+                //                            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
                 UserInfoVCModel.share().currentUserId = result.userId
                 UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
                 
-//                 UserInfoVCModel.share().updateRealm()
+                //                 UserInfoVCModel.share().updateRealm()
                 //存储uid
-//                if let phone = model.phoneNum {
-//                    UserDefaults.standard.setValue(phone, forKey: SocketConst.Key.phone)
-//                }
+                //                if let phone = model.phoneNum {
+                //                    UserDefaults.standard.setValue(phone, forKey: SocketConst.Key.phone)
+                //                }
                 UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
                 let realm = try! Realm()
                 try! realm.write {
-//                     UserInfoVCModel.share().currentUser  =  model
+                    //                     UserInfoVCModel.share().currentUser  =  model
                     realm.add(model, update: true)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                     
                 }
             }
             
-//            UserInfoVCModel.share().Model = result as? UserInfoVCModel
+            //            UserInfoVCModel.share().Model = result as? UserInfoVCModel
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
