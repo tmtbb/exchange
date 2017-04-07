@@ -73,9 +73,17 @@ class UserTableViewController: BaseTableViewController {
         requstTotalHistroy()
         initReceiveBalanceBlock()
         if checkLogin() {
-            let model = UserInfoVCModel()
-             UserInfoVCModel.share().upateUserInfo(userObject: model)
-//            self.nameLabel.text = String.init(format: "%.2f", (UserInfoVCModel.share().getCurrentUser()?.balance)!)
+
+            let info = GetUserInfo()
+            info.requestPath = "/api/user/info.json"
+            info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+            HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { [weak self] (result) in
+                
+                let model = result as! UserInfoVCModel
+                self?.nameLabel.text = String.init(format: "%.2f", model.balance)
+            }) { (error) in
+                
+            }
         }
       
     }
@@ -166,11 +174,18 @@ class UserTableViewController: BaseTableViewController {
         loginSuccessIs(bool: true)
         memberImageView.isHidden = UserModel.share().getCurrentUser()?.type == 0
         //用户余额数据请求
+        let info = GetUserInfo()
+        info.requestPath = "/api/user/info.json"
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { [weak self] (result) in
+            
+            let model = result as! UserInfoVCModel
+            self?.nameLabel.text = String.init(format: "%.2f", model.balance)
+        }) { (error) in
+            
+        }
         UserModel.share().currentUser?.addObserver(self, forKeyPath: AppConst.KVOKey.balance.rawValue, options: .new, context: nil)
-//        let model = UserInfoVCModel()
-//        UserInfoVCModel.share().upateUserInfo(userObject: model)
-//        self.nameLabel.text = String.init(format: "%.2f", (UserInfoVCModel.share().getCurrentUser()?.balance)!)
-        
+
 //        AppAPIHelper.user().accinfo(complete: {[weak self](result) -> ()? in
 //
 //            if let object = result as? Dictionary<String,Any> {
