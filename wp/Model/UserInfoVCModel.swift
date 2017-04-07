@@ -24,7 +24,7 @@ class UserInfoVCModel: Object {
     dynamic var balance : Double = 0
     dynamic var userId : Int64 = 0
     dynamic var identityCard : String = ""
-    dynamic var email : String = ""
+//    dynamic var email : String = ""
 
     // UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
     dynamic  var currentUserId: Int64 = UserDefaults.standard.object(forKey: SocketConst.Key.uid) == nil ? 0 : ( UserDefaults.standard.object(forKey: SocketConst.Key.uid) as! Int64)
@@ -66,7 +66,8 @@ class UserInfoVCModel: Object {
         let model = userObject as! Dictionary<String, Any>
         let info = GetUserInfo()
         info.requestPath = "/api/user/info.json"
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) == nil ? model["token"] as! String : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
+
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as? String  == nil ? model["token"] as! String : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
             
@@ -93,9 +94,9 @@ class UserInfoVCModel: Object {
             }
             
             //            UserInfoVCModel.share().Model = result as? UserInfoVCModel
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//            
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
             
         }) { (error) in
             

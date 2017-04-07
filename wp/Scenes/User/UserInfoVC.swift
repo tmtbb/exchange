@@ -112,7 +112,7 @@ class UserInfoVC: BaseTableViewController {
             
             cell.line.isHidden = false
 
-            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.email
+//            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.email
             
         }
 

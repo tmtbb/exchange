@@ -192,7 +192,7 @@ class AppDataHelper: NSObject {
     func checkTokenLogin() {
         
         //token是否存在
-        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
+        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String != nil{
         
             let model = TokenModel()
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
