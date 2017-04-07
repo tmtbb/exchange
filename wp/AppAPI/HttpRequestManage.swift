@@ -111,6 +111,8 @@ private static var instance = HttpRequestManage()
                             reseponse(jsonDict as AnyObject)
                         }
                     } else {
+                        
+                         SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: nil)
                         failure(responseData.result.value as AnyObject)
                     }
                 } else {
@@ -119,7 +121,7 @@ private static var instance = HttpRequestManage()
                 }
             } else {
                 failure(responseData.result.error as AnyObject)
-                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
+//                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
         }
         

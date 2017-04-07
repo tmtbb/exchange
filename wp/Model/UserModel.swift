@@ -25,7 +25,11 @@ class UserModel: BaseModel  {
     var phone:String?
     var codeToken:String = ""
     var timestamp:Int = 0
-    
+    var companyImg :String = ""
+
+    var identityCardBack :String = ""
+    var identityCardJust :String = ""
+
     var forgetPwd:Bool = false
     var forgetType:Movement?
 
@@ -103,9 +107,9 @@ class UserModel: BaseModel  {
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
 //          UserInfoVCModel.share().Model = result as? UserInfoVCModel
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//          NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
 
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
             
         }) { (error) in
             

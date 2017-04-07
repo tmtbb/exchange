@@ -2078,8 +2078,42 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="181" id="PeY-QL-F4D">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="181" id="YMB-kU-3bx">
                                         <rect key="frame" x="0.0" y="181" width="375" height="181"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YMB-kU-3bx" id="YQr-Bb-sBc">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lwR-3f-ir0">
+                                                    <rect key="frame" x="10" y="10" width="355" height="150"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQ1-TD-ZHN">
+                                                    <rect key="frame" x="8" y="10" width="357" height="150"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                                    <state key="normal" title="企业营业执照扫描件">
+                                                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="identityCardBack:" destination="8Fb-8Z-1Pr" eventType="touchUpInside" id="NDb-hX-Kbg"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="bottom" secondItem="RQ1-TD-ZHN" secondAttribute="bottom" id="4Vv-S1-CCQ"/>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="trailing" secondItem="RQ1-TD-ZHN" secondAttribute="trailing" id="Nja-JQ-DNE"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="lwR-3f-ir0" secondAttribute="bottom" constant="13" id="bx2-OU-TeB"/>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="top" secondItem="RQ1-TD-ZHN" secondAttribute="top" id="gP7-el-tp0"/>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="leading" secondItem="RQ1-TD-ZHN" secondAttribute="leading" constant="2" id="mb1-YG-k1q"/>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="top" secondItem="YQr-Bb-sBc" secondAttribute="topMargin" constant="2" id="naO-z9-4oa"/>
+                                                <constraint firstItem="lwR-3f-ir0" firstAttribute="leading" secondItem="YQr-Bb-sBc" secondAttribute="leadingMargin" constant="2" id="wj4-J3-683"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="lwR-3f-ir0" secondAttribute="trailing" constant="2" id="yXu-Cm-a2m"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="181" id="PeY-QL-F4D">
+                                        <rect key="frame" x="0.0" y="362" width="375" height="181"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PeY-QL-F4D" id="5GL-mh-YyJ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="181"/>
@@ -2125,6 +2159,8 @@
                     <navigationItem key="navigationItem" title="注册" id="g5E-Pr-qT8"/>
                     <connections>
                         <outlet property="chooseImgBtn" destination="Rtv-9u-HQz" id="qtx-ZX-sGh"/>
+                        <outlet property="identityCardBackbtn" destination="RQ1-TD-ZHN" id="ZWA-VU-IdW"/>
+                        <outlet property="identityCardback" destination="lwR-3f-ir0" id="XaS-8P-ylW"/>
                         <outlet property="selectImg" destination="VOY-DE-Rze" id="N7k-2e-D1d"/>
                     </connections>
                 </tableViewController>

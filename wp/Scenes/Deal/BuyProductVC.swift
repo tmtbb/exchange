@@ -94,6 +94,9 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
     @IBAction func buyBtnTapped(_ sender: UIButton) {
 
         guard flightModel != nil else {return}
+        guard countTextField.text != "" else {
+            return
+        }
         guard countTextField.text != nil else {
             return
         }
