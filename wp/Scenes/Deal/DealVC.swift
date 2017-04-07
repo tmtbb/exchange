@@ -74,7 +74,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     func requestRouteList() {
     
-        if let _ = UserDefaults.standard.value(forKey: SocketConst.Key.token)   {
+        if let _ = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String   {
             let model = TokenRequestModel()
             model.requestPath = "/api/route/index.json"
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String

@@ -55,27 +55,29 @@ class HistoryDealVC: BasePageListTableViewController {
     //MARK: --LIFECYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestPositionHistroy()
+    }
+    
+    func requestPositionHistroy() {
+        
+
+        
     }
     override func didRequest(_ pageIndex: Int) {
-        historyModels = dataSource == nil ? [] : dataSource as! [PositionModel]
-        let index =  pageIndex == 1 ? 0: historyModels.count
-        AppAPIHelper.deal().historyDeals(start: index, count: 10, complete: { [weak self](result) -> ()? in
-            if let models: [PositionModel] = result as! [PositionModel]?{
-                if pageIndex == 1 {
-                    self?.didRequestComplete(models as AnyObject?)
-                }else{
-                    var moreModels: [PositionModel] = []
-                    for model in models{
-                        if model.closeTime < (self?.historyModels.last!.closeTime)!{
-                            moreModels.append(model)
-                        }
-                    }
-                    self?.didRequestComplete(moreModels as AnyObject?)
-                }
+       
+        if let token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String {
+            let model = RequestHistroyModel()
+            model.token = token
+            model.recordPos = pageIndex * 10
+            model.requestPath = "/api/trade/user/flightspaces.json"
+            HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: PoHistoryModel.self, reseponse: { (response) in
+                
+            }) { (error) in
+                
             }
-            return nil
-        }, error: errorBlockFunc())
-            
+        }
+        
+        
     }
     
    

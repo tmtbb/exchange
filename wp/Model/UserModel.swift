@@ -28,7 +28,7 @@ class UserModel: BaseModel  {
     
     var forgetPwd:Bool = false
     var forgetType:Movement?
-    var token: String = UserDefaults.standard.value(forKey: SocketConst.Key.token) == nil ?  "" : UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+    var token: String = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String == nil ?  "" : UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
     var currentUserId: Int = 0
     // 获取某个用户信息
     class func userInfo(userId: Int) -> UserInfo? {

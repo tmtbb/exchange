@@ -42,7 +42,7 @@ extension UIViewController {
     }
     //检查是否已登录
     func checkLogin() -> Bool {
-      if UserDefaults.standard.object(forKey: SocketConst.Key.token) == nil {
+      if UserDefaults.standard.object(forKey: SocketConst.Key.token) as? String == nil {
             let homeStoryboard = UIStoryboard.init(name: "Login", bundle: nil)
             present(homeStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
             return false

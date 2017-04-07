@@ -59,7 +59,7 @@ class UserInfoVCModel: Object {
         
         let info = GetUserInfo()
         info.requestPath = "/api/user/info.json"
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
+        info.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
             
