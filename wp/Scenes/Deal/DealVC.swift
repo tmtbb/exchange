@@ -10,6 +10,8 @@ import UIKit
 import SVProgressHUD
 import DKNightVersion
 import Realm
+import RealmSwift
+
 class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     @IBOutlet weak var listTable: UITableView!
     
@@ -51,7 +53,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         requestRouteList()
         self.myMoneyLabel.text = "\(UserInfoVCModel.share().getCurrentUser()!.balance)"
         refreshTitleView()
-        
+        upDataUserInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -74,7 +76,7 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     func requestRouteList() {
     
-        if let _ = UserDefaults.standard.value(forKey: SocketConst.Key.token)   {
+        if let _ = UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String   {
             let model = TokenRequestModel()
             model.requestPath = "/api/route/index.json"
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
@@ -152,27 +154,9 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         listTable.reloadData()
     }
 
-    func showBuy() {
-        let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: BuyProductVC.className()) as! BuyProductVC
-        controller.modalPresentationStyle = .custom
-        controller.modalTransitionStyle = .crossDissolve
-        present(controller, animated: true, completion: nil)
-    }
-    
-    func showHandle() {
-        let controller = UIStoryboard.init(name: "Deal", bundle: nil).instantiateViewController(withIdentifier: HandlePositionVC.className()) as! HandlePositionVC
-        controller.modalPresentationStyle = .custom
-        controller.modalTransitionStyle = .crossDissolve
-        present(controller, animated: true, completion: nil)
-    }
     //MARK: --UI
     func initUI() {
-        
-        let item = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(showBuy))
-        navigationItem.leftBarButtonItem = item
-        
-        let riItem = UIBarButtonItem(title: "test", style: .plain, target: self, action: #selector(showHandle))
-        navigationItem.rightBarButtonItem = riItem
+
 
         
         myMoneyView.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
@@ -200,30 +184,34 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
             controller.modalPresentationStyle = .custom
             controller.modalTransitionStyle = .crossDissolve
             controller.resultBlock = { [weak self](result) in
-                if let status: BuyProductVC.BuyResultType = result as! BuyProductVC.BuyResultType? {
-                    switch status {
-                    case .lessMoney:
-                        controller.dismissController()
-                        let moneyAlter = UIAlertController.init(title: "余额不足", message: "余额不足，请前往充值", preferredStyle: .alert)
-                        let cancelAction = UIAlertAction.init(title: "取消", style: .cancel, handler: nil)
-                        let sureAction = UIAlertAction.init(title: "确认", style: .default, handler: { [weak self](alter) in
-                             let controller = UIStoryboard.init(name: "Share", bundle: nil).instantiateViewController(withIdentifier: RechargeVC.className()) as! RechargeVC
-                            self?.navigationController?.pushViewController(controller, animated: true)
-                        })
-                        moneyAlter.addAction(cancelAction)
-                        moneyAlter.addAction(sureAction)
-                        self?.present(moneyAlter, animated: true, completion: nil)
-                        break
-                    case .success:
-                        self?.refreshUserCash()
-                        break
-                    default:
-                        break
-                    }
-                }
+                self?.requestFlightInfo()
+                self?.upDataUserInfo()
                 return nil
             }
             present(controller, animated: true, completion: nil)
+            
+        }
+    }
+    
+    
+    func upDataUserInfo() {
+        let info = GetUserInfo()
+        info.requestPath = "/api/user/info.json"
+        
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as? String  == nil ? "" : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
+        HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
+            if let model = result as? UserInfoVCModel {
+                UserInfoVCModel.share().currentUserId = model.userId
+                UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
+                UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
+                let realm = try! Realm()
+                try! realm.write {
+                    realm.add(model, update: true)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+                }
+                self.myMoneyLabel.text = "\(UserInfoVCModel.share().getCurrentUser()!.balance)"
+            }
+        }) { (error) in
             
         }
     }

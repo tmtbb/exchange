@@ -42,6 +42,8 @@ class UserInfoVC: BaseTableViewController {
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { [weak self](result) in
             
         self?.model = result as! UserInfoVCModel
+          
+            UserInfoVCModel.share().refreshUserInfo(result: result)
             self?.tableView.reloadData()
         }) { (error) in
             
@@ -80,16 +82,27 @@ class UserInfoVC: BaseTableViewController {
         }
         if indexPath.row == 1 {
             cell.line.isHidden = true
+            if UserInfoVCModel.share().getCurrentUser()?.userType == 0 {
+                if model.identityCard != ""{
+                    
+                    let str = "\(model.identityCard)"
+                    let index = str.index(str.startIndex,  offsetBy: 4)
+                    let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-5)
+                    
+                    cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index) + "****" +  str.substring(from: index1)
+                }
 
-            if model.identityCard != ""{
-                
-                let str = "\(model.identityCard)"
-                let index = str.index(str.startIndex,  offsetBy: 4)
-                let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-5)
-                
-                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index) + "****" +  str.substring(from: index1)
+            }else{
+                if model.phoneNum != ""{
+                    
+                    let str = "\(model.phoneNum)"
+                    let index = str.index(str.startIndex,  offsetBy: 4)
+                    let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-5)
+                    
+                    cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index) + "****" +  str.substring(from: index1)
+                }
             }
-           
+            
             
         }
         

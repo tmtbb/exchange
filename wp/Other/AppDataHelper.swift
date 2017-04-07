@@ -21,7 +21,7 @@ class AppDataHelper: NSObject {
        // Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(initAllKlineChartData), userInfo: nil, repeats: true)
         initErrorCode()
         checkTokenLogin()
-        initProductData()
+//        initProductData()
     }
     //请求商品数据 
     func initProductData() {
@@ -192,7 +192,7 @@ class AppDataHelper: NSObject {
     func checkTokenLogin() {
         
         //token是否存在
-        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) != nil{
+        if  UserDefaults.standard.value(forKey: SocketConst.Key.token) as? String != nil{
         
             let model = TokenModel()
             model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
@@ -204,6 +204,8 @@ class AppDataHelper: NSObject {
                     UserDefaults.standard.setValue(json[SocketConst.Key.token], forKey: SocketConst.Key.token)
                     _ = UserDefaults.standard.synchronize()
                     self.getUserInfo()
+                    
+                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 }
             }, failure: { (error) in
                 UserDefaults.standard.set(nil, forKey: SocketConst.Key.token)

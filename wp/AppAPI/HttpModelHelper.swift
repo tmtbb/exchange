@@ -25,9 +25,7 @@ class HttpRequestModel: Object {
         let dictionary = dictionaryWithValues(forKeys: properties)
         let mutabledic = NSMutableDictionary()
         mutabledic.setValuesForKeys(dictionary)
-         
         if UUID.cheDevivce("deviceKeyId") == false {
-        
             self.keyId = 34474661562457
         }else{
            self.keyId =  Int64.init(UUID.getData("deviceKeyId"))!

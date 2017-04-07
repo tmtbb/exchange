@@ -32,8 +32,9 @@ class UserModel: BaseModel  {
 
     var forgetPwd:Bool = false
     var forgetType:Movement?
-//    var token: String = UserDefaults.standard.value(forKey: SocketConst.Key.token) == nil ?  "" : UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
+
     var token: String = ""
+
     var currentUserId: Int = 0
     // 获取某个用户信息
     class func userInfo(userId: Int) -> UserInfo? {
@@ -106,9 +107,9 @@ class UserModel: BaseModel  {
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
 //          UserInfoVCModel.share().Model = result as? UserInfoVCModel
-          NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//          NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
 
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
+//            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
             
         }) { (error) in
             

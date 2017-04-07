@@ -256,7 +256,7 @@ class UserTableViewController: BaseTableViewController {
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-       return UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? 2 : 1
+       return UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? 1 : 2
        
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -265,12 +265,12 @@ class UserTableViewController: BaseTableViewController {
             jumpToMyMessageController()
             return
         }
-        if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                jumpToDealController()
-            }
-           
-        }
+//        if indexPath.section == 1 {
+//            if indexPath.row == 0 {
+//                jumpToDealController()
+//            }
+//           
+//        }
          //进入提现
         if indexPath.section == 2 {
             jumpToWithdraw()
@@ -280,7 +280,7 @@ class UserTableViewController: BaseTableViewController {
             jumpToRecharge()
         }
         //进入充值列表
-        if indexPath.section == 4 {
+        if indexPath.section == 1 {
             let story = UIStoryboard.init(name: "Deal", bundle: nil)
             let AddFlightVC = story.instantiateViewController(withIdentifier: "AddFlightVC")
             self.navigationController?.pushViewController(AddFlightVC, animated: true)

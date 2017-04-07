@@ -97,6 +97,8 @@ private static var instance = HttpRequestManage()
         let urlPath = urlString + path
         debugPrint("startPostRequest:path\(path)")
 //    Alamofire.upload(<#T##fileURL: URL##URL#>, to: <#T##URLConvertible#>, method: <#T##HTTPMethod#>, headers: <#T##HTTPHeaders?#>)
+
+
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
             debugPrint("receivedPostRequest:path\(path)")
             if responseData.result.error == nil {
@@ -119,16 +121,20 @@ private static var instance = HttpRequestManage()
                 }
             } else {
                 failure(responseData.result.error as AnyObject)
-                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
+//                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
         }
         
     }
     
+    
     func getRequestJson(_ path:String, reseponse:@escaping reseponseBlock, failure:@escaping errorBlock){
         var urlPath = urlString + path
         urlPath = urlPath + "?sign=\(urlPath.getSignString())"
         debugPrint("startGetRequest:path\(path)")
+        
+
+        
         Alamofire.request(urlPath).responseJSON { (responseData) in            
             debugPrint("receivedGetResponse:path\(path)")
             if responseData.result.error == nil {
@@ -146,6 +152,8 @@ private static var instance = HttpRequestManage()
             
         }
     }
+    
+    
     
     
     

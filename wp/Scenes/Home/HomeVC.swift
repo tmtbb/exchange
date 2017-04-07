@@ -41,7 +41,7 @@ class HomeVC: BaseTableViewController {
         super.viewDidLoad()
         tableView.showsVerticalScrollIndicator = false
         registerNotify()
-        initData()
+//        initData()
         initUI()
     }
     deinit {

@@ -54,6 +54,9 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         guard countTextField.text != nil else {
             return
         }
+        guard countTextField.text != "" else {
+            return
+        }
         let count = Double(countTextField.text!)
         guard Int(count!) <= flightModel!.flightSpaceNumber else {
             
@@ -91,6 +94,9 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
     @IBAction func buyBtnTapped(_ sender: UIButton) {
 
         guard flightModel != nil else {return}
+        guard countTextField.text != "" else {
+            return
+        }
         guard countTextField.text != nil else {
             return
         }
@@ -101,15 +107,20 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         model.flightId = flightModel!.flightId
         model.flightNumber = flightModel!.flightNumber
         model.flightSpacePrice = flightModel!.flightSpacePrice
-        model.buyNum = Int(countTextField.text!)!
+        model.tradeNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
+            self.resultBlock!(nil)
             self.view.isUserInteractionEnabled = true
             self.dismissController()
 
         }) { (error) in
-            self.view.isUserInteractionEnabled = true
-            self.dismissController()
+            if let errorJson = error as? Dictionary<String, AnyObject> {
+                SVProgressHUD.showWainningMessage(WainningMessage: errorJson["msg"] as! String, ForDuration: 1.5, completion: {
+                    self.view.isUserInteractionEnabled = true
+                    self.dismissController()
+                })
+            }
 
         }
 

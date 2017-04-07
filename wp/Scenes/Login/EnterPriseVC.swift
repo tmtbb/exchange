@@ -152,10 +152,10 @@ class EnterPriseVC : BaseTableViewController {
             SVProgressHUD.showError(withStatus: "请上传身份证反面")
             return
         }
-        let model =  RegistCompanyModel()
-        model.phoneNum = phoneText.text!
+         let model =  RegistCompanyModel()
+         model.phoneNum = phoneText.text!
          model.phoneCode = codeText.text!
-         model.password = codeText.text!
+         model.password = pwdText.text!
          model.fullName = companyNameTf.text!
          model.email = emailTF.text!
          model.address = detailTF.text!

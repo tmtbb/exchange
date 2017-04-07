@@ -58,48 +58,52 @@ class UserInfoVCModel: Object {
     // 更新用户信息
     func upateUserInfo(userObject: AnyObject){
         
-//        var token = ""
-//        if (UserDefaults.standard.object(forKey: SocketConst.Key.token) != nil){
-//           token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String
-//        }
         
         let model = userObject as! Dictionary<String, Any>
         let info = GetUserInfo()
         info.requestPath = "/api/user/info.json"
-        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) == nil ? model["token"] as! String : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
+
+        info.token = UserDefaults.standard.object(forKey: SocketConst.Key.token) as? String  == nil ? model["token"] as! String : (UserDefaults.standard.object(forKey: SocketConst.Key.token) as! String)
         HttpRequestManage.shared().postRequestModel(requestModel: info, responseClass: UserInfoVCModel.self, reseponse: { (result) in
             
             
             if let model = result as? UserInfoVCModel {
-                //                            token = model.token!
-                //存储token
-                //                            UserDefaults.standard.setValue(token, forKey: SocketConst.Key.token)
+               
                 UserInfoVCModel.share().currentUserId = result.userId
                 UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
                 
-                //                 UserInfoVCModel.share().updateRealm()
-                //存储uid
-                //                if let phone = model.phoneNum {
-                //                    UserDefaults.standard.setValue(phone, forKey: SocketConst.Key.phone)
-                //                }
+                
                 UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
                 let realm = try! Realm()
                 try! realm.write {
-                    //                     UserInfoVCModel.share().currentUser  =  model
+
                     realm.add(model, update: true)
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                     
                 }
             }
             
-            //            UserInfoVCModel.share().Model = result as? UserInfoVCModel
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-            
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
-            
+
         }) { (error) in
             
         }
+    }
+    func refreshUserInfo(result: AnyObject){
+        
+        if let model = result as? UserInfoVCModel{
+        
+            UserInfoVCModel.share().currentUserId = model.userId
+            UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
+            
+            UserDefaults.standard.setValue( UserInfoVCModel.share().currentUserId, forKey: SocketConst.Key.uid)
+            let realm = try! Realm()
+            try! realm.write {
+                
+                realm.add(model, update: true)
+            }
+        }
+        
+
     }
     //更新realm
     func updateRealm(){
