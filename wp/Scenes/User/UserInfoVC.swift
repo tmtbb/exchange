@@ -27,7 +27,7 @@ class UserInfoVC: BaseTableViewController {
         
         
         
-        titltArr = UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["企业名称","手机号码","组织机构代码","企业信息"]
+        titltArr = UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? ["真实姓名","身份证号码","手机号码"] : ["公司名称","手机号码","组织机构代码","公司邮箱"]
         title = UserInfoVCModel.share().getCurrentUser()?.userType == 0  ? "个人信息" : "企业信息"
         initData()
     }
@@ -87,7 +87,7 @@ class UserInfoVC: BaseTableViewController {
                 let index = str.index(str.startIndex,  offsetBy: 4)
                 let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-5)
                 
-                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index)
+                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "**** ****" +  str.substring(from: index1) :  str.substring(to: index) + "****" +  str.substring(from: index1)
             }
            
             
@@ -101,7 +101,7 @@ class UserInfoVC: BaseTableViewController {
                 let index = str.index(str.startIndex,  offsetBy: 3)
                 let index1 = model.identityCard.index(str.startIndex,  offsetBy: str.length()-4)
                 
-                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "****" +  str.substring(from: index1) :  str.substring(to: index)
+                cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? str.substring(to: index) + "****" +  str.substring(from: index1) :  str.substring(to: index) + "****" +  str.substring(from: index1)
             }
 
             
@@ -112,7 +112,7 @@ class UserInfoVC: BaseTableViewController {
             
             cell.line.isHidden = false
 
-            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.phoneNum
+            cell.rightLb.text =  UserInfoVCModel.share().getCurrentUser()?.userType == 0 ? "" :  model.email
             
         }
 
