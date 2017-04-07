@@ -208,7 +208,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             model.flightSpacePrice = Double(moneyTextField.text!)!
             model.flightSpaceNumber = Int(countTextField.text!)!
             model.phoneNum = (UserInfoVCModel.share().getCurrentUser()!.phoneNum)
-            model.phoneCode = "111111"
+            model.phoneCode = authCodeTextField.text!
             model.codeToken = autoCode!
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
                 _  = self.navigationController?.popViewController(animated: true)
