@@ -64,6 +64,7 @@ class EnterPriseVC : BaseTableViewController {
             AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { [weak self](result) in
                 if let strongSelf = self{
                     SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "验证码已发送")
                     let dic  = result as! Dictionary<String, Any>
                     UserModel.share().codeToken = dic["codeToken"] as! String
                     strongSelf.codeBtn.isEnabled = false
@@ -171,9 +172,11 @@ class EnterPriseVC : BaseTableViewController {
             if let _ =  datadic?["token"]{
                 
                 UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
-                SVProgressHUD.showSuccess(withStatus: "登录成功")
+                SVProgressHUD.showSuccess(withStatus: "注册成功")
                 UserInfoVCModel.share().upateUserInfo(userObject: result)
-                
+                model.businessLicense = ""
+                model.identityCardBack = ""
+                model.identityCardJust = ""
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 
             }

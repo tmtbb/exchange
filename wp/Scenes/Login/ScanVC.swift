@@ -9,12 +9,14 @@
 import UIKit
 import Alamofire
 import SVProgressHUD
+import DKNightVersion
 class ScanVC: BaseTableViewController {
     
     lazy var imagePicker: UIImagePickerController = {
         let picker = UIImagePickerController()
         return picker
     }()
+    @IBOutlet weak var sureUpload: UIButton!
     
     @IBOutlet weak var identityCardBackbtn: UIButton!
     @IBOutlet weak var identityCardback: UIImageView!
@@ -27,6 +29,7 @@ class ScanVC: BaseTableViewController {
         
         title = ShareModel.share().chooseUploadImg == 100 ? "上传营业执照扫描件" : "上传法人有效身份证件"
         
+        sureUpload.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         selectImg.clipsToBounds = true
         
         identityCardback.layer.cornerRadius = 5
@@ -46,7 +49,17 @@ class ScanVC: BaseTableViewController {
     }
     @IBAction func uploadImg(_ sender: Any) {
         
-        
+        if (self.selectImg.image == nil) {
+            SVProgressHUD.showError(withStatus: "请上传身份证正面")
+            return
+            
+        }
+        if (self.identityCardback.image == nil) {
+            if ShareModel.share().chooseUploadImg == 100{} else{
+                SVProgressHUD.showError(withStatus: "请上传身份证反面")
+            return
+            }
+        }
         SVProgressHUD.show(withStatus: "上传中")
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             let data = UIImageJPEGRepresentation(self.selectImg.image! , 0.5)
@@ -71,10 +84,15 @@ class ScanVC: BaseTableViewController {
             
         }, to: AppConst.Network.TttpHostUrl + "/api/file/upload.json") { (response) in
             let encodingResult = response as! SessionManager.MultipartFormDataEncodingResult
-             SVProgressHUD.dismiss()
+//             SVProgressHUD.dismiss()
+            
+            
             switch encodingResult {
             case .success(let upload, _, _):
                 upload.responseJSON(completionHandler: { (response) in
+                    SVProgressHUD.showSuccessMessage(SuccessMessage: "上传成功", ForDuration: 1.5, completion: {
+                        
+                    })
                     if let myJson = response.result.value {
                         let jsonDict = myJson as! Dictionary<String, Any>
                         if let status = jsonDict["status"] as? Int{
@@ -118,8 +136,8 @@ class ScanVC: BaseTableViewController {
                                 }
                             }
                         }
-                        self.perform(#selector(self.registSuccess), with: self, afterDelay: 2)
-                        let _ = self.navigationController?.popViewController(animated: true)
+                        self.perform(#selector(self.registSuccess), with: self, afterDelay: 1.5)
+                        
                         
                         
                         
@@ -160,6 +178,11 @@ class ScanVC: BaseTableViewController {
             
             return  ShareModel.share().chooseUploadImg == 100 ? 0.01 : 181
         }
+        if indexPath.row == 2{
+            
+             return 150
+        }
+        
         return 181
     }
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

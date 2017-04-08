@@ -193,7 +193,7 @@ class BuyVC: BaseTableViewController {
     }
     //MARK: --修改持仓
     @IBAction func changeBtnTapped(_ sender: Any) {
-        AppAPIHelper.deal().changeDeal(model: DealModel.share().buyModel, complete: { [weak self](result) -> ()? in
+        AppAPIHelper.deal().changeDeal(model: DealModel.share().buyModel, complete: { (result) -> ()? in
             
             return nil
         }, error: errorBlockFunc())

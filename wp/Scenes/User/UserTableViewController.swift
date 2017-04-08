@@ -181,6 +181,7 @@ class UserTableViewController: BaseTableViewController {
             
             let model = result as! UserInfoVCModel
             self?.nameLabel.text = String.init(format: "%.2f", model.balance)
+            self?.tableView.reloadData()
         }) { (error) in
             
         }
