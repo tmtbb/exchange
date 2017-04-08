@@ -18,6 +18,7 @@ extension UITextField {
 }
 class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource, UIScrollViewDelegate{
     var dataSource:[AirLineModel]?
+    //定时器
     private var timer: Timer?
     private var codeTime = 60
     var autoCode:String?
@@ -25,14 +26,16 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     var pickView = UIPickerView()
     //定义显示下面的tabbar
     var myToolBar = UIToolbar()
+    //定义显示下面的datePicker
     var dateToolBar = UIToolbar()
-    
+    //发送验证码的btn
     @IBOutlet weak var codeBtn: UIButton!
     var time : String = ""
     // 用来判断选择的第几区 然后渲染数据
     var selectRow : Int = 0
     // 时间lab
     @IBOutlet weak var timeTF: UITextField!
+    //定义UIDatePicker
     var datePicker = UIDatePicker()
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var selectFlight: UITextField!
@@ -47,7 +50,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         initdatePicker()
         
     }
-
+   // MARK: -initdatePicker
     func initdatePicker(){
         
         timeTF.setBorder()
@@ -81,13 +84,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         
         
     }
-    func dateValueChange(_ pickerView : AnyObject){
-        let picker = pickerView as! UIDatePicker
-        
-//        print("Selected date = \(picker.date)")
-          time =      Date.yt_convertDateToStr(picker.date, format: "HH:mm")
-        
-    }
+
     func initUI(){
         selectFlight.setBorder()
         flightTextField.setBorder()
@@ -158,6 +155,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         }
       
     }
+    // MARK: -datePicker dataSource
     func datesureClick(){
         
         if time == ""{
@@ -180,6 +178,13 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         UIView.animate(withDuration: 0.23) {
             self.timeTF.resignFirstResponder()
         }
+        
+    }
+    func dateValueChange(_ pickerView : AnyObject){
+        let picker = pickerView as! UIDatePicker
+        
+        //        print("Selected date = \(picker.date)")
+        time =      Date.yt_convertDateToStr(picker.date, format: "HH:mm")
         
     }
     // MARK: - PickViewdataSource
@@ -334,7 +339,7 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             model.flightSpacePrice = Double(moneyTextField.text!)!
             model.flightSpaceNumber = Int(countTextField.text!)!
             model.phoneNum = (UserInfoVCModel.share().getCurrentUser()!.phoneNum)
-            model.phoneCode = "111111"
+            model.phoneCode = authCodeTextField.text!
             model.codeToken = autoCode!
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
                 _  = self.navigationController?.popViewController(animated: true)
