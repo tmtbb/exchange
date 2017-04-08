@@ -64,6 +64,7 @@ class EnterPriseVC : BaseTableViewController {
             AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { [weak self](result) in
                 if let strongSelf = self{
                     SVProgressHUD.dismiss()
+                    SVProgressHUD.showSuccess(withStatus: "验证码已发送")
                     let dic  = result as! Dictionary<String, Any>
                     UserModel.share().codeToken = dic["codeToken"] as! String
                     strongSelf.codeBtn.isEnabled = false

@@ -29,9 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.deviceId = string
         
         
-        model.deviceResolution = "1136×640"
-        model.deviceModel = UIDevice.current.model
-        model.deviceName = UIDevice.current.systemName
+
+        
+        
+        
+        let screen = UIScreen.main.bounds.size
+        let scale = UIScreen.main.scale
+        let height : Int  = Int.init(screen.height * scale)
+        let width = Int.init(screen.width * scale)
+        model.deviceResolution = "\(height)" + "×" + "\(width)"
+        model.deviceModel = UIDevice.current.modeltype
+        
+        model.deviceName = UIDevice.current.name
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
 
@@ -148,7 +157,83 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        return (keychainItem.object(forKey: "DeviceToken") as? String)!
 //    }
+    
+    
       
 }
+extension UIDevice{
+    
+    ///设备型号的名称
+    
+    var modeltype:String{
+        
+        var systemInfo = utsname()
+        
+        uname(&systemInfo)
+        
+        //NSString *deviceModel = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
 
+        
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+        
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            
+            guard let value = element.value as? Int8, value != 0 else{ return identifier }
+            
+            return identifier + String(UnicodeScalar(UInt8(value)))
+            
+        }
+        switch identifier {
+        
+        case "AppleTV5,3":                              return "Apple TV"
+        case "i386", "x86_64":                          return "iPhone-Simulator"
+        default:                                        return identifier
+        }
+//        return identifier
+      
+        
+    }
+    func getDeviceVersion () -> String? {
+        let name = UnsafeMutablePointer<utsname>.allocate(capacity: 1)
+        uname(name)
+        let machine = withUnsafePointer(to: &name.pointee.machine, { (ptr) -> String? in
+            let int8Ptr = unsafeBitCast(ptr, to: UnsafePointer<CChar>.self)
+            return String.init(cString: int8Ptr)
+        })
+        name.deallocate(capacity: 1)
+        
+//        print(machine)
+        if let deviceString = machine {
+            switch deviceString {
+            //iPhone
+            case "iPhone1,1":                 return "iPhone 1G"
+            case "iPhone1,2":
+                return "iPhone 3G"
+            case "iPhone2,1":                 return "iPhone 3GS"
+            case "iPhone3,1", "iPhone3,2":    return "iPhone 4"
+            case "iPhone4,1":
+                return "iPhone 4S"
+            case "iPhone5,1", "iPhone5,2":    return "iPhone 5"
+            case "iPhone5,3", "iPhone5,4":    return "iPhone 5C"
+            case "iPhone6,1", "iPhone6,2":    return "iPhone 5S"
+            case "iPhone7,1":
+                return "iPhone 6 Plus"
+            case "iPhone7,2":                 return "iPhone 6"
+            case "iPhone8,1":                 return "iPhone 6s"
+            case "iPhone8,2":
+                return "iPhone 6s Plus"
+            default:
+                return deviceString
+            }
+        } else {
+            return nil
+        }
+    }
+    
+   }
+   
+
+   
+ 
+   
 

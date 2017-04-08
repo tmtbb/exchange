@@ -82,6 +82,7 @@ class HomeVC: BaseTableViewController {
                         let flightModel =  FlightModel()
                         flightModel.flightSpacePrice = detail["flightSpacePrice"] as! Double
                         flightModel.flightNumber = detail["flightNumber"] as! String
+                        flightModel.flightTime = detail["flightTime"] as! String
                         flightModel.flightSpacePrice = detail["flightSpacePrice"] as! Double
                         flightModel.flightId  = detail["flightId"] as! Int
                         flightModel.routeId   =  datadic["routeId"] as! Int
@@ -210,6 +211,7 @@ extension HomeVC{
     let model = flightModelArry[indexPath.row]
         cell.nowPrice.text = model.flightNumber
         cell.productName.text = model.routeName
+        cell.timelb.text = model.flightTime
         return cell
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
