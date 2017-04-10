@@ -21,17 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
   
         print(NSHomeDirectory())
-        
-     
-//        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in            
-//            let dic = result as! NSDictionary
-//            UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
-//            UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-//
-//        }) { (error) in
-//            
-//        }
-        
         if UUID.cheDevivce("deviceKey") == false {
             
             let string = String.init(format: "%@", UUID.getUUID())
