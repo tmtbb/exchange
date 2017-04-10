@@ -94,7 +94,9 @@ class EnterPriseVC : BaseTableViewController {
 //        }
     }
     deinit {
-      
+        UserModel.share().companyImg = ""
+        UserModel.share().identityCardBack = ""
+        UserModel.share().identityCardJust = ""
         ShareModel.share().removeObserver(self, forKeyPath: "CompanyUrl")
         ShareModel.share().removeObserver(self, forKeyPath: "PersonUrl")
       
@@ -174,9 +176,9 @@ class EnterPriseVC : BaseTableViewController {
                 UserDefaults.standard.setValue(datadic?["token"] as! String, forKey: SocketConst.Key.token)
                 SVProgressHUD.showSuccess(withStatus: "注册成功")
                 UserInfoVCModel.share().upateUserInfo(userObject: result)
-                model.businessLicense = ""
-                model.identityCardBack = ""
-                model.identityCardJust = ""
+                UserModel.share().companyImg = ""
+                UserModel.share().identityCardBack = ""
+                UserModel.share().identityCardJust = ""
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 
             }
@@ -198,6 +200,7 @@ class EnterPriseVC : BaseTableViewController {
 //            }, error: errorBlockFunc())
         
     }
+  
     func registSuccess(){
         
         self.dismissController()
