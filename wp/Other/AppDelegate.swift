@@ -31,9 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let scale = UIScreen.main.scale
         let height : Int  = Int.init(screen.height * scale)
         let width = Int.init(screen.width * scale)
-         model.deviceResolution = "\(height)" + "×" + "\(width)"
+        model.deviceResolution = "\(height)" + "×" + "\(width)"
         model.deviceModel = UIDevice.current.modeltype
-        
+    
         model.deviceName = UIDevice.current.name
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
