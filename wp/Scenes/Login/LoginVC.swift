@@ -158,4 +158,8 @@ class LoginVC: BaseTableViewController {
     @IBAction func cancelBtnTapped(_ sender: Any) {
         dismissController()
     }
+		    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
 }

@@ -241,6 +241,8 @@ class EnterPriseVC : BaseTableViewController {
             
         }
     }
-    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+    }
     
 }

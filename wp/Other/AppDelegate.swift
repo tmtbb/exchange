@@ -35,22 +35,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
 
-        
-        if UUID.cheDevivce("deviceKey") == false {
-        
-            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
-                
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+            let dic = result as! NSDictionary
+             UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
+             UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
+        }) { (error) in
             
-                let dic = result as! NSDictionary
-                 UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
-                 UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-//                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
-//                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
-            }) { (error) in
-                
-            }
         }
-       
+
+//        if UUID.cheDevivce("deviceKey") == false {
+//        
+//            HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+//                
+//            
+//                let dic = result as! NSDictionary
+//                 UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
+//                 UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
+////                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
+////                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
+//            }) { (error) in
+//                
+//            }
+//        }
+//       
 
         appearance()
         AppDataHelper.instance().initData()
