@@ -35,7 +35,7 @@ class TitleCollectionView: UICollectionView , UICollectionViewDelegate, UICollec
         didSet{
             if let flowLayout: UICollectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout {
                 let count = objects != nil ? ((objects?.count)! > 3 ? 3 : objects?.count ): 3
-                flowLayout.itemSize = CGSize.init(width:200, height: frame.size.height)
+                flowLayout.itemSize = CGSize.init(width:180, height: frame.size.height)
             }
             reloadData()
         }

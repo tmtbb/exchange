@@ -172,6 +172,9 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
     }
     //MARK: --买涨/买跌
     @IBAction func dealBtnTapped(_ sender: UIButton) {
+        if listDataSource.dataArray == nil  {
+            return
+        }
         tableView.scrollToRow(at: IndexPath.init(row: 3, section: 0), at: .top, animated: false)
         if checkLogin(){
             if titleView.objects?.count == 0 {
