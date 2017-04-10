@@ -110,8 +110,6 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         model.tradeNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
-           
-            print(responseObject)
             SVProgressHUD.showSuccessMessage(SuccessMessage: "舱位购买成功", ForDuration: 1.5, completion: {
                 self.resultBlock!(nil)
                 self.view.isUserInteractionEnabled = true
