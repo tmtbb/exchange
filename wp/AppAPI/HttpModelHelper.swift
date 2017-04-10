@@ -37,7 +37,7 @@ class HttpRequestModel: Object {
             self.keyId = 34474661562457
             UserDefaults.standard.setValue("1", forKey: "firstIn")
         }
-        
+//
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
         self.timestamp = Int(Date.nowTimestemp())
         var signString = AppConst.Network.TttpHostUrl + requestPath
