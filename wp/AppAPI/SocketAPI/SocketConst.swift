@@ -70,13 +70,13 @@ class SocketConst: NSObject {
         case withdrawList = 6005
         // 提现
         case withdrawCash = 6011
-        //仓位列表
+        //舱位列表
         case currentDeals = 5005
-        //仓位详情
+        //舱位详情
         case currentDealDetail = 2001
-        //历史仓位列表
+        //历史舱位列表
         case historyDeals = 6001
-        //历史仓位详情
+        //历史舱位详情
         case historyDealDetail = 2003
         //建仓
         case buildDeal = 5003
@@ -96,7 +96,7 @@ class SocketConst: NSObject {
         case totalHistroy = 6010
         
 
-        //航运仓位
+        //航运舱位
         case position = 5007
         //收益选择
         case benifity = 6007
