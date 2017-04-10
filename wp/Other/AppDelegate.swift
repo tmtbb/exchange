@@ -41,8 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let dic = result as! NSDictionary
             UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
             UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-            //                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
-            //                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
+
         }) { (error) in
             
         }
@@ -55,14 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                let dic = result as! NSDictionary
 //                 UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
 //                 UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-////                UserDefaults.standard.setValue(dic["deviceKeyId"], forKey: "deviceKeyId")
-////                UserDefaults.standard.setValue(dic["deviceKey"], forKey: "deviceKey")
 //            }) { (error) in
 //                
 //            }
 //        }
-       
-
+    
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()

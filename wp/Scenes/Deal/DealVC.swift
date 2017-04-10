@@ -53,12 +53,12 @@ class DealVC: BaseTableViewController, TitleCollectionviewDelegate {
         requestRouteList()
         self.myMoneyLabel.text = "\(UserInfoVCModel.share().getCurrentUser()!.balance)"
         refreshTitleView()
-        upDataUserInfo()
+//        upDataUserInfo()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+         upDataUserInfo()
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
