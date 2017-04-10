@@ -83,7 +83,7 @@ class ScanVC: BaseTableViewController {
             }
             
         }, to: AppConst.Network.TttpHostUrl + "/api/file/upload.json") { (response) in
-            let encodingResult = response as! SessionManager.MultipartFormDataEncodingResult
+            let encodingResult = response 
 //             SVProgressHUD.dismiss()
             
             
