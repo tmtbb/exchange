@@ -49,6 +49,11 @@ extension String {
         }else{
         str = "24BFA1509B794899834AA9E24B447322"
         }
+        if UserDefaults.standard.object(forKey: "firstcomIn") == nil   {
+            
+           str = "24BFA1509B794899834AA9E24B447322"
+            UserDefaults.standard.setValue("1", forKey: "firstcomIn")
+        }
         return (self + "device_key=\(str)").md5_string()
     }
     
