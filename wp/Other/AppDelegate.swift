@@ -26,18 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         let model = GetDeviceKey()
-        model.deviceId = string
-        
-        
-
-        
-        
-        
+        model.deviceId = string        
         let screen = UIScreen.main.bounds.size
         let scale = UIScreen.main.scale
         let height : Int  = Int.init(screen.height * scale)
         let width = Int.init(screen.width * scale)
-        model.deviceResolution = "\(height)" + "×" + "\(width)"
+         model.deviceResolution = "\(height)" + "×" + "\(width)"
         model.deviceModel = UIDevice.current.modeltype
         
         model.deviceName = UIDevice.current.name
