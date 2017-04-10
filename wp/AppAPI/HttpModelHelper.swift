@@ -34,9 +34,8 @@ class HttpRequestModel: Object {
         }
         if UserDefaults.standard.object(forKey: "firstIn") == nil   {
             
-         self.keyId = 34474661562457
+            self.keyId = 34474661562457
             UserDefaults.standard.setValue("1", forKey: "firstIn")
-             self.keyId = 34474661562457
         }
         
         self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
