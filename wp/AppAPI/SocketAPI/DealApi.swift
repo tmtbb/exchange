@@ -9,13 +9,13 @@
 import Foundation
 
 protocol DealApi{
-    //当前仓位列表
+    //当前舱位列表
     func currentDeals(complete: CompleteBlock?, error:ErrorBlock?)
-    //当前仓位详情
+    //当前舱位详情
     func currentDealDetail(positionId: Int, complete: CompleteBlock?, error:ErrorBlock?)
-    //历史仓位列表
+    //历史舱位列表
     func historyDeals(start: Int,count: Int,complete: CompleteBlock?, error:ErrorBlock?)
-    //历史仓位详情
+    //历史舱位详情
     func historyDealDetail(positionId: Int, complete: CompleteBlock?, error:ErrorBlock?)
     //建仓
     func buildDeal(model: DealParam, complete: CompleteBlock?, error:ErrorBlock?)
@@ -31,7 +31,7 @@ protocol DealApi{
     func timeline(param: KChartParam, complete: CompleteBlock?, error:ErrorBlock?)
     //当前报价
     func realtime(param: [String: Any], complete: CompleteBlock?, error:ErrorBlock?)
-    //仓位信息
+    //舱位信息
     func position(param: PositionParam, complete: CompleteBlock?, error:ErrorBlock?)
     //收益选择
     func benifity(param: BenifityParam, complete: CompleteBlock?, error:ErrorBlock?)

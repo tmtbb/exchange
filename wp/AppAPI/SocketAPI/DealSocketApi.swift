@@ -10,7 +10,7 @@ import UIKit
 
 class DealSocketApi: BaseSocketAPI, DealApi {
    
-    //当前仓位列表
+    //当前舱位列表
     func currentDeals(complete: CompleteBlock?, error:ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().currentUser?.id ?? 32,
                                     SocketConst.Key.token: UserModel.share().token ]
@@ -18,7 +18,7 @@ class DealSocketApi: BaseSocketAPI, DealApi {
         startModelsRequest(packet, listName: "positioninfo", modelClass: PositionModel.self, complete: complete, error: error)
     }
     
-    //当前仓位详情
+    //当前舱位详情
     func currentDealDetail(positionId: Int, complete: CompleteBlock?, error:ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().currentUser?.id ?? 0,
                                     SocketConst.Key.token: UserModel.share().token ,
@@ -27,7 +27,7 @@ class DealSocketApi: BaseSocketAPI, DealApi {
         startModelRequest(packet, modelClass: PositionModel.self, complete: complete, error: error)
     }
     
-    //历史仓位列表
+    //历史舱位列表
     func historyDeals(start: Int,count: Int,complete: CompleteBlock?, error:ErrorBlock?){
         let param: UndealParam = UndealParam()
         param.start = start
@@ -37,7 +37,7 @@ class DealSocketApi: BaseSocketAPI, DealApi {
         startModelsRequest(packet, listName: "positioninfo", modelClass: PositionModel.self, complete: complete, error: error)
     }
     
-    //历史仓位详情
+    //历史舱位详情
     func historyDealDetail(positionId: Int, complete: CompleteBlock?, error:ErrorBlock?){
         let param: [String: Any] = [SocketConst.Key.id: UserModel.share().currentUser?.id ?? 0,
                                     SocketConst.Key.token: UserModel.share().token ,
@@ -95,7 +95,7 @@ class DealSocketApi: BaseSocketAPI, DealApi {
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .realtime, dict: param as [String : AnyObject], type: .time)
         startModelsRequest(packet, listName: "priceinfo", modelClass: KChartModel.self, complete: complete, error: error)
     }
-    //仓位信息
+    //舱位信息
     func position(param: PositionParam, complete: CompleteBlock?, error:ErrorBlock?){
         let packet: SocketDataPacket = SocketDataPacket.init(opcode: .position, model: param, type: .deal)
         startModelRequest(packet, modelClass: ProductPositionModel.self, complete: complete, error: error)

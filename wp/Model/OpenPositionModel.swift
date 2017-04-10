@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 class PositionModel: Object {
-    dynamic var positionId:Int = 0      //仓位id
+    dynamic var positionId:Int = 0      //舱位id
     dynamic var id:Int = 0              //用户id
     dynamic var code:String = ""        //商品代码
     dynamic var codeId:Int  = 0         //商品代码

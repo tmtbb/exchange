@@ -20,7 +20,7 @@ class MainTabBarController: UITabBarController,UITabBarControllerDelegate {
         MobClick.profileSignIn(withPUID: "")
         select = 0
         let storyboardNames = ["Home","Deal","User"]
-        let titles = ["首页","交易","晒单"]
+        let titles = ["首页","交易","个人中心"]
         for (index, name) in storyboardNames.enumerated() {
             let storyboard = UIStoryboard.init(name: name, bundle: nil)
             let controller = storyboard.instantiateInitialViewController()

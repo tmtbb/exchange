@@ -33,7 +33,7 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         super.viewDidLoad()
         initUI()
         
-        let residueCountText = "当前仓位剩余数量 \(flightModel!.flightSpaceNumber)"
+        let residueCountText = "当前舱位剩余数量 \(flightModel!.flightSpaceNumber)"
         residueCountLabel.setAttributeText(text: residueCountText, firstFont: 14.0, secondFont: 18.0, firstColor: UIColor(hexString:"666666"), secondColor: UIColor(hexString: "157FB3"), range: NSMakeRange(9, residueCountText.length() - 9))
         
         
@@ -110,9 +110,11 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         model.tradeNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
-            self.resultBlock!(nil)
-            self.view.isUserInteractionEnabled = true
-            self.dismissController()
+            SVProgressHUD.showSuccessMessage(SuccessMessage: "舱位购买成功", ForDuration: 1.5, completion: {
+                self.resultBlock!(nil)
+                self.view.isUserInteractionEnabled = true
+                self.dismissController()
+            })
 
         }) { (error) in
             if let errorJson = error as? Dictionary<String, AnyObject> {

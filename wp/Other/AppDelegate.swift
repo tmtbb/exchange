@@ -37,9 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         model.deviceName = UIDevice.current.name
         model.osVersion = UIDevice.current.systemVersion
         model.requestPath = "/api/device/register.json"
-        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
-            
-            
+        HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in            
             let dic = result as! NSDictionary
             UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
             UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")

@@ -111,9 +111,12 @@ private static var instance = HttpRequestManage()
                             reseponse(jsonDict as AnyObject)
                         }
                     } else {
-                        
-                         SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: nil)
-                        failure(responseData.result.value as AnyObject)
+                        SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: {
+                            if status == 10002 {
+                                let homeStoryboard = UIStoryboard.init(name: "Login", bundle: nil)
+                                UIApplication.shared.keyWindow?.rootViewController?.present(homeStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
+                            }
+                        })
                     }
                 } else {
                     failure(responseData.result.value as AnyObject)
