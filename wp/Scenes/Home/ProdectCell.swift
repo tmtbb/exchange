@@ -18,6 +18,7 @@ class ProdectCell: UITableViewCell {
   
     //设置阴影
     @IBOutlet weak var viewShadow: UIView!
+    @IBOutlet weak var timelb: UILabel!
   
     
     var kChartModel: KChartModel? {
@@ -26,6 +27,8 @@ class ProdectCell: UITableViewCell {
                 return
             }
             productName.text = String.init(format: "%@", kChartModel!.name)
+//             timelb.text = String.init(format: "%@", kChartModel!.fl)
+            
 //            nowPrice.text = String.init(format: "%.4f", kChartModel!.currentPrice)
           
            

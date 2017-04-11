@@ -12,11 +12,11 @@ import RealmSwift
 class HttpRequestModel: Object {
     
     var requestPath = "requestPath"
-    var appVersion = "appVersion"
+    var appVersion = ""
     var osType = 0
     var sign = "sign"
     var keyId : Int64 = 34474661562457
-    var timestamp = 0
+    var timestamp =  0
     
     
     func toDictionary() -> NSDictionary{
@@ -24,13 +24,22 @@ class HttpRequestModel: Object {
         let properties = objectSchema.properties.map { $0.name }
         let dictionary = dictionaryWithValues(forKeys: properties)
         let mutabledic = NSMutableDictionary()
+        
+        
         mutabledic.setValuesForKeys(dictionary)
         if UUID.cheDevivce("deviceKeyId") == false {
             self.keyId = 34474661562457
         }else{
            self.keyId =  Int64.init(UUID.getData("deviceKeyId"))!
         }
-
+        if UserDefaults.standard.object(forKey: "firstIn") == nil   {
+            
+            self.keyId = 34474661562457
+            UserDefaults.standard.setValue("1", forKey: "firstIn")
+        }
+//
+        self.appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as! String
+        self.timestamp = Int(Date.nowTimestemp())
         var signString = AppConst.Network.TttpHostUrl + requestPath
         for prop in objectSchema.properties as [Property]! {
             if prop.name == "requestPath" {

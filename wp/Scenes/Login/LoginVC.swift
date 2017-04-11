@@ -86,7 +86,7 @@ class LoginVC: BaseTableViewController {
                     self.loginSuccess()
                 }
             }, failure: { (error) in
-                SVProgressHUD.dismiss()
+//                SVProgressHUD.dismiss()
 
             })
 

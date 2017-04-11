@@ -8,6 +8,7 @@
 
 import UIKit
 import SVProgressHUD
+import DKNightVersion
 extension UITextField {
     func setBorder() {
         
@@ -17,14 +18,25 @@ extension UITextField {
 }
 class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSource, UIScrollViewDelegate{
     var dataSource:[AirLineModel]?
+    //定时器
+    private var timer: Timer?
+    private var codeTime = 60
     var autoCode:String?
     //定义pickerView
     var pickView = UIPickerView()
     //定义显示下面的tabbar
     var myToolBar = UIToolbar()
+    //定义显示下面的datePicker
+    var dateToolBar = UIToolbar()
+    //发送验证码的btn
+    @IBOutlet weak var codeBtn: UIButton!
+    var time : String = ""
     // 用来判断选择的第几区 然后渲染数据
     var selectRow : Int = 0
-    // 输入框
+    // 时间lab
+    @IBOutlet weak var timeTF: UITextField!
+    //定义UIDatePicker
+    var datePicker = UIDatePicker()
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var selectFlight: UITextField!
     @IBOutlet weak var flightTextField: UITextField!
@@ -35,10 +47,44 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         super.viewDidLoad()
         title = "添加航班线路"
         initUI()
+        initdatePicker()
+        
+    }
+   // MARK: -initdatePicker
+    func initdatePicker(){
+        
+        timeTF.setBorder()
+        datePicker =  UIDatePicker.init(frame: CGRect.init(x: 0, y: 0, width: self.view.frame.size.width, height: 120))
+         timeTF.inputView = datePicker
+        dateToolBar = UIToolbar.init(frame:  CGRect.init(x: 0, y: self.view.frame.size.height - self.dateToolBar.frame.size.height - 44.0, width: self.view.frame.size.width, height: 44))
+       
+        timeTF.inputAccessoryView = dateToolBar
+        
+        let local = Locale.init(identifier: "zh_CN")
+        datePicker.locale = local
+        datePicker.datePickerMode = .time
+        datePicker.addTarget(self, action: #selector(dateValueChange(_:)), for: .valueChanged)
+        let sure : UIButton = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 40, height: 44))
+        sure.setTitle("确定", for: .normal)
+        let sureItem : UIBarButtonItem = UIBarButtonItem.init(customView: sure)
+        sure.setTitleColor(UIColor.init(hexString: "666666"), for: .normal)
+        let space : UIButton = UIButton.init(frame: CGRect.init(x: 40, y: 0, width: self.view.frame.size.width-140, height: 44))
+        space.setTitle("", for: .normal)
+        sure.addTarget(self, action: #selector(datesureClick), for: .touchUpInside)
+        let spaceItem : UIBarButtonItem = UIBarButtonItem.init(customView: space)
+        let cancel : UIButton = UIButton.init(frame: CGRect.init(x: self.view.frame.size.width-44, y: 0, width: 40, height: 44))
+        cancel.setTitle("取消", for: .normal)
+        cancel.addTarget(self, action: #selector(datecancelClick), for: .touchUpInside)
+        cancel.setTitleColor(UIColor.init(hexString: "666666"), for: .normal)
+        cancel.setTitleColor(UIColor.init(hexString: "666666"), for: .normal)
+        let cancelItem : UIBarButtonItem = UIBarButtonItem.init(customView: cancel)
+        dateToolBar.setItems([sureItem,spaceItem,cancelItem], animated: true)
+        
+      
+        
         
     }
 
-    
     func initUI(){
         selectFlight.setBorder()
         flightTextField.setBorder()
@@ -109,6 +155,38 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         }
       
     }
+    // MARK: -datePicker dataSource
+    func datesureClick(){
+        
+        if time == ""{
+        
+            let date = Date()
+            time = Date.yt_convertDateToStr(date, format: "HH:mm")
+        }
+         timeTF.text = time
+        
+        
+//        let model = dataSource?[selectRow]
+        
+//        selectFlight.text = model?.routeName
+        
+        UIView.animate(withDuration: 0.23) {
+           self.timeTF.resignFirstResponder()
+        }
+    }
+    func datecancelClick(){
+        UIView.animate(withDuration: 0.23) {
+            self.timeTF.resignFirstResponder()
+        }
+        
+    }
+    func dateValueChange(_ pickerView : AnyObject){
+        let picker = pickerView as! UIDatePicker
+        
+        //        print("Selected date = \(picker.date)")
+        time =      Date.yt_convertDateToStr(picker.date, format: "HH:mm")
+        
+    }
     // MARK: - PickViewdataSource
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -136,10 +214,18 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
 
     @IBAction func getAuthCode(_ sender: Any) {
         
-        AppDataHelper.instance().getVailCode(phone: "13958104695", type: 1) { (response) in
+        AppDataHelper.instance().getVailCode(phone: (UserInfoVCModel.share().getCurrentUser()?.phoneNum)!, type: 1) { [weak self](response) in
             if let dict = response as? Dictionary<String,AnyObject> {
-                self.autoCode = dict["codeToken"] as? String
-                SVProgressHUD.showInfo(withStatus: "验证码已发送")
+                
+                
+                if let strongSelf = self{
+                    self?.autoCode = dict["codeToken"] as? String
+                    SVProgressHUD.showInfo(withStatus: "验证码已发送")
+                    
+                    strongSelf.codeBtn.isEnabled = false
+                    strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(strongSelf.updatecodeBtnTitle), userInfo: nil, repeats: true)
+                }
+              
             }
             
         }
@@ -147,7 +233,30 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
     
     @IBAction func addFlightVC(_ sender: Any) {
         guard autoCode != nil else {
-            
+            SVProgressHUD.showWainningMessage(WainningMessage: "请获取验证码", ForDuration: 1.5, completion: nil)
+            return
+        }
+        
+        guard flightTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入航班号", ForDuration: 1.5, completion: nil)
+            return
+        }
+        
+        guard moneyTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入舱位价格", ForDuration: 1.5, completion: nil)
+            return
+        }
+        
+        guard countTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入舱位数量", ForDuration: 1.5, completion: nil)
+            return
+        }
+        guard authCodeTextField.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请输入验证码", ForDuration: 1.5, completion: nil)
+            return
+        }
+        guard timeTF.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请选择时间", ForDuration: 1.5, completion: nil)
             return
         }
         
@@ -159,12 +268,13 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             model.flightNumber = flightTextField.text!
             model.flightSpacePrice = Double(moneyTextField.text!)!
             model.flightSpaceNumber = Int(countTextField.text!)!
-            model.phoneNum = "13958104695"
-            model.phoneCode = "111111"
+            model.phoneNum = (UserInfoVCModel.share().getCurrentUser()?.phoneNum)!
+            model.phoneCode = authCodeTextField.text!
             model.codeToken = autoCode!
-            
+            model.flightTime = time
             HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (resonseObject) in
                 SVProgressHUD.showSuccess(withStatus: "添加成功")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppConst.NotifyDefine.UpdateUserInfo), object: nil)
                 _ = self.navigationController?.popViewController(animated: true)
             }) { (error) in
                 
@@ -172,6 +282,23 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
         }
         
 
+    }
+    
+   
+    func updatecodeBtnTitle() {
+        if codeTime == 0 {
+            codeBtn.isEnabled = true
+            codeBtn.setTitle("重新发送", for: .normal)
+            codeTime = 60
+            timer?.invalidate()
+            codeBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
+            return
+        }
+        codeBtn.isEnabled = false
+        codeTime = codeTime - 1
+        let title: String = "\(codeTime)秒后重新发送"
+        codeBtn.setTitle(title, for: .normal)
+        codeBtn.backgroundColor = UIColor.init(rgbHex: 0xCCCCCC)
     }
     func addFlight() {
         
@@ -197,6 +324,10 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             SVProgressHUD.showWainningMessage(WainningMessage: "请输入验证码", ForDuration: 1.5, completion: nil)
             return
         }
+        guard timeTF.text?.length() != 0 else {
+            SVProgressHUD.showWainningMessage(WainningMessage: "请选择时间", ForDuration: 1.5, completion: nil)
+            return
+        }
 
         
         if let selectModel = dataSource?[selectRow] {
@@ -217,4 +348,5 @@ class AddFlightVC: UIViewController ,UIPickerViewDelegate,  UIPickerViewDataSour
             }
         }
     }
+    
 }
