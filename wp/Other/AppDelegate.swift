@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
   
         print(NSHomeDirectory())
+
         if UserDefaults.standard.object(forKey: "checkfirstcomIn") == nil{
             
             UserDefaults.standard.setValue("1", forKey: "checkfirstcomIn")
@@ -78,8 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                }
 //            }
         }
-       
-    
+   
         appearance()
         AppDataHelper.instance().initData()
         AppServerHelper.instance().initServer()

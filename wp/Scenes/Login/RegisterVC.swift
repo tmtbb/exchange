@@ -54,10 +54,6 @@ class RegisterVC: BaseTableViewController {
         if checkoutText(){
 //            let type = UserModel.share().forgetPwd ? 1:0
             SVProgressHUD.showProgressMessage(ProgressMessage: "请稍候...")
-            
-           
-        
-            
             AppDataHelper.instance().getVailCode(phone: phoneText.text!, type: 0, reseponse: { [weak self](result) in
                 if let strongSelf = self{
                     SVProgressHUD.dismiss()
@@ -67,10 +63,7 @@ class RegisterVC: BaseTableViewController {
                     strongSelf.codeBtn.isEnabled = false
                     strongSelf.timer = Timer.scheduledTimer(timeInterval: 1, target: strongSelf, selector: #selector(strongSelf.updatecodeBtnTitle), userInfo: nil, repeats: true)
                 }
-               
-            
             })
-            
         }
     }
     func updatecodeBtnTitle() {
@@ -214,8 +207,14 @@ class RegisterVC: BaseTableViewController {
         qqBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         wechatBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
         sinaBtn.dk_backgroundColorPicker = DKColorTable.shared().picker(withKey: AppConst.Color.main)
+        
+        let tableTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(closeKeyboard))
+        tableView.addGestureRecognizer(tableTapGesture)
 
     }
-
     
+    func closeKeyboard() {
+        view.endEditing(true)
+    }
+
 }

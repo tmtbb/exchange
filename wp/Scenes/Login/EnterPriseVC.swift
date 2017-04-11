@@ -235,6 +235,14 @@ class EnterPriseVC : BaseTableViewController {
         ShareModel.share().addObserver(self, forKeyPath: "CompanyUrl", options: .new, context: nil)
         ShareModel.share().addObserver(self, forKeyPath: "PersonUrl", options: .new, context: nil)
         
+        
+        let tableTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(closeKeyboard))
+        tableView.addGestureRecognizer(tableTapGesture)
+        
+    }
+    
+    func closeKeyboard() {
+        view.endEditing(true)
     }
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
@@ -247,6 +255,5 @@ class EnterPriseVC : BaseTableViewController {
             
         }
     }
-    
     
 }
