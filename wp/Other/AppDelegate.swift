@@ -49,34 +49,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }) { (error) in
                 
             }
-            if UUID.cheDevivce("deviceKey") == false {
-                
-                let string = String.init(format: "%@", UUID.getUUID())
-                
-                
-                let model = GetDeviceKey()
-                model.deviceId = string
-                let screen = UIScreen.main.bounds.size
-                let scale = UIScreen.main.scale
-                let height : Int  = Int.init(screen.height * scale)
-                let width = Int.init(screen.width * scale)
-                model.deviceResolution = "\(height)" + "×" + "\(width)"
-                model.deviceModel = UIDevice.current.modeltype
-                
-                model.deviceName = UIDevice.current.name
-                model.osVersion = UIDevice.current.systemVersion
-                model.requestPath = "/api/device/register.json"
-                
-                HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
-                    
-                    
-                    let dic = result as! NSDictionary
-                    UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
-                    UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
-                }) { (error) in
-                    
-                }
-            }
+//            if UUID.cheDevivce("deviceKey") == false {
+//                
+//                let string = String.init(format: "%@", UUID.getUUID())
+//                
+//                
+//                let model = GetDeviceKey()
+//                model.deviceId = string
+//                let screen = UIScreen.main.bounds.size
+//                let scale = UIScreen.main.scale
+//                let height : Int  = Int.init(screen.height * scale)
+//                let width = Int.init(screen.width * scale)
+//                model.deviceResolution = "\(height)" + "×" + "\(width)"
+//                model.deviceModel = UIDevice.current.modeltype
+//                
+//                model.deviceName = UIDevice.current.name
+//                model.osVersion = UIDevice.current.systemVersion
+//                model.requestPath = "/api/device/register.json"
+//                
+//                HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (result) in
+//                    
+//                    
+//                    let dic = result as! NSDictionary
+//                    UUID.save(String.init(format: "%ld", dic["deviceKeyId"] as! Int64) , withKey: "deviceKeyId")
+//                    UUID.save(dic["deviceKey"] as! String, withKey: "deviceKey")
+//                }) { (error) in
+//                    
+//                }
+//            }
         }
        
     

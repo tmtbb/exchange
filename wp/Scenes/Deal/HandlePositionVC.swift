@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 class HandlePositionVC: UIViewController {
 
     var positionModel:PoHistoryModel?
@@ -41,17 +41,35 @@ class HandlePositionVC: UIViewController {
         super.touchesBegan(touches, with: event)
         dismissController()
     }
+     // 货运
     @IBAction func freightAction(_ sender: Any) {
-
+                let timeCount = Int64(NSDate().timeIntervalSince1970) - ((positionModel?.tradeTime)! / 1000)
+                if timeCount < 5 * 24 * 3600 {
+                    SVProgressHUD.showWainningMessage(WainningMessage: "货运-交易5日内不可操作", ForDuration: 2, completion: {
+                        
+                    })
+                    return
+                }
         handlePositionWithIndex(index: 5)
         
 
     }
+    // 退仓
     @IBAction func feeRefundAction(_ sender: Any) {
         handlePositionWithIndex(index: 4)
 
     }
+    // 转卖
     @IBAction func resellAction(_ sender: Any) {
+        let timeCount = Int64(NSDate().timeIntervalSince1970) - ((positionModel?.tradeTime)! / 1000)
+        if timeCount < 5 * 24 * 3600 {
+            
+            SVProgressHUD.showWainningMessage(WainningMessage: "转卖-5日内不可操作", ForDuration: 2, completion: {
+                
+            })
+            return
+        }
+        
         handlePositionWithIndex(index: 6)
     }
     
