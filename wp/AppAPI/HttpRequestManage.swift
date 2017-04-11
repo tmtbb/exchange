@@ -101,7 +101,8 @@ private static var instance = HttpRequestManage()
 
         Alamofire.request(urlPath, method: .post, parameters: parameters).responseJSON { (responseData) in
             debugPrint("receivedPostRequest:path\(path)")
-            if responseData.result.error == nil {
+            if responseData.result.error == nil
+            {
                 let jsonDict = responseData.result.value as? Dictionary<String,AnyObject>
                 if let status = jsonDict?["status"] as? Int {
                     if status == 0 {
@@ -112,9 +113,15 @@ private static var instance = HttpRequestManage()
                         }
                     } else {
                         SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: {
+                            
+//                             reseponse(jsonDict as AnyObject)
                             if status == 10002 {
                                 let homeStoryboard = UIStoryboard.init(name: "Login", bundle: nil)
                                 UIApplication.shared.keyWindow?.rootViewController?.present(homeStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
+                            }
+                            else{
+                            failure(responseData.result.value as AnyObject)
+                            
                             }
                         })
                     }
@@ -126,6 +133,8 @@ private static var instance = HttpRequestManage()
                 failure(responseData.result.error as AnyObject)
 //                SVProgressHUD.showErrorMessage(ErrorMessage: "errorCode：\(responseData.result.error!._code)", ForDuration: 1.5, completion: nil)
             }
+            
+            
         }
         
     }

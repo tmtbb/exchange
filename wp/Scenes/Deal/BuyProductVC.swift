@@ -110,6 +110,8 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
         model.tradeNum = Int(countTextField.text!)!
         
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (responseObject) in
+            
+             
             SVProgressHUD.showSuccessMessage(SuccessMessage: "舱位购买成功", ForDuration: 1.5, completion: {
                 self.resultBlock!(nil)
                 self.view.isUserInteractionEnabled = true
@@ -117,15 +119,21 @@ class BuyProductVC: UIViewController , UITextFieldDelegate{
             })
 
         }) { (error) in
+            
+             self.view.isUserInteractionEnabled = true
             if let errorJson = error as? Dictionary<String, AnyObject> {
-                SVProgressHUD.showWainningMessage(WainningMessage: errorJson["msg"] as! String, ForDuration: 1.5, completion: {
-                    self.view.isUserInteractionEnabled = true
-                    self.dismissController()
-                })
+                
+                self.view.isUserInteractionEnabled = true
+                self.dismissController()
+//                SVProgressHUD.showWainningMessage(WainningMessage: errorJson["msg"] as! String, ForDuration: 1.5, completion: {
+//                    self.view.isUserInteractionEnabled = true
+//                    self.dismissController()
+//                })
             }
 
         }
-
+        
+        
         
     }
     
