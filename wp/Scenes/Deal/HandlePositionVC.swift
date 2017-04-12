@@ -81,7 +81,7 @@ class HandlePositionVC: UIViewController {
         model.handleType = index
         model.token = UserDefaults.standard.value(forKey: SocketConst.Key.token) as! String
         HttpRequestManage.shared().postRequestModelWithJson(requestModel: model, reseponse: { (response) in
-            self.resultBlock!(nil)
+            self.resultBlock!(index as AnyObject?)
             self.dismissController()
         }) { (error) in
             
