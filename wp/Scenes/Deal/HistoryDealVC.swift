@@ -50,6 +50,7 @@ class HistoryDealCell: OEZTableViewCell{
 //            titleLabel.text = model.buySell == 1 ? "买入" : "卖出"
             let handleText = [" 买入 "," 退舱 "," 货运 "," 转卖 "]
 //
+//            0 1 2 3
             handleLabel.text = handleText[model.tradeStatus - 3]
 
 //
@@ -88,7 +89,7 @@ class HistoryDealVC: BasePageListTableViewController {
                 model.recordPos = 0
             } else {
                 
-                model.recordPos = (pageIndex - 1) * 10
+                model.recordPos = (self.dataSource?.count)!
             }
             model.requestPath = "/api/trade/user/flightspaces.json"
             HttpRequestManage.shared().postRequestModels(requestModel: model, responseClass: PoHistoryModel.self, reseponse: { (response) in
@@ -123,7 +124,18 @@ class HistoryDealVC: BasePageListTableViewController {
         present(controller, animated: true, completion: nil)
         controller.resultBlock = { [weak self](result) in
         
-            self?.beginRefreshing()
+            //5 货运
+            //4 退仓
+            //6 转卖
+//                               3         4        5       6
+//                              买入       退舱     货运    转卖
+
+            let int   = result as! Int
+            let history : PoHistoryModel = (self?.dataSource?[indexPath.row])! as! PoHistoryModel
+            history.tradeStatus = int == 5 ? 5 : (int == 4  ? 4 : (int == 6  ? 6 : 3) )
+            self?.dataSource?.remove(at: indexPath.row)
+            self?.dataSource?.insert(history, at: indexPath.row)
+            self?.tableView.reloadData()
             return nil
         }
         if let model = self.dataSource?[indexPath.row] as? PositionModel{

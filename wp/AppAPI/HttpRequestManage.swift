@@ -113,8 +113,6 @@ private static var instance = HttpRequestManage()
                         }
                     } else {
                         SVProgressHUD.showErrorMessage(ErrorMessage: jsonDict?["msg"] as! String, ForDuration: 1.5, completion: {
-                            
-//                             reseponse(jsonDict as AnyObject)
                             if status == 10002 {
                                 let homeStoryboard = UIStoryboard.init(name: "Login", bundle: nil)
                                 UIApplication.shared.keyWindow?.rootViewController?.present(homeStoryboard.instantiateInitialViewController()!, animated: true, completion: nil)
